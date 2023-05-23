@@ -28,17 +28,18 @@
     else if (counter == 4) score += 1200*((int)(level+1));
     level += 0.1*counter;
     
+    // level indicator
     fill(255);
     textSize(30);
-    if (score < 10) text("000000"+score, 8, 25);
-    else if (score < 100) text("00000"+score, 8, 25);
-    else if (score < 1000) text("0000"+score, 8, 25);
-    else if (score < 10000) text("000"+score, 8, 25);
-    else if (score < 100000) text("00"+score, 8, 25); 
-    else if (score < 1000000) text("0"+score, 8, 25);
-    else text(""+score, 8, 25);
-    textSize(10);
-    text("Level "+level, 11, 37);
+    if (score < 10) text("000000"+score, 8, 30);
+    else if (score < 100) text("00000"+score, 8, 30);
+    else if (score < 1000) text("0000"+score, 8, 30);
+    else if (score < 10000) text("000"+score, 8, 30);
+    else if (score < 100000) text("00"+score, 8, 30); 
+    else if (score < 1000000) text("0"+score, 8, 30);
+    else text(""+score, 8, 30);
+    textSize(15);
+    text("Level "+level, 9, 45);
     
     noFill();
     displayGrid(back);
