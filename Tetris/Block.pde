@@ -2,15 +2,24 @@ class Block {
   
 public static final int side = 30;
 private int[][][] blocks;
+public int[] location;
+public int rotation;
+public char type;
 
 public Block() {
+  type = 'B';
   blocks = new int[4][4][4];
+  location = new int[] { 0, 0 };
+  rotation = 0;
   //first array represents the rotation state
   //second and third represent the tetromino
 }
 
 //types: T, I, O, S, J, L, Z 
 public Block(char type) {
+  type = type;
+  location = new int[] { 0, 0 };
+  rotation = 0;
   if(type == 'T') {
     blocks = new int[][][] {
       {
@@ -201,6 +210,10 @@ public Block(char type) {
       }
     };
   }
+}
+
+public void rotateRight() {
+  
 }
 
 }

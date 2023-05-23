@@ -19,6 +19,10 @@
     displayGrid(back);
   }
   
+  void keyPressed() {
+    
+  }
+  
   void displayGrid(Background game) {
     stroke(220,220,220);
     strokeWeight(1);
@@ -54,4 +58,8 @@
     fill(255, 0, 0, 0);
     rectMode(CENTER);
     rect(width/2, height/2, 300, 600);
+  }
+  
+  void displayBlock (Block current) {
+    
   }
