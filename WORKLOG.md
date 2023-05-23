@@ -1,8 +1,8 @@
 # Work Log
 
-## GROUP MEMBER 1
+## Samuel CHen
 
-### date x
+### 5/22/23
 
 info
 
@@ -11,11 +11,11 @@ info
 info
 
 
-## GROUP MEMBER 2
+## Max Wu
 
-### date x
+### 5/22/23
 
-info
+Worked on the block class a bit and added the instance variables - blocks 3D array and made 2 blocks (T and I)
 
 ### date y
 
