@@ -1,13 +1,10 @@
   Background back;
-<<<<<<< HEAD
   int level;
   int score;
-=======
   Block current;
   boolean hasBlock = false;
   char[] types = { 'T', 'I', 'S', 'Z', 'J', 'L', 'O' };
   
->>>>>>> 386b3fcc297db35ba78466a7eb0daa97183149d4
   void setup() {
     size(800, 800);
     background(40, 40, 40);
@@ -16,14 +13,12 @@
   }
   
   void draw() {
-<<<<<<< HEAD
     int counter = 0;   // counter is the number of rows cleared by the last block
-=======
     if(!hasBlock) {
       current = new Block(types[(int) Math.random()*7]);
       hasBlock = true;
     }
->>>>>>> 386b3fcc297db35ba78466a7eb0daa97183149d4
+
     back.isRowFilled(0);
     
     // score and level calculator
