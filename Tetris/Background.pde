@@ -29,7 +29,22 @@ class Background {
   }
   
   boolean isRowFilled(int row) {
+    
+    for (int i = 0; i < game[row].length; i++) {
+      if (game[row][i] != 1) return false;
+    }
     return true;
+    
+  }
+  
+  void clear(int[] rows) {
+    
+    for (int i = 0; i < rows.length; i++) {
+      for (int j = 0; j < game[i].length; j++) {
+        game[i][j] = 0;
+      }
+    }
+    
   }
   
   
