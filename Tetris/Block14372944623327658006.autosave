@@ -200,6 +200,8 @@ public Block(char type) {
       { 1, 0, 0, 0 }
       }
     };
+  } else {
+    throw new IllegalArgumentException("use a valid block type");
   }
 }
 
