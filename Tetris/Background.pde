@@ -28,5 +28,9 @@ class Background {
   
   }
   
+  boolean isRowFilled(int row) {
+    return true;
+  }
+  
   
 }
