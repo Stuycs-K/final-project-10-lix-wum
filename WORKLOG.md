@@ -20,3 +20,4 @@ Worked on the block class a bit and added the instance variables - blocks 3D arr
 ### 5/23/23
 
 Finished the declaration of 3D array in Block class, merged with the main in order to work on the implementation of the blocks into the game.
+addded several new instance variables into block and began working on the movement of the pieces.
