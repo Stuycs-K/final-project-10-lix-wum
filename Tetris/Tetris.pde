@@ -1,4 +1,6 @@
   Background back;
+  int level;
+  int score;
   void setup() {
     size(800, 800);
     background(40, 40, 40);
@@ -8,7 +10,17 @@
   }
   
   void draw() {
+    int counter = 0;   // counter is the number of rows cleared by the last block
     back.isRowFilled(0);
+    
+    // score and level calculator
+    if (counter == 1) score += 40*((int)(level+1));
+    else if (counter == 2) score += 100*((int)(level+1));
+    else if (counter == 3) score += 300*((int)(level+1));
+    else if (counter == 4) score += 1200*((int)(level+1));
+    level += 0.1*counter;
+    
+    
     displayGrid(back);
   }
   
