@@ -1,14 +1,14 @@
 # Work Log
 
-## Samuel CHen
+## Sam Li
 
 ### 5/22/23
 
-info
+worked on Background grid visual, created Background class
 
-### date y
+### 5/23/23
 
-info
+added Background class methods: isRowFilled, clear
 
 
 ## Max Wu
