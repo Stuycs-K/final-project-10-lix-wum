@@ -1,10 +1,11 @@
 class Background {
    public int size;
-   public int[][]game;
+   public char[][]game;
+   // 
 
    Background (int blockSize, int x, int y) {
     size = blockSize;
-    game = new int[x][y];
+    game = new char[x][y];
   }
 
   public void makeBackground () {
@@ -31,7 +32,7 @@ class Background {
   boolean isRowFilled(int row) {
     
     for (int i = 0; i < game[row].length; i++) {
-      if (game[row][i] != 1) return false;
+      if (game[row][i] == 'B') return false;
     }
     return true;
     
@@ -41,7 +42,7 @@ class Background {
     
     for (int i = 0; i < rows.length; i++) {
       for (int j = 0; j < game[i].length; j++) {
-        game[i][j] = 0;
+        game[i][j] = 'B';
       }
     }
     
