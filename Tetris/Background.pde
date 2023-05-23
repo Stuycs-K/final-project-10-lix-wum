@@ -1,7 +1,6 @@
 class Background {
    public int size;
    public char[][]game;
-   // 
 
    Background (int blockSize, int x, int y) {
     size = blockSize;

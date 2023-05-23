@@ -1,13 +1,20 @@
   Background back;
+  Block current;
+  boolean hasBlock = false;
+  char[] types = { 'T', 'I', 'S', 'Z', 'J', 'L', 'O' }
+  
   void setup() {
     size(800, 800);
     background(40, 40, 40);
     back = new Background(30, 10, 20);
     //back.makeBackground();
-    back.game[2][3] = 'T';
   }
   
   void draw() {
+    if(!hasBlock) {
+      current = new Block(types[(int) Math.random()*7]);
+      hasBlock = true;
+    }
     back.isRowFilled(0);
     displayGrid(back);
   }
