@@ -87,14 +87,13 @@
         displayBlock(block1, 625, y);
         next.addLast(block1);
       }
-      
-      current.moveUp();
+      if(current.type != 'O') {
+        current.moveUp();
+      }
       current.moveRight();
       current.moveRight();
       current.moveRight();
       hasBlock = true;
-      back.game[3][1] = 'T';
-      back.game[22][10] = 'T';
     }
 
     back.isRowFilled(0);

@@ -223,30 +223,6 @@ public void rotateLeft(Background back) {
   } else {
     rotation--;
   }
-  for(int i = 0; i < blocks[0].length; i++) {
-    if(blocks[rotation][i][1] < 0 || blocks[rotation][i][1] > 0 && back.game[blocks[rotation][i][0]][blocks[rotation][i][1]-1] != 'B' && blocks[rotation][i][0] < 19) {
-      moveRight();
-    } else if(blocks[rotation][i][1] > 9 || blocks[rotation][i][1] < 9 && back.game[blocks[rotation][i][0]][blocks[rotation][i][1]+1] != 'B' && blocks[rotation][i][0] > 0) {
-      moveLeft();
-    }
-  }
-  for(int i = 0; i < blocks[0].length; i++) {
-    if(blocks[rotation][i][1] < 0 || blocks[rotation][i][1] > 0 && back.game[blocks[rotation][i][0]][blocks[rotation][i][1]-1] != 'B' && blocks[rotation][i][0] < 19) {
-      moveRight();
-    } else if(blocks[rotation][i][1] > 9 || blocks[rotation][i][1] < 9 && back.game[blocks[rotation][i][0]][blocks[rotation][i][1]+1] != 'B' && blocks[rotation][i][0] > 0) {
-      moveLeft();
-    }
-  }
-  for(int i = 0; i < blocks[0].length; i++) {
-      if(blocks[rotation][i][0] > 19 || blocks[rotation][i][0] < 19 && back.game[blocks[rotation][i][0]+1][blocks[rotation][i][1]] != 'B' && blocks[rotation][i][1] > 0) {
-        moveUp();
-      } else if(blocks[rotation][i][0] < 0 || blocks[rotation][i][0] > 0 && back.game[blocks[rotation][i][0]-1][blocks[rotation][i][1]] != 'B' && blocks[rotation][i][1] < 9) {
-        moveDown(back);
-        if(blocks[rotation][i][0] < 0 || blocks[rotation][i][0] > 0 && back.game[blocks[rotation][i][0]-1][blocks[rotation][i][1]] != 'B' && blocks[rotation][i][1] < 9) { 
-          //gameOver
-        }
-      }
-  }
 }
 
 public void rotateRight(Background back) {
@@ -254,30 +230,6 @@ public void rotateRight(Background back) {
     rotation = 0;
   } else {
     rotation++;
-  }
-  for(int i = 0; i < blocks[0].length; i++) {
-    if(blocks[rotation][i][1] < 0 || blocks[rotation][i][1] > 0 && back.game[blocks[rotation][i][0]][blocks[rotation][i][1]-1] != 'B' && blocks[rotation][i][0] < 19) {
-      moveRight();
-    } else if(blocks[rotation][i][1] > 9 || blocks[rotation][i][1] < 9 && back.game[blocks[rotation][i][0]][blocks[rotation][i][1]+1] != 'B' && blocks[rotation][i][0] > 0) {
-      moveLeft();
-    }
-  }
-  for(int i = 0; i < blocks[0].length; i++) {
-    if(blocks[rotation][i][1] < 0 || blocks[rotation][i][1] > 0 && back.game[blocks[rotation][i][0]][blocks[rotation][i][1]-1] != 'B' && blocks[rotation][i][0] < 19) {
-      moveRight();
-    } else if(blocks[rotation][i][1] > 9 || blocks[rotation][i][1] < 9 && back.game[blocks[rotation][i][0]][blocks[rotation][i][1]+1] != 'B' && blocks[rotation][i][0] > 0) {
-      moveLeft();
-    }
-  }
-  for(int i = 0; i < blocks[0].length; i++) {
-      if(blocks[rotation][i][0] > 19 || blocks[rotation][i][1] > 0 && blocks[rotation][i][0] < 19 && back.game[blocks[rotation][i][0]+1][blocks[rotation][i][1]] != 'B') {
-        moveUp();
-      } else if(blocks[rotation][i][0] < 0 || blocks[rotation][i][1] < 9 && blocks[rotation][i][0] > 0 && back.game[blocks[rotation][i][0]-1][blocks[rotation][i][1]] != 'B') {
-        moveDown(back);
-        if(blocks[rotation][i][0] < 0 || blocks[rotation][i][1] < 9 && blocks[rotation][i][0] > 0 && back.game[blocks[rotation][i][0]-1][blocks[rotation][i][1]] != 'B') { 
-          //gameOver
-        }
-      }
   }
 }
 
@@ -312,20 +264,10 @@ public void moveLeft() {
 }
 
 public void moveDown(Background back) {
-  boolean movable = true;
-  for(int i = 0; i < blocks[0].length; i++) {
-    if(blocks[rotation][i][0] == 19 || back.game[blocks[rotation][i][0]+1][blocks[rotation][i][1]] != 'B') {
-      movable = false;
-      placeBlock(back);
-    }
-  }
-  if(movable) {
-    for(int i = 0; i < 4; i++) {
-      for(int j = 0; j < blocks[0].length; j++) {
-        blocks[i][j][0]++;
- //       System.out.println(blocks[i][j][0]);
-      }
-    }
+  moveDown();
+  if(hasCollision(back)) {
+    moveUp();
+    placeBlock(back);
   }
 }
 
@@ -355,7 +297,7 @@ public void moveUp() {
 
 public boolean hasCollision(Background back) {
   for(int i = 0; i < 4; i++) {
-    if(back.game[blocks[rotation][i][0]][blocks[rotation][i][1]] != 'B') {
+    if(back.game[3+blocks[rotation][i][0]][blocks[rotation][i][1]+1] != 'B') {
       return true;
     }
   }
@@ -366,7 +308,7 @@ public void placeBlock(Background back) {
   Tetris.hasBlock = false;
   for(int i = 0; i < 4; i++) {
     System.out.println(blocks[rotation][i][0] + " , " + blocks[rotation][i][1]);
-    back.game[blocks[rotation][i][0]][blocks[rotation][i][1]+1] = type;
+    back.game[3+blocks[rotation][i][0]][blocks[rotation][i][1]+1] = type;
   }
 }
 
