@@ -1,9 +1,15 @@
+import java.util.ArrayDeque;
 class Block {
   
 public static final int side = 30;
 private int[][][] blocks;
+private int left = 1;
+private int right = 11;
+private int top = 3;
+private int bottom = 23;
 public int rotation;
 public char type;
+public ArrayDeque<Character> lastMoves = new ArrayDeque<Character>();
 
 //do not use this constructor
 public Block() {
@@ -15,6 +21,8 @@ public Block() {
 
 //types: T, I, O, S, J, L, Z 
 public Block(char type) {
+  lastMoves.addLast('0');
+  lastMoves.addLast('0');
   this.type = type;
   rotation = 0;
   if(type == 'T') {
@@ -274,19 +282,9 @@ public void rotateRight(Background back) {
 }
 
 public void moveRight(Background back) {
-  boolean movable = true;
-  for(int i = 0; i < blocks[0].length; i++) {
-    if(blocks[rotation][i][1] == 9 || back.game[blocks[rotation][i][0]][blocks[rotation][i][1]+1] != 'B') {
-      movable = false;
-    }
-  }
-  if(movable) {
-    for(int i = 0; i < 4; i++) {
-      for(int j = 0; j < blocks[0].length; j++) {
-        blocks[i][j][1]++;
-        System.out.println(blocks[i][j][1]);
-      }
-    }
+  moveRight();
+  if(hasCollision(back)) {
+    moveLeft();
   }
 }
 
@@ -299,18 +297,9 @@ public void moveRight() {
 }
 
 public void moveLeft(Background back) {
-  boolean movable = true;
-  for(int i = 0; i < blocks[0].length; i++) {
-    if(blocks[rotation][i][1] == 0 || back.game[blocks[rotation][i][0]][blocks[rotation][i][1]-1] != 'B') {
-      movable = false;
-    }
-  }
-  if(movable) {
-    for(int i = 0; i < 4; i++) {
-      for(int j = 0; j < blocks[0].length; j++) {
-        blocks[i][j][1]--;
-      }
-    }
+  moveLeft();
+  if(hasCollision(back)) {
+    moveRight();
   }
 }
 
@@ -341,21 +330,11 @@ public void moveDown(Background back) {
 }
 
 public void fastDrop(Background back) {
-  boolean movable = true;
-  while(movable) {
-    for(int i = 0; i < 4; i++) {
-      for(int j = 0; j < blocks[0].length; j++) {
-        blocks[i][j][0]++;
-        System.out.println(blocks[i][j][0]);
-      }
-    }
-    for(int i = 0; i < blocks[0].length; i++) {
-      if(blocks[rotation][i][0] == 19 || back.game[blocks[rotation][i][0]+1][blocks[rotation][i][1]] != 'B') {
-        movable = false;
-        placeBlock(back);
-      }
-    }
+  while(!hasCollision(back)) {
+    moveDown();
   }
+  moveUp();
+  placeBlock(back);
 }
 
 public void moveDown() {
@@ -374,36 +353,9 @@ public void moveUp() {
   }
 }
 
-public boolean collisionT(Background back) {
+public boolean hasCollision(Background back) {
   for(int i = 0; i < 4; i++) {
-    if(blocks[rotation][i][0] <= 0 || back.game[blocks[rotation][i][0]-1][blocks[rotation][i][1]] != 'B') {
-      return true;
-    }
-  }
-  return false;
-}
-
-public boolean collisionB(Background back) {
-  for(int i = 0; i < 4; i++) {
-    if(blocks[rotation][i][0] >= 22 || back.game[blocks[rotation][i][0]+1][blocks[rotation][i][1]] != 'B') {
-      return true;
-    }
-  }
-  return false;
-}
-
-public boolean collisionL(Background back) {
-  for(int i = 0; i < 4; i++) {
-    if(blocks[rotation][i][1] <= 0 || back.game[blocks[rotation][i][0]][blocks[rotation][i][1]-1] != 'B') {
-      return true;
-    }
-  }
-  return false;
-}
-
-public boolean collisionR(Background back) {
-  for(int i = 0; i < 4; i++) {
-    if(blocks[rotation][i][1] >= 0 || back.game[blocks[rotation][i][0]][blocks[rotation][i][1]+1] != 'B') {
+    if(back.game[blocks[rotation][i][0]][blocks[rotation][i][1]] != 'B') {
       return true;
     }
   }
@@ -412,11 +364,9 @@ public boolean collisionR(Background back) {
 
 public void placeBlock(Background back) {
   Tetris.hasBlock = false;
-  for(int i = 0; i < blocks[0].length; i++) {
-    if(blocks[rotation][i][0] > 19) {
-      blocks[rotation][i][0] = 19;
-    } 
-    back.game[blocks[rotation][i][0]][blocks[rotation][i][1]] = type;
+  for(int i = 0; i < 4; i++) {
+    System.out.println(blocks[rotation][i][0] + " , " + blocks[rotation][i][1]);
+    back.game[blocks[rotation][i][0]][blocks[rotation][i][1]+1] = type;
   }
 }
 

@@ -8,7 +8,7 @@ class Background {
     for(int i = 0; i < x; i++) {
       for(int j = 0; j < y; j++) {
         game[i][j] = 'B';
-        if(i == 0 || i == 11 || j == 23) {
+        if(i == 23 || j == 0 || j == 11) {
           game[i][j] = 'W';
         }
       }

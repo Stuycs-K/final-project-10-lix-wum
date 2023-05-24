@@ -36,12 +36,13 @@
   void draw() {
     int counter = 0;   // counter is the number of rows cleared by the last block
     if(!hasBlock) {
-      current = new Block(types[(int) (Math.random()*7)]);\
-      current.moveUp();
+      current = new Block(types[(int) (Math.random()*7)]);
       current.moveRight();
       current.moveRight();
       current.moveRight();
       hasBlock = true;
+      back.game[3][1] = 'T';
+      back.game[22][10] = 'T';
     }
 
     back.isRowFilled(0);
@@ -75,8 +76,8 @@
     strokeWeight(1);
     rectMode(CORNER);
     int size = back.size;
-    for(int i = 0; i < back.game.length; i++) {
-      for(int j = 0; j < back.game[i].length; j++) {
+    for(int i = 3; i < back.game.length-1; i++) {
+      for(int j = 1; j < back.game[i].length-1; j++) {
         if(back.game[i][j] == 'B') {
           fill(40);
         } else if(back.game[i][j] == 'T') {
@@ -96,7 +97,7 @@
         } else {
           fill(40);
         }
-        rect((width/2 - 5*size) + j*size, (height/2 - 10*size) + i*size, size, size);
+        rect((width/2 - 5*size) + (j-1)*size, (height/2 - 10*size) + (i-3)*size, size, size);
       }
     }
     //outside box
