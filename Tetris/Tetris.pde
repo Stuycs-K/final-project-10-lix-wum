@@ -1,4 +1,9 @@
+
+  import java.util.ArrayDeque;
+  import java.util.Deque;
+  
   Background back;
+  ArrayDeque<Block> next = new ArrayDeque<Block>();  
   int level;
   int score;
   Block current;
@@ -10,6 +15,26 @@
     background(40, 40, 40);
     back = new Background(30, 24, 12); //grid has a border of 3 at the top and borders of 1 everywhere else
     //back.makeBackground();
+   
+    // NEXT BOX
+    strokeWeight(2);
+    stroke(255);
+    rectMode(CENTER);
+    fill(40, 40, 40);
+    rect(35.5*width/42, height/2, 160, 400);
+    fill(255, 0, 0, 0);
+    rect(35.5*width/42, height/2, 160, 400);
+    fill(255);
+    textSize(20);
+    text("NEXT", 600, 620);
+    
+    // ADD BLOCKS TO NEXT BOX
+    for (int i = 0; i < 1; i++) {
+      int y = 200+i*70;
+      Block block1 = new Block(types[(int) (Math.random()*7)]);
+      next.add(block1);
+      displayBlock(block1, 625, y);
+    }
   }
   
   void keyPressed() {
@@ -36,7 +61,32 @@
   void draw() {
     int counter = 0;   // counter is the number of rows cleared by the last block
     if(!hasBlock) {
-      current = new Block(types[(int) (Math.random()*7)]);\
+      
+      // TAKE NEXT BLOCK
+      current = next.removeFirst();
+      
+      // UPDATE NEXT BOX
+      strokeWeight(2);
+      stroke(255);
+      rectMode(CENTER);
+      fill(40, 40, 40);
+      rect(35.5*width/42, height/2, 160, 400);
+      fill(255, 0, 0, 0);
+      rect(35.5*width/42, height/2, 160, 400);
+      fill(255);
+      textSize(20);
+      text("NEXT", 600, 620);
+    
+      // DISPLAY NEXT BLOCKS
+      next.addLast(new Block(types[(int) (Math.random()*7)]));
+      for (int i = 0; i < 5; i++) {
+        int y = 200+i*70;
+        Block block1 = next.removeFirst(); 
+        print(block1);
+        displayBlock(block1, 625, y);
+        next.addLast(block1);
+      }
+      
       current.moveUp();
       current.moveRight();
       current.moveRight();
@@ -53,21 +103,22 @@
     else if (counter == 4) score += 1200*((int)(level+1));
     level += 0.1*counter;
     
+    // level indicator
     fill(255);
     textSize(30);
-    if (score < 10) text("000000"+score, 8, 25);
-    else if (score < 100) text("00000"+score, 8, 25);
-    else if (score < 1000) text("0000"+score, 8, 25);
-    else if (score < 10000) text("000"+score, 8, 25);
-    else if (score < 100000) text("00"+score, 8, 25); 
-    else if (score < 1000000) text("0"+score, 8, 25);
-    else text(""+score, 8, 25);
-    textSize(10);
-    text("Level "+level, 11, 37);
+    if (score < 10) text("000000"+score, 8, 30);
+    else if (score < 100) text("00000"+score, 8, 30);
+    else if (score < 1000) text("0000"+score, 8, 30);
+    else if (score < 10000) text("000"+score, 8, 30);
+    else if (score < 100000) text("00"+score, 8, 30); 
+    else if (score < 1000000) text("0"+score, 8, 30);
+    else text(""+score, 8, 30);
+    textSize(15);
+    text("Level "+level, 9, 45);
     
     noFill();
     displayGrid(back);
-    displayBlock(current);
+    displayBlock(current, (width/2 - 5*back.size), (height/2 - 10*back.size));
   }
   
   void displayGrid(Background game) {
@@ -107,14 +158,14 @@
     rect(width/2, height/2, 300, 600);
   }
   
-  void displayBlock (Block current) {
+  void displayBlock (Block current, int x, int y) {
     int size = back.size;
     stroke(220,220,220);
     strokeWeight(1);
     rectMode(CORNER);
-    for(int x = 0; x < current.blocks[current.rotation].length; x++) {
-      int i = current.blocks[current.rotation][x][0];
-      int j = current.blocks[current.rotation][x][1];
+    for(int a = 0; a < current.blocks[current.rotation].length; a++) {
+      int i = current.blocks[current.rotation][a][0];
+      int j = current.blocks[current.rotation][a][1];
       if(current.type == 'B') {
           fill(40);
         } else if(current.type == 'T') {
@@ -134,6 +185,6 @@
         } else {
           fill(40);
         }
-       rect((width/2 - 5*size) + j*size, (height/2 - 10*size) + i*size, size, size);
+       rect(x + j*size, y + i*size, size, size);
     }
   }
