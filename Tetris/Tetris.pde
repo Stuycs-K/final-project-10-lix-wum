@@ -10,6 +10,16 @@
     background(40, 40, 40);
     back = new Background(30, 20, 10);
     //back.makeBackground();
+   
+    // NEXT BOX
+    strokeWeight(2);
+    stroke(255);
+    fill(255, 0, 0, 0);
+    rectMode(CENTER);
+    rect(35.5*width/42, height/2, 160, 400);
+    fill(255);
+    textSize(20);
+    text("NEXT", 600, 620);
   }
   
   void keyPressed() {
