@@ -374,6 +374,42 @@ public void moveUp() {
   }
 }
 
+public boolean collisionT(Background back) {
+  for(int i = 0; i < 4; i++) {
+    if(blocks[rotation][i][0] <= 0 || back.game[blocks[rotation][i][0]-1][blocks[rotation][i][1]] != 'B') {
+      return true;
+    }
+  }
+  return false;
+}
+
+public boolean collisionB(Background back) {
+  for(int i = 0; i < 4; i++) {
+    if(blocks[rotation][i][0] >= 22 || back.game[blocks[rotation][i][0]+1][blocks[rotation][i][1]] != 'B') {
+      return true;
+    }
+  }
+  return false;
+}
+
+public boolean collisionL(Background back) {
+  for(int i = 0; i < 4; i++) {
+    if(blocks[rotation][i][1] <= 0 || back.game[blocks[rotation][i][0]][blocks[rotation][i][1]-1] != 'B') {
+      return true;
+    }
+  }
+  return false;
+}
+
+public boolean collisionR(Background back) {
+  for(int i = 0; i < 4; i++) {
+    if(blocks[rotation][i][1] >= 0 || back.game[blocks[rotation][i][0]][blocks[rotation][i][1]+1] != 'B') {
+      return true;
+    }
+  }
+  return false;
+}
+
 public void placeBlock(Background back) {
   Tetris.hasBlock = false;
   for(int i = 0; i < blocks[0].length; i++) {

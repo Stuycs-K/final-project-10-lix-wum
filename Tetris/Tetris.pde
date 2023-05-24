@@ -8,7 +8,7 @@
   void setup() {
     size(800, 800);
     background(40, 40, 40);
-    back = new Background(30, 20, 10);
+    back = new Background(30, 24, 12); //grid has a border of 3 at the top and borders of 1 everywhere else
     //back.makeBackground();
   }
   
