@@ -365,12 +365,12 @@ public boolean hasCollision(Background back) {
 public void placeBlock(Background back) {
   Tetris.hasBlock = false;
   for(int i = 0; i < 4; i++) {
-    System.out.println(blocks[rotation][i][0] + " , " + blocks[rotation][i][1]);
+    //System.out.println(blocks[rotation][i][0] + " , " + blocks[rotation][i][1]);
     back.game[blocks[rotation][i][0]][blocks[rotation][i][1]+1] = type;
   }
 }
 
-public String toString(Block x) {
-  return x.type+"";
+public void printType(Block x) {
+  print(x.type);
 }
 }

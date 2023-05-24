@@ -1,9 +1,8 @@
-
   import java.util.ArrayDeque;
   import java.util.Deque;
   
   Background back;
-  ArrayDeque<Block> next = new ArrayDeque<Block>();  
+  ArrayDeque<Block> next = new ArrayDeque<Block>(5);  
   int level;
   int score;
   Block current;
@@ -29,7 +28,7 @@
     text("NEXT", 600, 620);
     
     // ADD BLOCKS TO NEXT BOX
-    for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < 5; i++) {
       int y = 200+i*70;
       Block block1 = new Block(types[(int) (Math.random()*7)]);
       next.add(block1);
@@ -80,12 +79,12 @@
     
       // DISPLAY NEXT BLOCKS
       next.addLast(new Block(types[(int) (Math.random()*7)]));
+      Block temp;
       for (int i = 0; i < 5; i++) {
         int y = 200+i*70;
-        Block block1 = next.removeFirst(); 
-        print(block1);
-        displayBlock(block1, 625, y);
-        next.addLast(block1);
+        temp = next.removeFirst();         
+        displayBlock(temp, 625, y);
+        next.addLast(temp);
       }
       
       current.moveUp();
