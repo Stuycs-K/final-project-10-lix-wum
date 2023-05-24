@@ -82,6 +82,7 @@
       for (int i = 0; i < 5; i++) {
         int y = 200+i*70;
         Block block1 = next.removeFirst(); 
+        print(block1);
         displayBlock(block1, 625, y);
         next.addLast(block1);
       }

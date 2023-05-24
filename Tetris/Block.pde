@@ -284,7 +284,7 @@ public void moveRight(Background back) {
     for(int i = 0; i < 4; i++) {
       for(int j = 0; j < blocks[0].length; j++) {
         blocks[i][j][1]++;
-     //   System.out.println(blocks[i][j][1]);
+     //    System.out.println(blocks[i][j][1]);
       }
     }
   }
@@ -334,7 +334,7 @@ public void moveDown(Background back) {
     for(int i = 0; i < 4; i++) {
       for(int j = 0; j < blocks[0].length; j++) {
         blocks[i][j][0]++;
-        System.out.println(blocks[i][j][0]);
+ //       System.out.println(blocks[i][j][0]);
       }
     }
   }
@@ -346,7 +346,7 @@ public void fastDrop(Background back) {
     for(int i = 0; i < 4; i++) {
       for(int j = 0; j < blocks[0].length; j++) {
         blocks[i][j][0]++;
-        System.out.println(blocks[i][j][0]);
+  //      System.out.println(blocks[i][j][0]);
       }
     }
     for(int i = 0; i < blocks[0].length; i++) {
@@ -384,4 +384,7 @@ public void placeBlock(Background back) {
   }
 }
 
+public String toString(Block x) {
+  return x.type+"";
+}
 }
