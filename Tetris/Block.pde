@@ -215,6 +215,27 @@ public void rotateLeft() {
   } else {
     rotation--;
   }
+  for(int i = 0; i < blocks[0].length; i++) {
+    if(blocks[rotation][i][1] < 0) {
+      moveRight();
+    } else if(blocks[rotation][i][1] > 9) {
+      moveLeft();
+    }
+  }
+  for(int i = 0; i < blocks[0].length; i++) {
+    if(blocks[rotation][i][1] < 0) {
+      moveRight();
+    } else if(blocks[rotation][i][1] > 9) {
+      moveLeft();
+    }
+  }
+  for(int i = 0; i < blocks[0].length; i++) {
+      if(blocks[rotation][i][0] > 19) {
+        moveUp();
+      } else if(blocks[rotation][i][0] < 0) {
+        moveDown();
+      }
+    }
 }
 
 public void rotateRight() {
@@ -222,6 +243,108 @@ public void rotateRight() {
     rotation = 0;
   } else {
     rotation++;
+  }
+  for(int i = 0; i < blocks[0].length; i++) {
+    if(blocks[rotation][i][1] < 0) {
+      moveRight();
+    } else if(blocks[rotation][i][1] > 9) {
+      moveLeft();
+    }
+  }
+  for(int i = 0; i < blocks[0].length; i++) {
+    if(blocks[rotation][i][1] < 0) {
+      moveRight();
+    } else if(blocks[rotation][i][1] > 9) {
+      moveLeft();
+    }
+  }
+  for(int i = 0; i < blocks[0].length; i++) {
+      if(blocks[rotation][i][0] > 19) {
+        moveUp();
+      } else if(blocks[rotation][i][0] < 0) {
+        moveDown();
+      }
+    }
+}
+
+public void moveRight(Background back) {
+  boolean movable = true;
+  for(int i = 0; i < blocks[0].length; i++) {
+    if(blocks[rotation][i][1] == 9 || back.game[blocks[rotation][i][0]][blocks[rotation][i][1]+1] != 'B') {
+      movable = false;
+    }
+  }
+  if(movable) {
+    for(int i = 0; i < 4; i++) {
+      for(int j = 0; j < blocks[0].length; j++) {
+        blocks[i][j][1]++;
+      }
+    }
+  }
+}
+
+public void moveRight() {
+  for(int i = 0; i < 4; i++) {
+      for(int j = 0; j < blocks[0].length; j++) {
+        blocks[i][j][1]++;
+      }
+  }
+}
+
+public void moveLeft(Background back) {
+  boolean movable = true;
+  for(int i = 0; i < blocks[0].length; i++) {
+    if(blocks[rotation][i][1] == 0 || back.game[blocks[rotation][i][0]][blocks[rotation][i][1]-1] != 'B') {
+      movable = false;
+    }
+  }
+  if(movable) {
+    for(int i = 0; i < 4; i++) {
+      for(int j = 0; j < blocks[0].length; j++) {
+        blocks[i][j][1]--;
+      }
+    }
+  }
+}
+
+public void moveLeft() {
+  for(int i = 0; i < 4; i++) {
+      for(int j = 0; j < blocks[0].length; j++) {
+        blocks[i][j][1]--;
+      }
+  }
+}
+
+public void moveDown(Background back) {
+  boolean movable = true;
+  for(int i = 0; i < blocks[0].length; i++) {
+    if(blocks[rotation][i][0] == 19 || back.game[blocks[rotation][i][0]+1][blocks[rotation][i][1]] != 'B') {
+      movable = false;
+    }
+  }
+  if(movable) {
+    for(int i = 0; i < 4; i++) {
+      for(int j = 0; j < blocks[0].length; j++) {
+        blocks[i][j][0]++;
+        System.out.println(blocks[i][j][0]);
+      }
+    }
+  }
+}
+
+public void moveDown() {
+  for(int i = 0; i < 4; i++) {
+      for(int j = 0; j < blocks[0].length; j++) {
+        blocks[i][j][0]++;
+      }
+  }
+}
+
+public void moveUp() {
+  for(int i = 0; i < 4; i++) {
+      for(int j = 0; j < blocks[0].length; j++) {
+        blocks[i][j][0]--;
+      }
   }
 }
 

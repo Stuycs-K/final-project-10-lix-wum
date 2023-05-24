@@ -19,12 +19,22 @@
     if(key == 'a' || key == 'z') {
       current.rotateLeft();
     }
+    if(key == 'l' || keyCode == RIGHT) {
+      current.moveRight(back);
+    }
+     if(key == 'j' || keyCode == LEFT) {
+      current.moveLeft(back);
+    }
+    if(key == 'k' || keyCode == DOWN) {
+      current.moveDown(back);
+    }
   }
   
   void draw() {
     int counter = 0;   // counter is the number of rows cleared by the last block
     if(!hasBlock) {
-      current = new Block(types[(int) (Math.random()*7)]);
+      //current = new Block(types[(int) (Math.random()*7)]);
+      current = new Block('I');
       hasBlock = true;
     }
 
