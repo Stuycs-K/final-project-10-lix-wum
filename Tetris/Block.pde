@@ -312,7 +312,7 @@ public void placeBlock(Background back) {
   }
 }
 
-public String toString(Block x) {
-  return x.type+"";
+public void printType(Block x) {
+  print(x.type);
 }
 }
