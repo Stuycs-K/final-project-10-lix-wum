@@ -284,7 +284,7 @@ public void moveRight(Background back) {
     for(int i = 0; i < 4; i++) {
       for(int j = 0; j < blocks[0].length; j++) {
         blocks[i][j][1]++;
-        System.out.println(blocks[i][j][1]);
+     //   System.out.println(blocks[i][j][1]);
       }
     }
   }
