@@ -61,11 +61,11 @@
     noStroke();
     fill(40);
     rectMode(CENTER);
-    rect(width/2, height/2 - 10*back.size - 15, 302, 30); //clears the top of the grid in case pieces appear above
-    
+    rect(width/2, height/2 - 10*back.size - 15, 300, 30);
     int counter = 0;   // counter is the number of rows cleared by the last block
     if(!hasBlock) {
-
+      //back.game[3][2] = 'T';
+      //back.game[22][11] = 'T';
       
       // TAKE NEXT BLOCK
       current = next.removeFirst();
@@ -166,7 +166,7 @@
   
   void displayBlock (Block current, int x, int y) {
     int size = back.size;
-    stroke(220,220,220);
+    stroke(255);
     strokeWeight(1);
     rectMode(CORNER);
     for(int a = 0; a < current.blocks[current.rotation].length; a++) {

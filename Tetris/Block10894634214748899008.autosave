@@ -65,62 +65,6 @@ public int[][] test0L = {
   { 2, 0 },
   { 2, 1 }
 };
-public int[][] I0R = {
-  { 0, 0 },
-  { 0, -2 },
-  { 0, 1 },
-  { 1, -2 },
-  { -2, 1 }
-};
-public int[][] I1L = {
-  { 0, 0 },
-  { 0, 2 },
-  { 0, -1 },
-  { -1, 2 },
-  { 2, -1 }
-};
-public int[][] I1R = {
-  { 0, 0 },
-  { 0, -1 },
-  { 0, 2 },
-  { -2, -1 },
-  { 1, 2 }
-};
-public int[][] I2L = {
-  { 0, 0 },
-  { 0, 1 },
-  { 0, -2 },
-  { 2, 1 },
-  { -1, -2 }
-};
-public int[][] I2R = {
-  { 0, 0 },
-  { 0, 2 },
-  { 0, -1 },
-  { -1, 2 },
-  { 2, -1 }
-};
-public int[][] I3L = {
-  { 0, 0 },
-  { 0, -2 },
-  { 0, 1 },
-  { 1, -2 },
-  { -2, 1 }
-};
-public int[][] I3R = {
-  { 0, 0 },
-  { 0, 1 },
-  { 0, -2 },
-  { 2, 1 },
-  { -1, -2 }
-};
-public int[][] I0L = {
-  { 0, 0 },
-  { 0, -1 },
-  { 0, 2 },
-  { -2, -1 },
-  { 1, 2 }
-};
 
 //do not use this constructor
 public Block() {
@@ -338,17 +282,13 @@ public void rotateLeft(Background back) {
   if(hasCollision(back)) {
     if(temp == 0) {
       tests = test0L;
-      if(type == 'I') tests = I0L;
     } else if(temp == 1) {
       tests = test1L;
-      if(type == 'I') tests = I1L;
     } else if(temp == 2) {
       tests = test2L;
-      if(type == 'I') tests = I2L;
     } else {
       tests = test3L;
-      if(type == 'I') tests = I3L;
-    } 
+    }
     for(int i = 0; i < 5; i++) {
       move(tests[i][0], tests[i][1]);
       if(!hasCollision(back)) {
@@ -384,16 +324,12 @@ public void rotateRight(Background back) {
   if(hasCollision(back)) {
     if(temp == 0) {
       tests = test0R;
-      if(type == 'I') tests = I0R;
     } else if(temp == 1) {
       tests = test1R;
-      if(type == 'I') tests = I1R;
     } else if(temp == 2) {
       tests = test2R;
-      if(type == 'I') tests = I2R;
     } else {
       tests = test3R;
-      if(type == 'I') tests = I3R;
     }
     for(int i = 0; i < 5; i++) {
       move(tests[i][0], tests[i][1]);
