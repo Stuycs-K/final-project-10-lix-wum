@@ -3,6 +3,8 @@
   
   Background back;
   ArrayDeque<Block> next = new ArrayDeque<Block>(5);  
+  boolean holdSpace = false;
+  Block heldBlock;
   int level;
   int score;
   Block current;
@@ -10,6 +12,40 @@
   char[] types = { 'T', 'I', 'S', 'Z', 'J', 'L', 'O' };
   int savedTime;
   int totalTime = 1000;
+  
+  void hold(Block current) {
+    print("hold");
+    if (holdSpace) {
+      // REDRAW HOLD BOX
+      strokeWeight(2);
+      stroke(255);
+      rectMode(CENTER);
+      fill(40, 40, 40);
+      rect(35.5*width/42/5.5, height/2.86, 160, 160);
+      fill(255, 0, 0, 0);
+      rect(35.5*width/42/5.5, height/2.86, 160, 160);
+      fill(255);
+      textSize(20);
+      text("HOLD", 150, 220);
+      Block temp = heldBlock;
+      heldBlock = current;
+      displayBlock(heldBlock, 0,250);
+      current = temp;
+      //if(current.type != 'O') {
+      //  current.moveUp();
+      //}
+      //current.moveRight();
+      //current.moveRight();
+      //current.moveRight();
+      //hasBlock = true;
+    }
+    else {
+      holdSpace = true;
+      heldBlock = current;
+      displayBlock(heldBlock, 0,250);
+      updateNext();
+    }
+  }
   
   void setup() {
     size(800, 800);
@@ -71,6 +107,9 @@
     if(key == ' ') {
       current.fastDrop(back);
     } 
+    if(key == 'c') {
+      hold(current);
+    }
   }
   
   void draw() {
@@ -79,34 +118,9 @@
     rectMode(CENTER);
     rect(width/2, height/2 - 10*back.size - 15, 302, 30); //clears the top of the grid in case pieces appear above
     
-    int counter = 0;   // counter is the number of rows cleared by the last block
     if(!hasBlock) {
 
-      
-      // TAKE NEXT BLOCK
-      current = next.removeFirst();
-      
-      // UPDATE NEXT BOX
-      strokeWeight(2);
-      stroke(255);
-      rectMode(CENTER);
-      fill(40, 40, 40);
-      rect(35.5*width/42, height/2, 160, 400);
-      fill(255, 0, 0, 0);
-      rect(35.5*width/42, height/2, 160, 400);
-      fill(255);
-      textSize(20);
-      text("NEXT", 600, 595);
-    
-      // DISPLAY NEXT BLOCKS
-      next.addLast(new Block(types[(int) (Math.random()*7)]));
-      Block temp;
-      for (int i = 0; i < 5; i++) {
-        int y = 200+i*70;
-        temp = next.removeFirst();         
-        displayBlock(temp, 625, y);
-        next.addLast(temp);
-      }
+      updateNext();
       if(current.type != 'O') {
         current.moveUp();
       }
@@ -115,8 +129,11 @@
       current.moveRight();
       hasBlock = true;
     }
-
-    back.isRowFilled(0);
+    
+    noFill();
+    displayGrid(back);
+    displayBlock(current, (width/2 - 5*back.size), (height/2 - 10*back.size));
+    int counter = back.checkRows(); print(counter);
     
     // score and level calculator
     if (counter == 1) score += 40*((int)(level+1));
@@ -126,6 +143,9 @@
     level += 0.1*counter;
     
     // level indicator
+    noStroke();
+    fill(40, 40, 40);
+    rect(0, 0, 100, 100);
     fill(255);
     textSize(30);
     if (score < 10) text("000000"+score, 8, 30);
@@ -138,10 +158,7 @@
     textSize(15);
     text("Level "+level, 9, 45);
     
-    noFill();
-    displayGrid(back);
-    displayBlock(current, (width/2 - 5*back.size), (height/2 - 10*back.size));
-    back.checkRows();
+    counter = 0;
     
      //timer increment to move down
     int passedTime = millis() - savedTime;
@@ -219,3 +236,33 @@
        rect(x + j*size, y + i*size, size, size);
     }
   }
+    
+    void updateNext() {
+            
+      // TAKE NEXT BLOCK
+      current = next.removeFirst();
+      
+      // UPDATE NEXT BOX
+      strokeWeight(2);
+      stroke(255);
+      rectMode(CENTER);
+      fill(40, 40, 40);
+      rect(35.5*width/42, height/2, 160, 400);
+      fill(255, 0, 0, 0);
+      rect(35.5*width/42, height/2, 160, 400);
+      fill(255);
+      textSize(20);
+      text("NEXT", 600, 595);
+    
+      // DISPLAY NEXT BLOCKS
+      next.addLast(new Block(types[(int) (Math.random()*7)]));
+      Block temp;
+      for (int i = 0; i < 5; i++) {
+        int y = 200+i*70;
+        temp = next.removeFirst();         
+        displayBlock(temp, 625, y);
+        next.addLast(temp);
+      }
+    
+    }
+  

@@ -41,7 +41,7 @@ class Background {
     //rect(width/2, height/2, 300, 600);
   
   //}
-  public void checkRows() {
+  public int checkRows() {
     for(int i = top; i < bottom; i++) {
       if(isRowFilled(i)) {
         rows.addLast(i);
@@ -54,7 +54,7 @@ class Background {
         }
       }
     }
-    clear(rows);
+    return clear(rows);
   }
   
   boolean isRowFilled(int row) {
@@ -75,11 +75,12 @@ class Background {
     
   }
   
-  public void clear(ArrayDeque<Integer> rows) {
-      
+  public int clear(ArrayDeque<Integer> rows) {
+    int rowsCleared = 0;
     while(rows.size() > 0) {
       int i = rows.poll();
       for (int j = left; j < right; j++) {
+        rowsCleared++;
         game[i][j] = 'B';
       }
       for (int k = i; k > top; k--) {
@@ -88,6 +89,7 @@ class Background {
         }
       }
     }
+    return rowsCleared;
     
   }
   
