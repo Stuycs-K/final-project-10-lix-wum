@@ -24,6 +24,13 @@ Added several new instance variables into block and began working on the movemen
 
 ### 5/24/23
 
-(Counting as the 24th because started work at 12 AM)
+AT HOME (BEFORE SCHOOL):
 Reworked the Block method in order to make moving blocks easier, changed values of the Background grid in order to make the coordinates not reversed.
 Also added keyboard input and movement/rotation of blocks, though need to add fastDrop() method and addition into grid.
+IN CLASS: 
+added collision checker and deleted old rotation methods (opting to use super rotation system from tetris wiki)
+AT DOJO: 
+fixed background grid and made size larger in order to make testing rotations easier, also fixed dropping pieces
+AT HOME (AFTER SCHOOL): 
+finished rotation based on wiki and got clear method working as well as a timer to drop the pieces slowly.
+Still need to add actual timer as well as score keeping. also need to add hold functionality.
