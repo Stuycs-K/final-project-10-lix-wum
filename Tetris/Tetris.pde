@@ -2,8 +2,9 @@
   import java.util.Deque;
   
   Background back;
-  ArrayDeque<Block> next = new ArrayDeque<Block>(5);  
+  ArrayDeque<Block> next = new ArrayDeque<Block>(6);  
   boolean holdSpace = false;
+  boolean heldAlready = false;
   Block heldBlock;
   double level;
   int score;
@@ -27,10 +28,10 @@
       fill(255);
       textSize(20);
       text("HOLD", 150, 220);
-      Block temp = heldBlock;
-      heldBlock = current;
-      displayBlock(heldBlock, 0,250);
-      current = temp;
+      next.addFirst(new Block(heldBlock.type));
+      heldBlock = new Block(current.type);
+      displayBlockCosmetic(heldBlock, 80,220);
+      hasBlock = false;
       //if(current.type != 'O') {
       //  current.moveUp();
       //}
@@ -41,9 +42,8 @@
     }
     else {
       holdSpace = true;
-      heldBlock = current;
-      displayBlock(heldBlock, 0,250);
-      updateNext();
+      heldBlock = new Block(current.type);
+      displayBlockCosmetic(heldBlock, 80 ,220);
     }
   }
   
@@ -108,7 +108,10 @@
       current.fastDrop(back);
     } 
     if(key == 'c') {
-      hold(current);
+      if(!heldAlready) {
+        hold(current); 
+        heldAlready = true;
+      }
     }
   }
   
