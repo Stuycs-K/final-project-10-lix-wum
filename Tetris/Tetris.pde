@@ -4,7 +4,7 @@
   Background back;
   ArrayDeque<Block> next = new ArrayDeque<Block>(6);  
   boolean holdSpace = false;
-  boolean heldAlready = false;
+  int heldAlready = 3;
   Block heldBlock;
   double level;
   int score;
@@ -44,6 +44,7 @@
       holdSpace = true;
       heldBlock = new Block(current.type);
       displayBlockCosmetic(heldBlock, 80 ,220);
+      hasBlock = false;
     }
   }
   
@@ -108,9 +109,11 @@
       current.fastDrop(back);
     } 
     if(key == 'c') {
-      if(!heldAlready) {
+      if(heldAlready > 2) {
+        if(!holdSpace) {
+          heldAlready = 1;
+        }
         hold(current); 
-        heldAlready = true;
       }
     }
   }
@@ -124,6 +127,7 @@
     if(!hasBlock) {
 
       updateNext();
+      heldAlready++;
       if(current.type != 'O') {
         current.moveUp();
       }
@@ -224,7 +228,7 @@
       x += 10;
       y += 30;
     } else if(current.type == 'I') {
-      x -= 5;
+      x -= 10;
       y -= 15;
     }
     int size = back.size;
@@ -283,7 +287,6 @@
         displayBlockCosmetic(temp, 625, y);
         next.addLast(temp);
       }
-    
     }
     
     void score (int counter) {
