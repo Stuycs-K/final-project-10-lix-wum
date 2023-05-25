@@ -236,6 +236,44 @@
        rect(x + j*size, y + i*size, size, size);
     }
   }
+  
+  void displayBlockCosmetic (Block current, int x, int y) {
+    if(current.type == 'O') {
+      x += 10;
+      y += 30;
+    } else if(current.type == 'I') {
+      x -= 5;
+      y -= 15;
+    }
+    int size = back.size;
+    stroke(220,220,220);
+    strokeWeight(1);
+    rectMode(CORNER);
+    for(int a = 0; a < current.blocks[current.rotation].length; a++) {
+      int i = current.blocks[current.rotation][a][0];
+      int j = current.blocks[current.rotation][a][1];
+      if(current.type == 'B') {
+          fill(40);
+        } else if(current.type == 'T') {
+          fill(153, 51, 255);
+        } else if(current.type == 'I') {
+          fill(51, 204, 255);
+        } else if(current.type == 'S') {
+          fill(51, 204, 51);
+        } else if(current.type == 'Z') {
+          fill(204, 0, 0);
+        } else if(current.type == 'J') {
+          fill(0, 51, 204);
+        } else if(current.type == 'L') {
+          fill(255, 153, 51);
+        } else if(current.type == 'O') {
+          fill(255, 214, 51);
+        } else {
+          fill(40);
+        }
+       rect(x + j*size, y + i*size, size, size);
+    }
+  }
     
     void updateNext() {
             
@@ -260,7 +298,7 @@
       for (int i = 0; i < 5; i++) {
         int y = 200+i*70;
         temp = next.removeFirst();         
-        displayBlock(temp, 625, y);
+        displayBlockCosmetic(temp, 625, y);
         next.addLast(temp);
       }
     
