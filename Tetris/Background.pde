@@ -1,8 +1,14 @@
 class Background {
    public int size;
    public char[][]game;
+   public ArrayDeque<Integer> rows;
+   public int left = 2;
+   public int right = 12;
+   public int top = 3;
+   public int bottom = 23;
 
    Background (int blockSize, int x, int y) {
+    rows = new ArrayDeque<Integer>();
     size = blockSize;
     game = new char[x][y];
     for(int i = 0; i < x; i++) {
@@ -35,21 +41,51 @@ class Background {
     //rect(width/2, height/2, 300, 600);
   
   //}
+  public void checkRows() {
+    for(int i = top; i < bottom; i++) {
+      if(isRowFilled(i)) {
+        rows.addLast(i);
+      }
+      if(isRowEmpty(i)) {
+        for (int k = i; k > top; k--) {
+          for (int l = left; l < right; l++) {
+            game[k][l] = game[k-1][l];
+          }
+        }
+      }
+    }
+    clear(rows);
+  }
   
   boolean isRowFilled(int row) {
     
-    for (int i = 0; i < game[row].length; i++) {
+    for (int i = left; i < right; i++) {
       if (game[row][i] == 'B') return false;
     }
     return true;
     
   }
   
-  void clear(int[] rows) {
+   boolean isRowEmpty(int row) {
     
-    for (int i = 0; i < rows.length; i++) {
-      for (int j = 0; j < game[i].length; j++) {
+    for (int i = left; i < right; i++) {
+      if (game[row][i] != 'B') return false;
+    }
+    return true;
+    
+  }
+  
+  public void clear(ArrayDeque<Integer> rows) {
+      
+    while(rows.size() > 0) {
+      int i = rows.poll();
+      for (int j = left; j < right; j++) {
         game[i][j] = 'B';
+      }
+      for (int k = i; k > top; k--) {
+        for (int l = left; l < right; l++) {
+          game[k][l] = game[k-1][l];
+        }
       }
     }
     

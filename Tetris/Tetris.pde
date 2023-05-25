@@ -8,6 +8,8 @@
   Block current;
   public static boolean hasBlock = false;
   char[] types = { 'T', 'I', 'S', 'Z', 'J', 'L', 'O' };
+  int savedTime;
+  int totalTime = 1000;
   
   void setup() {
     size(800, 800);
@@ -34,6 +36,8 @@
       next.add(block1);
       displayBlock(block1, 625, y);
     }
+    //timer start
+    savedTime = millis();
   }
   
   void keyPressed() {
@@ -125,6 +129,15 @@
     noFill();
     displayGrid(back);
     displayBlock(current, (width/2 - 5*back.size), (height/2 - 10*back.size));
+    back.checkRows();
+    
+     //timer increment to move down
+    int passedTime = millis() - savedTime;
+    //has 1 second passed
+    if (passedTime > totalTime) {
+      current.moveDown(back);
+      savedTime = millis();
+    }
   }
   
   void displayGrid(Background game) {
