@@ -17,6 +17,18 @@
     back = new Background(30, 25, 14); //grid has a border of 3 at the top and borders of 2 everywhere else
     //back.makeBackground();
    
+    // HOLD BOX
+    strokeWeight(2);
+    stroke(255);
+    rectMode(CENTER);
+    fill(40, 40, 40);
+    rect(35.5*width/42/5.5, height/2.86, 160, 160);
+    fill(255, 0, 0, 0);
+    rect(35.5*width/42/5.5, height/2.86, 160, 160);
+    fill(255);
+    textSize(20);
+    text("HOLD", 150, 220);
+   
     // NEXT BOX
     strokeWeight(2);
     stroke(255);
@@ -27,7 +39,7 @@
     rect(35.5*width/42, height/2, 160, 400);
     fill(255);
     textSize(20);
-    text("NEXT", 600, 620);
+    text("NEXT", 600, 595);
     
     // ADD BLOCKS TO NEXT BOX
     for (int i = 0; i < 5; i++) {
@@ -84,7 +96,7 @@
       rect(35.5*width/42, height/2, 160, 400);
       fill(255);
       textSize(20);
-      text("NEXT", 600, 620);
+      text("NEXT", 600, 595);
     
       // DISPLAY NEXT BLOCKS
       next.addLast(new Block(types[(int) (Math.random()*7)]));
