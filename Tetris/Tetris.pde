@@ -12,7 +12,7 @@
   void setup() {
     size(800, 800);
     background(40, 40, 40);
-    back = new Background(30, 24, 12); //grid has a border of 3 at the top and borders of 1 everywhere else
+    back = new Background(30, 25, 14); //grid has a border of 3 at the top and borders of 2 everywhere else
     //back.makeBackground();
    
     // NEXT BOX
@@ -127,7 +127,7 @@
     strokeWeight(1);
     rectMode(CORNER);
     int size = back.size;
-    for(int i = 3; i < back.game.length-1; i++) {
+    for(int i = Block.top; i < back.game.length-1; i++) {
       for(int j = 1; j < back.game[i].length-1; j++) {
         if(back.game[i][j] == 'B') {
           fill(40);
