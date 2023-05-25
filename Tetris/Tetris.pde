@@ -318,6 +318,6 @@
     
     double rounder(double num) {
       int sum = (int) ((num/0.1) + 0.00001);
-      return sum/10.0;
+      return sum/10.0 + 0.0001;
     }
   
