@@ -14,10 +14,6 @@ added Background class methods, started working on Tetris class setup/draw metho
 
 Finished Next method, created queue that displays upcoming blocks.
 
-## 5/24/23
-
-Finished Next method, created queue that displays upcoming blocks.
-
 ## 5/25/23
 
 
