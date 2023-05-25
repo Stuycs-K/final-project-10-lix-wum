@@ -5,7 +5,7 @@
   ArrayDeque<Block> next = new ArrayDeque<Block>(5);  
   boolean holdSpace = false;
   Block heldBlock;
-  float level;
+  double level;
   int score;
   Block current;
   public static boolean hasBlock = false;
@@ -133,7 +133,7 @@
     noFill();
     displayGrid(back);
     displayBlock(current, (width/2 - 5*back.size), (height/2 - 10*back.size));
-    int rowsCleared = back.checkRows(); print(rowsCleared);
+    int rowsCleared = back.checkRows();
     
     score(rowsCleared);
     
@@ -290,7 +290,9 @@
     else if (counter == 2) score += 100*((int)(level+1));
     else if (counter == 3) score += 300*((int)(level+1));
     else if (counter == 4) score += 1200*((int)(level+1));
-    level += 0.1*counter;
+    println(counter);
+    level = level +  (0.01*counter); println(level);
+    level = rounder(level);
     
     // level indicator
     noStroke();
@@ -298,6 +300,7 @@
     rect(0, 0, 100, 100);
     fill(255);
     textSize(30);
+    print(score);
     if (score < 10) text("000000"+score, 8, 30);
     else if (score < 100) text("00000"+score, 8, 30);
     else if (score < 1000) text("0000"+score, 8, 30);
@@ -306,7 +309,12 @@
     else if (score < 1000000) text("0"+score, 8, 30);
     else text(""+score, 8, 30);
     textSize(15);
-    text("Level "+level, 9, 45);
+    text("Level "+((int)(level)), 9, 45);
       
+    }
+    
+    double rounder(double num) {
+      int sum = (int) ((num/0.1) + 0.00001);
+      return sum/10.0;
     }
   
