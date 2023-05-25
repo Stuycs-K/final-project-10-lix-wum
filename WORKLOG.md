@@ -8,8 +8,16 @@ worked on Background grid visual, created Background class
 
 ### 5/23/23
 
-added Background class methods: isRowFilled, clear
+added Background class methods, started working on Tetris class setup/draw methods.
 
+## 5/24/23
+
+Finished Next method, created queue that displays upcoming blocks.
+
+## 5/25/23
+
+
+============================================================================================================================================
 
 ## Max Wu
 
