@@ -14,40 +14,6 @@
   int savedTime;
   int totalTime = 1000;
   
-  void hold(Block current) {
-    //print("hold");
-    if (holdSpace) {
-      // REDRAW HOLD BOX
-      strokeWeight(2);
-      stroke(255);
-      rectMode(CENTER);
-      fill(40, 40, 40);
-      rect(35.5*width/42/5.5, height/2.86, 160, 160);
-      fill(255, 0, 0, 0);
-      rect(35.5*width/42/5.5, height/2.86, 160, 160);
-      fill(255);
-      textSize(20);
-      text("HOLD", 150, 220);
-      next.addFirst(new Block(heldBlock.type));
-      heldBlock = new Block(current.type);
-      displayBlockCosmetic(heldBlock, 80,220);
-      hasBlock = false;
-      //if(current.type != 'O') {
-      //  current.moveUp();
-      //}
-      //current.moveRight();
-      //current.moveRight();
-      //current.moveRight();
-      //hasBlock = true;
-    }
-    else {
-      holdSpace = true;
-      heldBlock = new Block(current.type);
-      displayBlockCosmetic(heldBlock, 80 ,220);
-      hasBlock = false;
-    }
-  }
-  
   void setup() {
     size(800, 800);
     background(40, 40, 40);
@@ -119,6 +85,19 @@
   }
   
   void draw() {
+    
+    // timer
+    noStroke();
+    fill(40, 40, 40);
+    rectMode(CENTER);
+    rect(387, 730, 70, 50);
+    fill(255);
+    int s = millis()/1000; 
+    int m = s/60;
+    s -= m*60;
+    if (s < 10) text("" +m + ":0" + s , 387, 730);
+    else text("" +m + ":" + s , 387, 730);
+
     noStroke();
     fill(40);
     rectMode(CENTER);
@@ -320,8 +299,43 @@
       
     }
     
+    // helper method for score
     double rounder(double num) {
       int sum = (int) ((num/0.1) + 0.00001);
       return sum/10.0 + 0.0001;
     }
+    
+    void hold(Block current) {
+    //print("hold");
+    if (holdSpace) {
+      // REDRAW HOLD BOX
+      strokeWeight(2);
+      stroke(255);
+      rectMode(CENTER);
+      fill(40, 40, 40);
+      rect(35.5*width/42/5.5, height/2.86, 160, 160);
+      fill(255, 0, 0, 0);
+      rect(35.5*width/42/5.5, height/2.86, 160, 160);
+      fill(255);
+      textSize(20);
+      text("HOLD", 150, 220);
+      next.addFirst(new Block(heldBlock.type));
+      heldBlock = new Block(current.type);
+      displayBlockCosmetic(heldBlock, 80,220);
+      hasBlock = false;
+      //if(current.type != 'O') {
+      //  current.moveUp();
+      //}
+      //current.moveRight();
+      //current.moveRight();
+      //current.moveRight();
+      //hasBlock = true;
+    }
+    else {
+      holdSpace = true;
+      heldBlock = new Block(current.type);
+      displayBlockCosmetic(heldBlock, 80 ,220);
+      hasBlock = false;
+    }
+  }
   
