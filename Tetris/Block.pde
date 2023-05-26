@@ -3,8 +3,8 @@ class Block {
   
 public static final int side = 30;
 private int[][][] blocks;
-public int left = 2;
-public int right = 12;
+public int left = 3;
+public int right = 13;
 public int top = 3;
 public int bottom = 23;
 public int rotation;
@@ -21,14 +21,16 @@ public int[][] test1L = {
   { 0, 1 },
   { 1, 1 },
   { -2, 0 },
-  { -2, 1 }
+  { -2, 1 },
+  { 0, -1 }
 };
 public int[][] test1R = {
   { 0, 0 },
   { 0, 1 },
   { 1, 1 },
   { -2, 0 },
-  { -2, 1 }
+  { -2, 1 },
+  { 0, -1 }
 };
 public int[][] test2L = {
   { 0, 0 },
@@ -49,14 +51,16 @@ public int[][] test3L = {
   { 0, -1 },
   { 1, -1 },
   { -2, 0 },
-  { -2, -1 }
+  { -2, -1 },
+  { 0, 1 }
 };
 public int[][] test3R = {
   { 0, 0 },
   { 0, -1 },
   { 1, -1 },
   { -2, 0 },
-  { -2, -1 }
+  { -2, -1 },
+  { 0, 1 }
 };
 public int[][] test0L = {
   { 0, 0 },
@@ -358,6 +362,14 @@ public void rotateLeft(Background back) {
         move(-1*tests[i][0], -1*tests[i][1]);
       }
     }
+    if(/*(type == 'L' || type == 'J') && */(tests == test3R || tests == test3L || tests == test1R || tests == test1L)) {
+      move(tests[5][0], tests[5][1]);
+      if(!hasCollision(back)) {
+        flag = false;
+      } else {
+        move(-1*tests[5][0], -1*tests[5][1]);
+      }
+    }
     if(flag) {
       rotateRight();
     }
@@ -402,6 +414,14 @@ public void rotateRight(Background back) {
         break;
       } else {
         move(-1*tests[i][0], -1*tests[i][1]);
+      }
+    }
+    if((type == 'L' || type == 'J') && (tests == test3R || tests == test3L || tests == test1R || tests == test1L)) {
+      move(tests[5][0], tests[5][1]);
+      if(!hasCollision(back)) {
+        flag = false;
+      } else {
+        move(-1*tests[5][0], -1*tests[5][1]);
       }
     }
     if(flag) {

@@ -17,7 +17,7 @@
   void setup() {
     size(800, 800);
     background(40, 40, 40);
-    back = new Background(30, 25, 14); //grid has a border of 3 at the top and borders of 2 everywhere else
+    back = new Background(30, 25, 16); //grid has a border of 3 at the top and borders of 2 everywhere else
     //back.makeBackground();
    
     // HOLD BOX

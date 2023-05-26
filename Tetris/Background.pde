@@ -2,7 +2,7 @@ class Background {
    public int size;
    public char[][]game;
    public ArrayDeque<Integer> rows;
-   public int left = 2;
+   public int left = 4;
    public int right = 12;
    public int top = 3;
    public int bottom = 23;
@@ -14,7 +14,7 @@ class Background {
     for(int i = 0; i < x; i++) {
       for(int j = 0; j < y; j++) {
         game[i][j] = 'B';
-        if(i >= 23 || j < 2 || j > 11) {
+        if(i >= 23 || j < 3 || j > 12) {
           game[i][j] = 'W';
         }
       }
