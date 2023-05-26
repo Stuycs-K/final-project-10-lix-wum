@@ -6,8 +6,8 @@
   boolean holdSpace = false;
   int heldAlready = 3;
   Block heldBlock;
-  double level;
-  int score;
+  double level= 0;
+  int score= 0;
   Block current;
   public static boolean hasBlock = false;
   char[] types = { 'T', 'I', 'S', 'Z', 'J', 'L', 'O' };
@@ -292,28 +292,29 @@
     void score (int counter) {
     
         // score and level calculator
-    if (counter == 1) score += 40*((int)(level+1));
-    else if (counter == 2) score += 100*((int)(level+1));
-    else if (counter == 3) score += 300*((int)(level+1));
-    else if (counter == 4) score += 1200*((int)(level+1));
-    println(counter);
-    level = level +  (0.01*counter); println(level);
+    int scoreAdd = 0;
+    if (counter == 10) scoreAdd = (40*((int) (level+1)));
+    else if (counter == 20) scoreAdd = (100*((int) (level+1)));
+    else if (counter == 30) scoreAdd = (300*((int) (level+1)));
+    else if (counter == 40) scoreAdd = (1200*((int) (level+1)));
+    score += scoreAdd;
+    level = level +  (0.01*counter); 
     level = rounder(level);
     
-    // level indicator
+    // level indicatorx
     noStroke();
     fill(40, 40, 40);
     rect(0, 0, 100, 100);
     fill(255);
     textSize(30);
-    print(score);
-    if (score < 10) text("000000"+score, 8, 30);
-    else if (score < 100) text("00000"+score, 8, 30);
-    else if (score < 1000) text("0000"+score, 8, 30);
-    else if (score < 10000) text("000"+score, 8, 30);
-    else if (score < 100000) text("00"+score, 8, 30); 
-    else if (score < 1000000) text("0"+score, 8, 30);
-    else text(""+score, 8, 30);
+    String printScore = "";
+    //if (score < 10) printScore = "000000"+score;
+    //else if (score < 100) printScore = "00000"+score;
+    //else if (score < 1000) printScore = "0000"+score;
+    //else if (score < 10000) printScore = "000"+score;
+    //else if (score < 100000) printScore = "00"+score; 
+    //else if (score < 1000000) printScore = "0"+score;
+    text(score, 8, 30);
     textSize(15);
     text("Level "+((int)(level)), 9, 45);
       
