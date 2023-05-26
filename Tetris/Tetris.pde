@@ -6,13 +6,13 @@
   boolean holdSpace = false;
   int heldAlready = 3;
   Block heldBlock;
-  double level= 0;
+  public double level= 0;
   int score= 0;
   Block current;
   public static boolean hasBlock = false;
   char[] types = { 'T', 'I', 'S', 'Z', 'J', 'L', 'O' };
   int savedTime;
-  int totalTime = 1000;
+  double totalTime;
   
   void setup() {
     size(800, 800);
@@ -53,6 +53,9 @@
     }
     //timer start
     savedTime = millis();
+    
+    //drop speed
+    totalTime = (Math.pow((0.8-((level-1)*0.007)),(int)(level-1)))*1000;
   }
   
   void keyPressed() {
@@ -126,12 +129,14 @@
     rowsCleared = 0;
     
      //timer increment to move down
+    totalTime = (Math.pow((0.8-((level-1)*0.007)),(int)(level-1)))*1000;
     int passedTime = millis() - savedTime;
     //has 1 second passed
     if (passedTime > totalTime) {
       current.moveDown(back);
       savedTime = millis();
     }
+   
   }
   
   void displayGrid(Background game) {
@@ -293,6 +298,7 @@
     //else if (score < 10000) printScore = "000"+score;
     //else if (score < 100000) printScore = "00"+score; 
     //else if (score < 1000000) printScore = "0"+score;
+    //else printScore = ""+score;
     text(score, 8, 30);
     textSize(15);
     text("Level "+((int)(level)), 9, 45);
