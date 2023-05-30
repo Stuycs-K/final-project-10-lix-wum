@@ -42,3 +42,11 @@ fixed background grid and made size larger in order to make testing rotations ea
 AT HOME (AFTER SCHOOL): 
 finished rotation based on wiki and got clear method working as well as a timer to drop the pieces slowly.
 Still need to add actual timer as well as score keeping. also need to add hold functionality.
+
+### 5/25/23
+
+Attempted to make hold function work but kept messing up the next blocks display on right side
+
+### 5/26/23
+
+Fixed rotation errors causeed by line piece rotating on the edge of the grid, also increased grid size to allow for more wall kicks of L and J pieces as well as t-spins (I'm not good enough to do them so we need someone else to test). 
