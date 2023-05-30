@@ -269,16 +269,16 @@
     }
     
     void score (int counter) {
-    if (counter != 0) print(counter);
+    if (counter != 0) {
         // score and level calculator
     int scoreAdd = 0;
-    if (counter == 8) scoreAdd = (40*((int) (level+1)));
-    else if (counter == 16) scoreAdd = (100*((int) (level+1)));
-    else if (counter == 24) scoreAdd = (300*((int) (level+1)));
-    else if (counter == 32) scoreAdd = (1200*((int) (level+1)));
+    if (counter == 10) scoreAdd = (40*((int) (level+1)));
+    else if (counter == 20) scoreAdd = (100*((int) (level+1)));
+    else if (counter == 30) scoreAdd = (300*((int) (level+1)));
+    else if (counter == 40) scoreAdd = (1200*((int) (level+1)));
     score += scoreAdd;
     level = level +  (0.01*counter); 
-    level = rounder(level);
+    level = rounder(level); }
     
     // level indicatorx
     noStroke();
