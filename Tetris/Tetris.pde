@@ -78,12 +78,7 @@
       current.fastDrop(back);
     } 
     if(key == 'c') {
-      if(heldAlready > 2) {
-        if(!holdSpace) {
-          heldAlready = 1;
-        }
-        hold(current); 
-      }
+      hold(current);
     }
   }
   
@@ -314,6 +309,9 @@
     void hold(Block current) {
     //print("hold");
     if (holdSpace) {
+      next.addFirst(new Block(heldBlock.type));
+      heldBlock = new Block(current.type);
+      updateNext();
       // REDRAW HOLD BOX
       strokeWeight(2);
       stroke(255);
@@ -325,10 +323,8 @@
       fill(255);
       textSize(20);
       text("HOLD", 150, 220);
-      next.addFirst(new Block(heldBlock.type));
-      heldBlock = new Block(current.type);
+      
       displayBlockCosmetic(heldBlock, 80,220);
-      hasBlock = false;
       //if(current.type != 'O') {
       //  current.moveUp();
       //}
@@ -340,8 +336,9 @@
     else {
       holdSpace = true;
       heldBlock = new Block(current.type);
-      displayBlockCosmetic(heldBlock, 80 ,220);
-      hasBlock = false;
+      displayBlockCosmetic(heldBlock, 80,220);
+      updateNext();
+      
     }
   }
   
