@@ -2,8 +2,8 @@ class Background {
    public int size;
    public char[][]game;
    public ArrayDeque<Integer> rows;
-   public int left = 4;
-   public int right = 12;
+   public int left = 3;
+   public int right = 13;
    public int top = 3;
    public int bottom = 23;
 
