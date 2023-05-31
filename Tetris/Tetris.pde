@@ -66,15 +66,19 @@
     if(alive){
     if(key == 'd' || key == 'x') {
       current.rotateRight(back);
+      rotateSound();
     }
     if(key == 'a' || key == 'z') {
       current.rotateLeft(back);
+      rotateSound();
     }
     if(key == 'l' || keyCode == RIGHT) {
       current.moveRight(back);
+      moveSound();
     }
      if(key == 'j' || keyCode == LEFT) {
       current.moveLeft(back);
+      moveSound();
     }
     if(key == 'k' || keyCode == DOWN) {
       current.moveDown(back);
