@@ -2,7 +2,7 @@
   import java.util.Deque;
   
   Background back;
-  ArrayDeque<Block> next = new ArrayDeque<Block>(6);  
+  ArrayDeque<Block> next = new ArrayDeque<Block>(5);  
   boolean holdSpace = false;
   int heldAlready = 3;
   Block heldBlock;
