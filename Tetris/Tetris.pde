@@ -75,6 +75,7 @@
     }
     if(key == 'k' || keyCode == DOWN) {
       current.moveDown(back);
+      softDropSound();
     }
     if(key == ' ') {
       current.fastDrop(back);
