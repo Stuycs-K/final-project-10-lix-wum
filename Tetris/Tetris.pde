@@ -2,6 +2,7 @@
   import java.util.Deque;
   import java.util.ArrayList;
   
+  boolean alive = true;
   Background back;
   ArrayList<Block> next = new ArrayList<Block>();  
   boolean holdSpace = false;
@@ -62,6 +63,7 @@
   }
   
   void keyPressed() {
+    if(alive){
     if(key == 'd' || key == 'x') {
       current.rotateRight(back);
     }
@@ -83,9 +85,18 @@
     if(key == 'c') {
       hold(current);
     }
+    }
   }
   
   void draw() {
+    if(alive) {
+  
+    //check if lost
+    for(int i = back.left; i < back.right; i++) {
+      if(back.game[back.top][i] != 'B') {
+        alive = false;
+      }
+    }
     
     // timer
     noStroke();
@@ -134,7 +145,18 @@
       current.moveDown(back);
       savedTime = millis();
     }
-   
+   } else {
+     rectMode(CENTER);
+     fill(40);
+     rect(width/2, height/2, 800, 800);
+     fill(204, 0, 0);
+     textAlign(CENTER);
+     textSize(64);
+     text("YOU LOST xD", width/2, height/2);
+     fill(200);
+     textSize(32);
+     text("Final Score: " + score, width/2, height/2 + 80);
+   }
   }
   
   void displayGrid(Background game) {
