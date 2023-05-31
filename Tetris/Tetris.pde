@@ -1,8 +1,9 @@
   import java.util.ArrayDeque;
   import java.util.Deque;
+  import java.util.ArrayList;
   
   Background back;
-  ArrayDeque<Block> next = new ArrayDeque<Block>(5);  
+  ArrayList<Block> next = new ArrayList<Block>();  
   boolean holdSpace = false;
   int heldAlready = 3;
   Block heldBlock;
@@ -245,7 +246,7 @@
     void updateNext() {
             
       // TAKE NEXT BLOCK
-      current = next.removeFirst();
+      current = next.remove(0);
       
       // UPDATE NEXT BOX
       strokeWeight(2);
@@ -260,13 +261,10 @@
       text("NEXT", 600, 595);
     
       // DISPLAY NEXT BLOCKS
-      next.addLast(new Block(types[(int) (Math.random()*7)]));
-      Block temp;
+      next.add(new Block(types[(int) (Math.random()*7)]));
       for (int i = 0; i < 5; i++) {
-        int y = 200+i*70;
-        temp = next.removeFirst();         
-        displayBlockCosmetic(temp, 625, y);
-        next.addLast(temp);
+        int y = 200+i*70;        
+        displayBlockCosmetic(next.get(i), 625, y);
       }
     }
     
@@ -311,7 +309,7 @@
     void hold(Block current) {
     //print("hold");
     if (holdSpace) {
-      next.addFirst(new Block(heldBlock.type));
+      next.add(0, new Block(heldBlock.type));
       heldBlock = new Block(current.type);
       updateNext();
       // REDRAW HOLD BOX
