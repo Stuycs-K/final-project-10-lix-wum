@@ -78,6 +78,7 @@
     }
     if(key == ' ') {
       current.fastDrop(back);
+      hardDropSound();
     } 
     if(key == 'c') {
       if(heldAlready > 2) {
