@@ -78,9 +78,11 @@
     }
     if(key == 'k' || keyCode == DOWN) {
       current.moveDown(back);
+      softDropSound();
     }
     if(key == ' ') {
       current.fastDrop(back);
+      hardDropSound();
     } 
     if(key == 'c') {
       hold(current);
@@ -294,10 +296,22 @@
     if (counter != 0) {
         // score and level calculator
     int scoreAdd = 0;
-    if (counter == 10) scoreAdd = (40*((int) (level+1)));
-    else if (counter == 20) scoreAdd = (100*((int) (level+1)));
-    else if (counter == 30) scoreAdd = (300*((int) (level+1)));
-    else if (counter == 40) scoreAdd = (1200*((int) (level+1)));
+    if (counter == 10) { 
+      scoreAdd = (40*((int) (level+1)));
+      singleSound();
+    }
+    else if (counter == 20) {
+      scoreAdd = (100*((int) (level+1)));
+      doubleSound();
+    }
+    else if (counter == 30) {
+      scoreAdd = (300*((int) (level+1)));
+      tripleSound();
+    }
+    else if (counter == 40) {
+      scoreAdd = (1200*((int) (level+1)));
+      tetrisSound();
+    }
     score += scoreAdd;
     level = level +  (0.01*counter); 
     level = rounder(level); }
