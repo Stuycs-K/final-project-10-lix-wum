@@ -56,6 +56,8 @@
     
     //drop speed
     totalTime = (Math.pow((0.8-((level-1)*0.007)),(int)(level-1)))*1000;
+    
+    backgroundSound();
   }
   
   void keyPressed() {

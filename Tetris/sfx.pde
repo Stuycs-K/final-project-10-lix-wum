@@ -1,6 +1,8 @@
 import processing.sound.*;
-public static class sfx {
+SoundFile file;
 
+public void backgroundSound() {
+  file = new SoundFile(this, "tetris.mp3");
+  file.play();
   
-
 }
