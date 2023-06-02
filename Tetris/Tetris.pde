@@ -386,21 +386,24 @@
       fill(255);
       textSize(20);
       text("NEXT", 600, 595);
-    
+      
+      if(sevenBag.size() == 7) {
+        for (int i = 0; i < 7; i++ ) {
+          print(sevenBag.get(i).returnType());
+        }
+      }
       // DISPLAY NEXT BLOCKS
       if(sevenBag.size() == 0) {
-        for (int i = 0; i < 7; i++) {
+        
         sevenBag.add(new Block(types[(int) (Math.random()*7)]));
+        while (sevenBag.size() != 7) {
+          Block temp = new Block(types[(int) (Math.random()*7)]);
+          boolean x = true;
+          for (int j = 0; j < sevenBag.size(); j++) {
+            if (temp.returnType() == sevenBag.get(j).returnType()) x = false;
+          }
+          if (x == true) sevenBag.add(temp);
         }
-        //for (int i = 0; i < 6; i++) {
-        //  print(sevenBag.size());
-        //  Block temp = new Block(types[(int) (Math.random()*7)]);
-        //  boolean x = true;
-        //  for (int j = 0; j < sevenBag.size(); j++) {
-        //    if (temp.returnType() == sevenBag.get(i).returnType()) x = false;
-        //  }
-        //  if (x == true) sevenBag.add(temp);
-        //}
       }
       next.add(sevenBag.remove(0));
       for (int i = 0; i < 5; i++) {
