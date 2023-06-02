@@ -170,6 +170,8 @@
     int rowsCleared = back.checkRows();
     
     score(rowsCleared);
+    textSize(20);
+    text("P to pause", 700, 20);
     
     rowsCleared = 0;
     
@@ -218,31 +220,33 @@
   }
   
   void pauseGame() {
-    if (paused) {
-      rectMode(CENTER);
-      fill(104, 104, 104);
-      stroke(104);
-      rect(width/2, height/2, 800, 800);
-      textAlign(CENTER);
-      textSize(50);
-      fill(255);
-      text("PAUSED", width/2, height/2);
-      textAlign(LEFT);
-      backgroundSound.pause();
-    } else {
-      //started();
-      rectMode(CENTER);
-      fill(40);
-      stroke(40);
-      rect(width/2, height/2, 800, 800);
-      holdBox();
-      nextBox();
-      for (int i = 0; i < 5; i++) {
-        int y = 200+i*70;        
-        displayBlockCosmetic(next.get(i), 625, y);
+    if (gameStarted) {
+      if (paused) {
+        rectMode(CENTER);
+        fill(104, 104, 104);
+        stroke(104);
+        rect(width/2, height/2, 800, 800);
+        textAlign(CENTER);
+        textSize(50);
+        fill(255);
+        text("PAUSED", width/2, height/2);
+        textAlign(LEFT);
+        backgroundSound.pause();
+      } else {
+        //started();
+        rectMode(CENTER);
+        fill(40);
+        stroke(40);
+        rect(width/2, height/2, 800, 800);
+        holdBox();
+        nextBox();
+        for (int i = 0; i < 5; i++) {
+          int y = 200+i*70;        
+          displayBlockCosmetic(next.get(i), 625, y);
+        }
+        if (heldAlready) displayBlockCosmetic(heldBlock, 80,220);
+        backgroundSound.play();
       }
-      displayBlockCosmetic(heldBlock, 80,220);
-      backgroundSound.play();
     }
   }
   void displayGrid(Background game) {
