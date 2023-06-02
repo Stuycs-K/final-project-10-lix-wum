@@ -4,11 +4,11 @@
 
 ### 5/22/23
 
-worked on Background grid visual, created Background class
+Worked on Background grid visual, created Background class as well as the game background.
 
 ### 5/23/23
 
-added Background class methods, started working on Tetris class setup/draw methods.
+Added Background class methods, finished clear and isRowCleared methods, and started working on other Tetris class setup/draw methods.
 
 ## 5/24/23
 
@@ -16,8 +16,25 @@ Finished Next method, created queue that displays upcoming blocks.
 
 ## 5/25/23
 
+Created score and level calculator and display depending on how many lines are cleared with each block. Also created a rounding method for calculating score (this took much longer than it should have). Also created boxes to contain the next and held pieces.
 
-============================================================================================================================================
+## 5/26/23
+
+Added timer to game as well as increasing gravity depending on the level, as well as finalizing score.
+
+## 5/30/23
+
+Created sound class, spent most of class looking at sound documentation on processing.
+
+## 5/31/23
+
+Imported sound effect files, created sfx class to organize sound effect methods for background sound, soft and hard drop, line clears, and rotates.
+
+## 6/2/23
+
+Created a start screen by importing a tetris logo as well as creating a start button, also created a pause screen that uses a key command (instructions on the game screen - "P to pause"). Moved the creation of hold box and next box to separate methods away from draw in order to be used to redraw the boxes after unpausing. Moved background music to the main Tetris class in order to pause music when the game is paused and replay upon unpausing. Attempted 7bag next piece sorting algorithm but was unable to finish, will continue later. Also created demo branch to present in class.
+
+=======================================================================================================================================
 
 ## Max Wu
 
