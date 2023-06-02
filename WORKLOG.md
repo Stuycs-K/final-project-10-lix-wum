@@ -50,3 +50,15 @@ Attempted to make hold function work but kept messing up the next blocks display
 ### 5/26/23
 
 Fixed rotation errors causeed by line piece rotating on the edge of the grid, also increased grid size to allow for more wall kicks of L and J pieces as well as t-spins (I'm not good enough to do them so we need someone else to test). 
+
+### 5/30/23
+
+Fixed hold functionality, swapping blocks actually works
+
+### 5/31/23
+
+Changed the next blocks from a deque to an arraylist, which allows the next display to correctly display when using hold at the same time
+
+### 6/1/23
+
+Made it so that it is no longer possible to spam the hold button to infinitely stall out the game, also added a ghost block that shows where a piece will land once dropped.
