@@ -529,4 +529,21 @@ public void move(int x, int y) {
 public void printType(Block x) {
   print(x.type);
 }
+
+public Block ghost(Background back) {
+  Block temp = new Block(this.type);
+  temp.rotation = rotation;
+  for(int i = 0; i < blocks.length; i++) {
+    for(int j = 0; j < blocks[i].length; j++) {
+      for(int k = 0; k < blocks[i][j].length; k++) {
+        temp.blocks[i][j][k] = blocks[i][j][k];
+      }
+    }
+  }
+  while(!temp.hasCollision(back)) {
+    temp.moveDown();
+  }
+  temp.moveUp();
+  return temp;
+}
 }

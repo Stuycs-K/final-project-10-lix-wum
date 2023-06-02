@@ -8,6 +8,7 @@
   boolean holdSpace = false;
   boolean heldAlready = false;
   Block heldBlock;
+  Block ghost;
   public double level= 0;
   int score= 0;
   Block current;
@@ -99,7 +100,6 @@
   
   void draw() {
     if(alive) {
-  
     //check if lost
     for(int i = back.left; i < back.right; i++) {
       if(back.game[back.top][i] != 'B') {
@@ -140,6 +140,11 @@
     noFill();
     displayGrid(back);
     displayBlock(current, (width/2 - 5*back.size), (height/2 - 10*back.size));
+    
+    //making the ghost piece
+    ghost = current.ghost(back);
+    displayGhost(ghost, (width/2 - 5*back.size), (height/2 - 10*back.size));
+    
     int rowsCleared = back.checkRows();
     
     score(rowsCleared);
@@ -271,6 +276,19 @@
           fill(40);
         }
        rect(x + j*size, y + i*size, size, size);
+    }
+  }
+  
+  void displayGhost (Block ghost, int x, int y) {
+    int size = back.size;
+    stroke(220,220,220);
+    strokeWeight(1);
+    rectMode(CORNER);
+    for(int a = 0; a < ghost.blocks[ghost.rotation].length; a++) {
+      int i = ghost.blocks[ghost.rotation][a][0];
+      int j = ghost.blocks[ghost.rotation][a][1];
+      fill(200, 128);
+      rect(x + j*size, y + i*size, size, size);
     }
   }
     
