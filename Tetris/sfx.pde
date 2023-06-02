@@ -38,3 +38,9 @@ public void rotateSound() {
   file = new SoundFile(this, "rotate.wav", false); file.play(); 
   file.removeFromCache();  
 }
+
+// MISC
+public void loseSound() {
+  file = new SoundFile(this, "loseSound.mp3", false); file.play(); 
+  file.removeFromCache();  
+}

@@ -21,6 +21,8 @@
   double totalTime;
   boolean gameStarted = false;
   PImage image;
+  boolean lose = false;
+  boolean paused = false;
    
   void setup() {
     size(800, 800);
@@ -37,6 +39,7 @@
   }
   
   void started() {
+    textAlign(LEFT);
     fill(40, 40, 40);
     rect(width/2, height/2, 1000, 1000);
     back = new Background(30, 25, 16); //grid has a border of 3 at the top and borders of 2 everywhere else
@@ -84,7 +87,7 @@
   }
   
   void mousePressed() {
-    if (mouseX > width/2-25 && mouseX < width/2+25 && mouseY < 2*height/3+25 && mouseY > 2*height/3-25) {
+    if (mouseX > width/2-40 && mouseX < width/2+40 && mouseY < 2*height/3+40 && mouseY > 2*height/3-40) {
       if (gameStarted == false) {
         gameStarted = true; started();
       }
@@ -123,13 +126,22 @@
         heldAlready = true;
       }
     }
+    if(key == 'p') {
+      if(paused){
+        paused = false;
+        pauseGame();
+      } else {
+        paused = true;
+        pauseGame();
+      }
+    }
     }
   }
   
   void draw() {
    
-   if (gameStarted == true) {
-
+   if (gameStarted == true && !paused) {
+    textAlign(LEFT);
       if(alive) {
     //check if lost
     for(int i = back.left; i < back.right; i++) {
@@ -202,6 +214,7 @@
      textSize(32);
      text("Final Score: " + score, width/2, height/2 + 80);
      backgroundSound.stop();
+     if (lose == false) { loseSound(); lose = true; }
    }
    }
    else {
@@ -209,16 +222,30 @@
     stroke(104);
     rectMode(CENTER);
     fill(40, 40, 40);
+    stroke(40);
     rect(width/2, 2*height/3, 100, 100);
     fill(104, 104, 104);
-    rect(width/2, 2*height/3, 50, 50);
+    stroke(255);
+    rect(width/2, 2*height/3, 80, 80);
     fill(255);
     textAlign(CENTER);
     textSize(18);
     text("START", width/2, 2*height/3+5);
    }
   }
-  
+  void pauseGame() {
+    if (paused) {
+      rectMode(CENTER);
+      fill(104, 104, 104);
+      stroke(104);
+      rect(width/2, height/2, 800, 800);
+      textAlign(CENTER);
+      textSize(50);
+      text("PAUSED", width/2, height/2);
+    } else {
+      //started();
+    }
+  }
   void displayGrid(Background game) {
     stroke(220,220,220);
     strokeWeight(1);
@@ -445,6 +472,14 @@
       heldBlock = new Block(current.type);
       displayBlockCosmetic(heldBlock, 80,220);
       updateNext();
+      
+    }
+    
+    void holdBox() {
+       
+    }
+    
+    void nextBox() {
       
     }
   }
