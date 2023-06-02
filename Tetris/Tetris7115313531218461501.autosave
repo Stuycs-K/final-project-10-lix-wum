@@ -1,17 +1,11 @@
-  import java.util.concurrent.TimeUnit;
   import java.util.ArrayDeque;
   import java.util.Deque;
-  import java.util.ArrayList;
-  import processing.sound.*;
-
-  SoundFile backgroundSound;  
-  boolean alive = true;
+  
   Background back;
-  ArrayList<Block> next = new ArrayList<Block>();  
+  ArrayDeque<Block> next = new ArrayDeque<Block>(6);  
   boolean holdSpace = false;
-  boolean heldAlready = false;
+  int heldAlready = 3;
   Block heldBlock;
-  Block ghost;
   public double level= 0;
   int score= 0;
   Block current;
@@ -19,31 +13,29 @@
   char[] types = { 'T', 'I', 'S', 'Z', 'J', 'L', 'O' };
   int savedTime;
   double totalTime;
-  boolean gameStarted = false;
-  PImage image;
-   
+  boolean started = false;
+  
   void setup() {
     size(800, 800);
     background(40, 40, 40);
+    backgroundSound();
+    stroke(255); fill(255);
     
-    textAlign(CENTER);
-    textSize(20);
-    text("Loading...", width/2, 2*height/3);
-    imageMode(CENTER);
-    image = loadImage("gameIcon.png");
-    image(image, width/2, width/3);
-    
-    backgroundSound = new SoundFile(this, "tetris.mp3", false);
-  }
+    rectMode(CENTER);
+    rect(30, 30, width/2, height/2);
+    textSize(40); fill(0);
+    text("START", width/2, height/2);
+      }
   
-  void started() {
-    fill(40, 40, 40);
-    rect(width/2, height/2, 1000, 1000);
+  
+  void startGame() {
+    
+    background(40, 40, 40);
     back = new Background(30, 25, 16); //grid has a border of 3 at the top and borders of 2 everywhere else
     //back.makeBackground();
-   
-    // HOLD BOX
     
+    
+    // HOLD BOX
     strokeWeight(2);
     stroke(255);
     rectMode(CENTER);
@@ -80,34 +72,28 @@
     //drop speed
     totalTime = (Math.pow((0.8-((level-1)*0.007)),(int)(level-1)))*1000;
     
-    backgroundSound.loop();
+    
   }
   
   void mousePressed() {
-    if (mouseX > width/2-25 && mouseX < width/2+25 && mouseY < 2*height/3+25 && mouseY > 2*height/3-25) {
-      if (gameStarted == false) {
-        gameStarted = true; started();
-      }
-    }
+    if (started == false) {
+      if (mouseX > width/2-100 && mouseX < width/2+100) {started = true; startGame();}
+     }
   }
   
+  
   void keyPressed() {
-    if(alive){
     if(key == 'd' || key == 'x') {
       current.rotateRight(back);
-      rotateSound();
     }
     if(key == 'a' || key == 'z') {
       current.rotateLeft(back);
-      rotateSound();
     }
     if(key == 'l' || keyCode == RIGHT) {
       current.moveRight(back);
-      moveSound();
     }
      if(key == 'j' || keyCode == LEFT) {
       current.moveLeft(back);
-      moveSound();
     }
     if(key == 'k' || keyCode == DOWN) {
       current.moveDown(back);
@@ -118,26 +104,18 @@
       hardDropSound();
     } 
     if(key == 'c') {
-      if(!heldAlready){
-        hold(current);
-        heldAlready = true;
+      if(heldAlready > 2) {
+        if(!holdSpace) {
+          heldAlready = 1;
+        }
+        hold(current); 
       }
-    }
     }
   }
   
   void draw() {
-   
-   if (gameStarted == true) {
-
-      if(alive) {
-    //check if lost
-    for(int i = back.left; i < back.right; i++) {
-      if(back.game[back.top][i] != 'B') {
-        alive = false;
-      }
-    }
     
+    if (started == true) {
     // timer
     noStroke();
     fill(40, 40, 40);
@@ -158,7 +136,7 @@
     if(!hasBlock) {
 
       updateNext();
-      heldAlready = false;
+      heldAlready++;
       if(current.type != 'O') {
         current.moveUp();
       }
@@ -171,11 +149,6 @@
     noFill();
     displayGrid(back);
     displayBlock(current, (width/2 - 5*back.size), (height/2 - 10*back.size));
-    
-    //making the ghost piece
-    ghost = current.ghost(back);
-    displayGhost(ghost, (width/2 - 5*back.size), (height/2 - 10*back.size));
-    
     int rowsCleared = back.checkRows();
     
     score(rowsCleared);
@@ -190,33 +163,9 @@
       current.moveDown(back);
       savedTime = millis();
     }
-   } else {
-     rectMode(CENTER);
-     fill(40);
-     rect(width/2, height/2, 800, 800);
-     fill(204, 0, 0);
-     textAlign(CENTER);
-     textSize(64);
-     text("YOU LOST xD", width/2, height/2);
-     fill(200);
-     textSize(32);
-     text("Final Score: " + score, width/2, height/2 + 80);
-     backgroundSound.stop();
-   }
-   }
-   else {
-    strokeWeight(2);
-    stroke(104);
-    rectMode(CENTER);
-    fill(40, 40, 40);
-    rect(width/2, 2*height/3, 100, 100);
-    fill(104, 104, 104);
-    rect(width/2, 2*height/3, 50, 50);
-    fill(255);
-    textAlign(CENTER);
-    textSize(18);
-    text("START", width/2, 2*height/3+5);
-   }
+    
+    }
+   
   }
   
   void displayGrid(Background game) {
@@ -324,24 +273,11 @@
        rect(x + j*size, y + i*size, size, size);
     }
   }
-  
-  void displayGhost (Block ghost, int x, int y) {
-    int size = back.size;
-    stroke(220,220,220);
-    strokeWeight(1);
-    rectMode(CORNER);
-    for(int a = 0; a < ghost.blocks[ghost.rotation].length; a++) {
-      int i = ghost.blocks[ghost.rotation][a][0];
-      int j = ghost.blocks[ghost.rotation][a][1];
-      fill(200, 128);
-      rect(x + j*size, y + i*size, size, size);
-    }
-  }
     
     void updateNext() {
             
       // TAKE NEXT BLOCK
-      current = next.remove(0);
+      current = next.removeFirst();
       
       // UPDATE NEXT BOX
       strokeWeight(2);
@@ -356,10 +292,13 @@
       text("NEXT", 600, 595);
     
       // DISPLAY NEXT BLOCKS
-      next.add(new Block(types[(int) (Math.random()*7)]));
+      next.addLast(new Block(types[(int) (Math.random()*7)]));
+      Block temp;
       for (int i = 0; i < 5; i++) {
-        int y = 200+i*70;        
-        displayBlockCosmetic(next.get(i), 625, y);
+        int y = 200+i*70;
+        temp = next.removeFirst();         
+        displayBlockCosmetic(temp, 625, y);
+        next.addLast(temp);
       }
     }
     
@@ -416,9 +355,6 @@
     void hold(Block current) {
     //print("hold");
     if (holdSpace) {
-      next.add(0, new Block(heldBlock.type));
-      heldBlock = new Block(current.type);
-      updateNext();
       // REDRAW HOLD BOX
       strokeWeight(2);
       stroke(255);
@@ -430,8 +366,10 @@
       fill(255);
       textSize(20);
       text("HOLD", 150, 220);
-      
+      next.addFirst(new Block(heldBlock.type));
+      heldBlock = new Block(current.type);
       displayBlockCosmetic(heldBlock, 80,220);
+      hasBlock = false;
       //if(current.type != 'O') {
       //  current.moveUp();
       //}
@@ -443,9 +381,8 @@
     else {
       holdSpace = true;
       heldBlock = new Block(current.type);
-      displayBlockCosmetic(heldBlock, 80,220);
-      updateNext();
-      
+      displayBlockCosmetic(heldBlock, 80 ,220);
+      hasBlock = false;
     }
   }
   

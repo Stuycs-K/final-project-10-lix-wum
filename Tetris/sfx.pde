@@ -1,10 +1,6 @@
 import processing.sound.*;
 SoundFile file;
 
-public void backgroundSound() {
-  file = new SoundFile(this, "tetris.mp3", false); file.loop(); 
-} 
-
 // DROP SOUNDS
 public void hardDropSound() {
   file = new SoundFile(this, "hardDrop.wav", false); file.play(); 
