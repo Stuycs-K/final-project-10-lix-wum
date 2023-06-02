@@ -530,6 +530,10 @@ public void printType(Block x) {
   print(x.type);
 }
 
+public char returnType() {
+  return this.type;
+}
+
 public Block ghost(Background back) {
   Block temp = new Block(this.type);
   temp.rotation = rotation;

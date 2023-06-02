@@ -8,6 +8,7 @@
   boolean alive = true;
   Background back;
   ArrayList<Block> next = new ArrayList<Block>();  
+  ArrayList<Block> sevenBag = new ArrayList<Block>();
   boolean holdSpace = false;
   boolean heldAlready = false;
   Block heldBlock;
@@ -369,7 +370,7 @@
   }
     
     void updateNext() {
-            
+      
       // TAKE NEXT BLOCK
       current = next.remove(0);
       
@@ -386,7 +387,21 @@
       text("NEXT", 600, 595);
     
       // DISPLAY NEXT BLOCKS
-      next.add(new Block(types[(int) (Math.random()*7)]));
+      if(sevenBag.size() == 0) {
+        for (int i = 0; i < 7; i++) {
+        sevenBag.add(new Block(types[(int) (Math.random()*7)]));
+        }
+        //for (int i = 0; i < 6; i++) {
+        //  print(sevenBag.size());
+        //  Block temp = new Block(types[(int) (Math.random()*7)]);
+        //  boolean x = true;
+        //  for (int j = 0; j < sevenBag.size(); j++) {
+        //    if (temp.returnType() == sevenBag.get(i).returnType()) x = false;
+        //  }
+        //  if (x == true) sevenBag.add(temp);
+        //}
+      }
+      next.add(sevenBag.remove(0));
       for (int i = 0; i < 5; i++) {
         int y = 200+i*70;        
         displayBlockCosmetic(next.get(i), 625, y);
