@@ -6,7 +6,7 @@
   Background back;
   ArrayList<Block> next = new ArrayList<Block>();  
   boolean holdSpace = false;
-  int heldAlready = 3;
+  boolean heldAlready = false;
   Block heldBlock;
   public double level= 0;
   int score= 0;
@@ -89,7 +89,10 @@
       hardDropSound();
     } 
     if(key == 'c') {
-      hold(current);
+      if(!heldAlready){
+        hold(current);
+        heldAlready = true;
+      }
     }
     }
   }
@@ -124,7 +127,7 @@
     if(!hasBlock) {
 
       updateNext();
-      heldAlready++;
+      heldAlready = false;
       if(current.type != 'O') {
         current.moveUp();
       }
