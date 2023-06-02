@@ -45,30 +45,8 @@
     back = new Background(30, 25, 16); //grid has a border of 3 at the top and borders of 2 everywhere else
     //back.makeBackground();
    
-    // HOLD BOX
-    
-    strokeWeight(2);
-    stroke(255);
-    rectMode(CENTER);
-    fill(40, 40, 40);
-    rect(35.5*width/42/5.5, height/2.86, 160, 160);
-    fill(255, 0, 0, 0);
-    rect(35.5*width/42/5.5, height/2.86, 160, 160);
-    fill(255);
-    textSize(20);
-    text("HOLD", 150, 220);
-   
-    // NEXT BOX
-    strokeWeight(2);
-    stroke(255);
-    rectMode(CENTER);
-    fill(40, 40, 40);
-    rect(35.5*width/42, height/2, 160, 400);
-    fill(255, 0, 0, 0);
-    rect(35.5*width/42, height/2, 160, 400);
-    fill(255);
-    textSize(20);
-    text("NEXT", 600, 595);
+    holdBox();
+    nextBox();
     
     // ADD BLOCKS TO NEXT BOX
     for (int i = 0; i < 5; i++) {
@@ -140,7 +118,8 @@
   
   void draw() {
    
-   if (gameStarted == true && !paused) {
+   if (gameStarted) {
+     if (!paused) {
     textAlign(LEFT);
       if(alive) {
     //check if lost
@@ -216,8 +195,12 @@
      backgroundSound.stop();
      if (lose == false) { loseSound(); lose = true; }
    }
+     }else {
+       // do nothing
+     }
+
    }
-   else {
+   else{
     strokeWeight(2);
     stroke(104);
     rectMode(CENTER);
@@ -233,6 +216,7 @@
     text("START", width/2, 2*height/3+5);
    }
   }
+  
   void pauseGame() {
     if (paused) {
       rectMode(CENTER);
@@ -241,9 +225,24 @@
       rect(width/2, height/2, 800, 800);
       textAlign(CENTER);
       textSize(50);
+      fill(255);
       text("PAUSED", width/2, height/2);
+      textAlign(LEFT);
+      backgroundSound.pause();
     } else {
       //started();
+      rectMode(CENTER);
+      fill(40);
+      stroke(40);
+      rect(width/2, height/2, 800, 800);
+      holdBox();
+      nextBox();
+      for (int i = 0; i < 5; i++) {
+        int y = 200+i*70;        
+        displayBlockCosmetic(next.get(i), 625, y);
+      }
+      displayBlockCosmetic(heldBlock, 80,220);
+      backgroundSound.play();
     }
   }
   void displayGrid(Background game) {
@@ -474,13 +473,36 @@
       updateNext();
       
     }
+    }
     
     void holdBox() {
-       
+       // HOLD BOX
+    
+    strokeWeight(2);
+    stroke(255);
+    rectMode(CENTER);
+    fill(40, 40, 40);
+    rect(35.5*width/42/5.5, height/2.86, 160, 160);
+    fill(255, 0, 0, 0);
+    rect(35.5*width/42/5.5, height/2.86, 160, 160);
+    fill(255);
+    textSize(20);
+    text("HOLD", 150, 220);
+   
     }
     
     void nextBox() {
-      
+       // NEXT BOX
+    strokeWeight(2);
+    stroke(255);
+    rectMode(CENTER);
+    fill(40, 40, 40);
+    rect(35.5*width/42, height/2, 160, 400);
+    fill(255, 0, 0, 0);
+    rect(35.5*width/42, height/2, 160, 400);
+    fill(255);
+    textSize(20);
+    text("NEXT", 600, 595);
     }
-  }
+  
   
