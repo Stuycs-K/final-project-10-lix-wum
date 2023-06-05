@@ -93,8 +93,15 @@
       moveSound();
     }
     if(key == 'k' || keyCode == DOWN) {
-      current.moveDown(back);
-      softDropSound();
+      current.moveDown();
+      if(current.hasCollision(back)) {
+        current.moveUp();
+      } else {
+        current.moveUp();
+        current.moveDown(back);
+        softDropSound();
+        savedTime = millis();
+      }
     }
     if(key == ' ') {
       current.fastDrop(back);
