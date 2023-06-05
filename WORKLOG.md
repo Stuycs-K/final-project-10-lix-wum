@@ -79,3 +79,7 @@ Changed the next blocks from a deque to an arraylist, which allows the next disp
 ### 6/1/23
 
 Made it so that it is no longer possible to spam the hold button to infinitely stall out the game, also added a ghost block that shows where a piece will land once dropped.
+
+### 6/5/23
+
+Edited code for dropping pieces based on a timer and changed the system to allow for the down key to be held down without the piece being placed instantly. This allows for more precise actions such as t-spins.
