@@ -4,6 +4,7 @@
   import java.util.ArrayList;
   import processing.sound.*;
   
+  color mouseColor;
   // variables
   SoundFile backgroundSound;  
   boolean alive = true;
@@ -29,14 +30,6 @@
   void setup() {
     size(800, 800);
     background(40, 40, 40);
-    
-    textAlign(CENTER);
-    textSize(20);
-    text("Loading...", width/2, 2*height/3);
-    imageMode(CENTER);
-    image = loadImage("gameIcon.png");
-    image(image, width/2, width/3);
-    
     backgroundSound = new SoundFile(this, "tetris.mp3", false);
   }
   
@@ -67,10 +60,12 @@
   }
   
   void mousePressed() {
-    if (mouseX > width/2-40 && mouseX < width/2+40 && mouseY < 2*height/3+40 && mouseY > 2*height/3-40) {
-      if (gameStarted == false) {
-        gameStarted = true; started();
-      }
+    mouseColor = get(mouseX, mouseY); // get color
+    float red = red(mouseColor); float green = green(mouseColor); float blue = blue(mouseColor);
+    print(red + " " + green + " " + blue);
+    if (red == 255 && green == 255 && blue == 153) {
+      started();
+      gameStarted = true;
     }
   }
   
@@ -127,8 +122,11 @@
   
   void draw() {
    
-   if (gameStarted) {
-     if (!paused) {
+   if (gameStarted) gamePlay();
+   else menu();
+  }
+  void gamePlay() {
+    if (!paused) {
     textAlign(LEFT);
       if(alive) {
     //check if lost
@@ -213,22 +211,6 @@
      }
 
    }
-   else{
-    strokeWeight(2);
-    stroke(104);
-    rectMode(CENTER);
-    fill(40, 40, 40);
-    stroke(40);
-    rect(width/2, 2*height/3, 100, 100);
-    fill(104, 104, 104);
-    stroke(255);
-    rect(width/2, 2*height/3, 80, 80);
-    fill(255);
-    textAlign(CENTER);
-    textSize(18);
-    text("START", width/2, 2*height/3+5);
-   }
-  }
   
   void pauseGame() {
     if (gameStarted) {
@@ -536,5 +518,20 @@
     textSize(20);
     text("NEXT", 600, 595);
     }
+  
+  void menu() {
+    imageMode(CENTER);
+    image = loadImage("gameIcon.png");
+    image(image, width/2, width/3);
+    noStroke();
+    rectMode(CENTER);
+    fill(255,255, 153);
+    rect(width/2, 2*height/3, 800, 50);
+    textAlign(CENTER);
+    textSize(25);
+    fill(0);
+    text("START", width/2, 2*height/3+5);
+    
+  }
   
   
