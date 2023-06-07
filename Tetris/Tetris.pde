@@ -22,6 +22,22 @@
   int savedTime;
   double totalTime;
   PImage image;
+  
+  // keybind settings
+  public char [] keybinds = new char[] {'a', 'z', 'd', 'x', '@', 'j', '$', 'l', '#', 'k', ' ', 'c', 'p'};
+  //public char rotateLeft1 = 'a'; 0
+  //public char rotateLeft2 = 'z'; 1
+  //public char rotateRight1 = 'd'; 2
+  //public char rotateRight2 = 'x'; 3
+  //public char moveLeft1 = '@'; 4
+  //public char moveLeft2 = 'j'; 5
+  //public char moveRight1 = '$'; 6 
+  //public char moveRight2 = 'l'; 7
+  //public char moveDown1 = '#'; 8
+  //public char moveDown2 = 'k'; 9
+  //public char hardDrop = ' '; 10
+  //public char hold = 'c'; 11
+  //public char pause = 'p'; 12
    
   void setup() {
     size(800, 800);
@@ -65,6 +81,10 @@
   }
   
   void mousePressed() {
+    if (openConfig) {
+      
+    }
+    else {
     mouseColor = get(mouseX, mouseY); // get color
     float red = red(mouseColor); float green = green(mouseColor); float blue = blue(mouseColor);
     //print(red + " " + green + " " + blue);
@@ -79,6 +99,7 @@
       restart();
       openConfig = true;
     }
+    }
   }
   
   void restart() {
@@ -88,24 +109,29 @@
   }
   
   void keyPressed() {
+    if (key == CODED) if (keyCode == UP) key = '!';
+    if (key == CODED) if (keyCode == LEFT) key = '@';
+    if (key == CODED) if (keyCode == DOWN) key = '#';
+    if (key == CODED) if (keyCode == RIGHT) key = '$';
+    
     if(alive){
-    if(key == 'd' || key == 'x') {
+    if(key == keybinds[0] || key == keybinds[1]) {
       current.rotateRight(back);
       rotateSound();
     }
-    if(key == 'a' || key == 'z') {
+    if(key == keybinds[2] || key == keybinds[3]) {
       current.rotateLeft(back);
       rotateSound();
     }
-    if(key == 'l' || keyCode == RIGHT) {
+    if(key == keybinds[4] || key == keybinds[5]) {
       current.moveRight(back);
       moveSound();
     }
-     if(key == 'j' || keyCode == LEFT) {
+     if(key == keybinds[6] || key == keybinds[7]) {
       current.moveLeft(back);
       moveSound();
     }
-    if(key == 'k' || keyCode == DOWN) {
+    if(key == keybinds[8] || key == keybinds[9]) {
       current.moveDown();
       if(current.hasCollision(back)) {
         current.moveUp();
@@ -116,17 +142,17 @@
         savedTime = millis();
       }
     }
-    if(key == ' ') {
+    if(key == keybinds[10]) {
       current.fastDrop(back);
       hardDropSound();
     } 
-    if(key == 'c') {
+    if(key == keybinds[11]) {
       if(!heldAlready){
         hold(current);
         heldAlready = true;
       }
     }
-    if(key == 'p') {
+    if(key == keybinds[12]) {
       if(paused){
         paused = false;
         pauseGame();
