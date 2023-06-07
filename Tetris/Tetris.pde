@@ -287,7 +287,7 @@
     
     score(rowsCleared);
     textSize(20);
-    text(keybinds[12] + " to pause", 700, 20);
+    text(Character.toUpperCase(keybinds[12]) + " to pause", 700, 20);
     
     rowsCleared = 0;
     
