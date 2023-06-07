@@ -1,5 +1,6 @@
   public boolean alive = true;
   public boolean gameStarted = false;
+  public boolean elementalGameStarted = false;
   public boolean openKeybindMenu = false;
   public boolean lose = false;
   public boolean paused = false;
@@ -11,12 +12,20 @@
     image(image, width/2, width/3);
     noStroke();
     rectMode(CENTER);
-    fill(255,255, 153);
-    rect(width/2, 2*height/3, 800, 50);
     textAlign(CENTER);
     textSize(25);
+    
+    // play game button
+    fill(255,255, 153);
+    rect(width/2, 2*height/3, 800, 50);
     fill(0);
-    text("START", width/2, 2*height/3+5);
+    text("PLAY STANDARD GAME", width/2, 2*height/3+5);
+    
+    // play elemental game button
+    fill(204,255, 153);
+    rect(width/2, 2*height/3-50, 800, 50);
+    fill(0);
+    text("PLAY ELEMENTAL GAME", width/2, 2*height/3+5);
       }
   }
   
