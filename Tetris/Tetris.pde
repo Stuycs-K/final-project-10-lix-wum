@@ -142,6 +142,7 @@
     noStroke();
     fill(40, 40, 40);
     rectMode(CENTER);
+    rect(700, 20, 300, 100);
     rect(387, 730, 70, 50);
     fill(255);
     int s = millis()/1000; 
@@ -394,8 +395,8 @@
       textSize(20);
       text("NEXT", 600, 595);
       
-      if(sevenBag.size() == 7) {
-        for (int i = 0; i < 7; i++ ) {
+      if(sevenBag.size() == 6) {
+        for (int i = 0; i < 6; i++ ) {
           print(sevenBag.get(i).returnType());
         }
       }
