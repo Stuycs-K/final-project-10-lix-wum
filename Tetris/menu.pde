@@ -48,6 +48,17 @@
     textSize(25);
     text("Change your keybinds!", width/2, 85);
     
+    fill(40); stroke(155); 
+    rect(width/3, 150-7, 270, 30);
+    rect(width/3, 190-7, 270, 30);
+    rect(width/3, 230-7, 270, 30);
+    rect(width/3, 270-7, 270, 30);
+    rect(width/3, 310-7, 270, 30);
+    rect(width/3, 350-7, 270, 30);
+    rect(width/3, 390-7, 270, 30);
+    rect(width/3, 430-7, 270, 30);
+
+    fill(255);
     textSize(25);
     text("Move Left", width/3, 150);
     text("Move Right", width/3, 190);
@@ -57,7 +68,6 @@
     text("Hard Drop", width/3, 350);
     text("Hold Piece", width/3, 390);
     text("Pause Game", width/3, 430);
-    
 
     // Make array of temp Keybinds to be displayed
     for (int i = 0; i < tempKeybinds.length; i++) {
@@ -69,20 +79,36 @@
       else tempKeybinds[i] = Character.toUpperCase(keybinds[i]) + "";
     }
     
+    fill(40); stroke(155); 
+    rect(2*width/3-50, 150-7, 140, 30);
+    rect(2*width/3+100, 150-7, 140, 30);
+    rect(2*width/3-50, 190-7, 140, 30);
+    rect(2*width/3+100, 190-7, 140, 30);
+    rect(2*width/3-50, 230-7, 140, 30);
+    rect(2*width/3+100, 230-7, 140, 30);
+    rect(2*width/3-50, 270-7, 140, 30);
+    rect(2*width/3+100, 270-7, 140, 30);
+    rect(2*width/3-50, 310-7, 140, 30);
+    rect(2*width/3+100, 310-7, 140, 30);
+    rect(2*width/3-50, 350-7, 140, 30);
+    rect(2*width/3-50, 390-7, 140, 30);
+    rect(2*width/3-50, 430-7, 140, 30);
+    
     // display keybinds
-    text(tempKeybinds[4], 2*width/3, 150);
+    fill(255);
+    text(tempKeybinds[4], 2*width/3-50, 150);
     text(tempKeybinds[5], 2*width/3+100, 150);
-    text(tempKeybinds[6], 2*width/3, 190);
+    text(tempKeybinds[6], 2*width/3-50, 190);
     text(tempKeybinds[7], 2*width/3+100, 190);
-    text(tempKeybinds[2], 2*width/3, 230);
+    text(tempKeybinds[2], 2*width/3-50, 230);
     text(tempKeybinds[3], 2*width/3+100, 230);
-    text(tempKeybinds[0], 2*width/3, 270);
+    text(tempKeybinds[0], 2*width/3-50, 270);
     text(tempKeybinds[1], 2*width/3+100, 270);
-    text(tempKeybinds[8], 2*width/3, 310);
+    text(tempKeybinds[8], 2*width/3-50, 310);
     text(tempKeybinds[9], 2*width/3+100, 310);
-    text(tempKeybinds[10], 2*width/3, 350);
-    text(tempKeybinds[11], 2*width/3, 390);
-    text(tempKeybinds[12], 2*width/3, 430);
+    text(tempKeybinds[10], 2*width/3-50, 350);
+    text(tempKeybinds[11], 2*width/3-50, 390);
+    text(tempKeybinds[12], 2*width/3-50, 430);
     
     
     
