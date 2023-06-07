@@ -7,25 +7,28 @@
   
     void menu() {
       if (gameStarted == false) {
-    imageMode(CENTER);
-    image = loadImage("gameIcon.png");
-    image(image, width/2, width/3);
-    noStroke();
-    rectMode(CENTER);
-    textAlign(CENTER);
-    textSize(25);
+        imageMode(CENTER);
+        image = loadImage("gameIcon.png");
+        image(image, width/2, width/3);
+        noStroke();
+        rectMode(CENTER);
+        textAlign(CENTER);
+        textSize(25);
     
-    // play game button
-    fill(255,255, 153);
-    rect(width/2, 2*height/3, 800, 50);
-    fill(0);
-    text("PLAY STANDARD GAME", width/2, 2*height/3+5);
+        // play game button
+        fill(255,255, 153);
+        rect(width/2, 2*height/3, 800, 50);
+        fill(0);
+        text("PLAY STANDARD GAME", width/2, 2*height/3);
     
-    // play elemental game button
-    fill(204,255, 153);
-    rect(width/2, 2*height/3-50, 800, 50);
-    fill(0);
-    text("PLAY ELEMENTAL GAME", width/2, 2*height/3+5);
+        // play elemental game button
+        fill(204,255, 153);
+        rect(width/2, 2*height/3+75, 800, 50);
+        fill(0);
+        text("PLAY ELEMENTAL GAME", width/2, 2*height/3+75);
+        
+        // open config
+        
       }
   }
   

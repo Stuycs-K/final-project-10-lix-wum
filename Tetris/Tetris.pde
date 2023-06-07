@@ -3,7 +3,6 @@
   import java.util.Deque;
   import java.util.ArrayList;
   import processing.sound.*;
-  
 
   // variables
   SoundFile backgroundSound;  
