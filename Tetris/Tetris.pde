@@ -142,8 +142,9 @@
     noStroke();
     fill(40, 40, 40);
     rectMode(CENTER);
-    rect(700, 20, 300, 100);
-    rect(387, 730, 70, 50);
+    rect(700, 20, 300, 100); // covers pause
+    rect(8, 30, 300, 300);
+    rect(387, 730, 70, 50); 
     fill(255);
     int s = millis()/1000; 
     int m = s/60;
@@ -451,14 +452,14 @@
     fill(255);
     textSize(30);
     String printScore = "";
-    //if (score < 10) printScore = "000000"+score;
-    //else if (score < 100) printScore = "00000"+score;
-    //else if (score < 1000) printScore = "0000"+score;
-    //else if (score < 10000) printScore = "000"+score;
-    //else if (score < 100000) printScore = "00"+score; 
-    //else if (score < 1000000) printScore = "0"+score;
-    //else printScore = ""+score;
-    text(score, 8, 30);
+    if (score < 10) printScore = "000000"+score;
+    else if (score < 100) printScore = "00000"+score;
+    else if (score < 1000) printScore = "0000"+score;
+    else if (score < 10000) printScore = "000"+score;
+    else if (score < 100000) printScore = "00"+score; 
+    else if (score < 1000000) printScore = "0"+score;
+    else printScore = ""+score;
+    text(printScore, 8, 30);
     textSize(15);
     text("Level "+((int)(level)), 9, 45);
       
