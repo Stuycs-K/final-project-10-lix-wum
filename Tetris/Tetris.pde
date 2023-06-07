@@ -7,7 +7,6 @@
   color mouseColor;
   // variables
   SoundFile backgroundSound;  
-  boolean alive = true;
   Background back;
   ArrayList<Block> next = new ArrayList<Block>();  
   ArrayList<Block> sevenBag = new ArrayList<Block>();
@@ -22,10 +21,7 @@
   char[] types = { 'T', 'I', 'S', 'Z', 'J', 'L', 'O' };
   int savedTime;
   double totalTime;
-  boolean gameStarted = false;
   PImage image;
-  boolean lose = false;
-  boolean paused = false;
    
   void setup() {
     size(800, 800);
@@ -64,6 +60,9 @@
     float red = red(mouseColor); float green = green(mouseColor); float blue = blue(mouseColor);
     print(red + " " + green + " " + blue);
     if (red == 255 && green == 255 && blue == 153) {
+      started();
+      gameStarted = true;
+    } else if (red == 255 && green == 255 && blue == 153) {
       started();
       gameStarted = true;
     }
@@ -123,8 +122,10 @@
   void draw() {
    
    if (gameStarted) gamePlay();
+   if (openKeybindMenu) keybindMenu();
    else menu();
   }
+  
   void gamePlay() {
     if (!paused) {
     textAlign(LEFT);
@@ -212,36 +213,6 @@
 
    }
   
-  void pauseGame() {
-    if (gameStarted) {
-      if (paused) {
-        rectMode(CENTER);
-        fill(104, 104, 104);
-        stroke(104);
-        rect(width/2, height/2, 800, 800);
-        textAlign(CENTER);
-        textSize(50);
-        fill(255);
-        text("PAUSED", width/2, height/2);
-        textAlign(LEFT);
-        backgroundSound.pause();
-      } else {
-        //started();
-        rectMode(CENTER);
-        fill(40);
-        stroke(40);
-        rect(width/2, height/2, 800, 800);
-        holdBox();
-        nextBox();
-        for (int i = 0; i < 5; i++) {
-          int y = 200+i*70;        
-          displayBlockCosmetic(next.get(i), 625, y);
-        }
-        if (heldAlready) displayBlockCosmetic(heldBlock, 80,220);
-        backgroundSound.play();
-      }
-    }
-  }
   void displayGrid(Background game) {
     stroke(220,220,220);
     strokeWeight(1);
@@ -519,19 +490,5 @@
     text("NEXT", 600, 595);
     }
   
-  void menu() {
-    imageMode(CENTER);
-    image = loadImage("gameIcon.png");
-    image(image, width/2, width/3);
-    noStroke();
-    rectMode(CENTER);
-    fill(255,255, 153);
-    rect(width/2, 2*height/3, 800, 50);
-    textAlign(CENTER);
-    textSize(25);
-    fill(0);
-    text("START", width/2, 2*height/3+5);
-    
-  }
   
   
