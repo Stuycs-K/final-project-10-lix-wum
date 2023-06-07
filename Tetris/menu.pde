@@ -4,9 +4,13 @@
   public boolean openConfig = false;
   public boolean lose = false;
   public boolean paused = false;
+  public boolean keySwap = false;
+  public char keySwitch;
+  public boolean sameKey = false;
   
     void menu() {
       if (gameStarted == false) {
+        fill(40); rect(width/2, height/2, 800, 800);
         imageMode(CENTER);
         image = loadImage("gameIcon.png");
         image(image, width/2, width/3);
@@ -48,15 +52,15 @@
     textSize(25);
     text("Change your keybinds!", width/2, 85);
     
-    fill(40); stroke(155); 
-    rect(width/3, 150-7, 270, 30);
-    rect(width/3, 190-7, 270, 30);
-    rect(width/3, 230-7, 270, 30);
-    rect(width/3, 270-7, 270, 30);
-    rect(width/3, 310-7, 270, 30);
-    rect(width/3, 350-7, 270, 30);
-    rect(width/3, 390-7, 270, 30);
-    rect(width/3, 430-7, 270, 30);
+    //fill(40); stroke(155); 
+    //rect(width/3, 150-7, 270, 30);
+    //rect(width/3, 190-7, 270, 30);
+    //rect(width/3, 230-7, 270, 30);
+    //rect(width/3, 270-7, 270, 30);
+    //rect(width/3, 310-7, 270, 30);
+    //rect(width/3, 350-7, 270, 30);
+    //rect(width/3, 390-7, 270, 30);
+    //rect(width/3, 430-7, 270, 30);
 
     fill(255);
     textSize(25);
@@ -109,10 +113,11 @@
     text(tempKeybinds[10], 2*width/3-50, 350);
     text(tempKeybinds[11], 2*width/3-50, 390);
     text(tempKeybinds[12], 2*width/3-50, 430);
-    
-    
-    
-    
+
+    fill(224,224,224);
+    rect(width/2, 2*height/3+150, 800, 50);
+    fill(0);
+    text("BACK TO MENU", width/2, 2*height/3+150);
   }
   
   void pauseGame() {
@@ -144,4 +149,25 @@
         backgroundSound.play();
       }
     }
+  }
+
+  public void swapKeybind() {
+    keySwap = true;
+    if (keySwap) {
+      rectMode(CENTER);
+      fill(104, 104, 104);
+      stroke(104);
+      rect(width/2, height/2, 800, 800);
+      textAlign(CENTER);
+      textSize(50);
+      fill(255);
+      text("PRESS YOUR DESIRED KEYBIND", width/2, height/2);
+    }
+  }
+  
+  public void printChooseNewKey() {
+        textAlign(CENTER);
+        textSize(30);
+        fill(255);
+        text("CHOOSE A UNIQUE KEYBIND", width/2, height/2+70);
   }

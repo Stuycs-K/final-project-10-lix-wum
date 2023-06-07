@@ -23,7 +23,8 @@
   double totalTime;
   PImage image;
   
-  // keybind settings
+  // keybind variables
+  public int changeKeybind = -1;
   public char [] keybinds = new char[] {'a', 'z', 'd', 'x', '@', 'j', '$', 'l', '#', 'k', ' ', 'c', 'p'};
   //public char rotateLeft1 = 'a'; 0
   //public char rotateLeft2 = 'z'; 1
@@ -48,8 +49,12 @@
   void draw() {
    
    if (gameStarted) gamePlay();
-   if (elementalGameStarted) elementalPlay();
-   if (openConfig) config();
+   else if (elementalGameStarted) elementalPlay();
+   else if (openConfig) {
+     config();
+     if (changeKeybind != -1) swapKeybind();
+     if (sameKey) printChooseNewKey();
+   }
    else menu();
   }
   
@@ -81,13 +86,60 @@
   }
   
   void mousePressed() {
-    if (openConfig) {
-      
-    }
-    else {
+    
     mouseColor = get(mouseX, mouseY); // get color
     float red = red(mouseColor); float green = green(mouseColor); float blue = blue(mouseColor);
     //print(red + " " + green + " " + blue);
+    
+    if (openConfig && changeKeybind == -1) {
+      if (mouseX > 2*width/3-50-70 && mouseX < 2*width/3-50+70 && mouseY > 150-7-15 && mouseY < 150-7+15) {
+        keybinds[4] = '-';
+        changeKeybind = 4;
+        print("change!");
+      } else if (mouseX > 2*width/3+100-70 && mouseX < 2*width/3+100+70 && mouseY > 150-7-15 && mouseY < 150-7+15) {
+        keybinds[5] = '-';
+        changeKeybind = 5;
+      } else if (mouseX > 2*width/3-50-70 && mouseX < 2*width/3-50+70 && mouseY > 190-7-15 && mouseY < 190-7+15) {
+        keybinds[6] = '-';
+        changeKeybind = 6;
+      } else if (mouseX > 2*width/3+100-70 && mouseX < 2*width/3+100+70 && mouseY > 190-7-15 && mouseY < 190-7+15) {
+        keybinds[7] = '-';
+        changeKeybind = 7;
+      } else if (mouseX > 2*width/3-50-70 && mouseX < 2*width/3-50+70 && mouseY > 230-7-15 && mouseY < 230-7+15) {
+        keybinds[2] = '-';
+        changeKeybind = 2;
+      } else if (mouseX > 2*width/3+100-70 && mouseX < 2*width/3+100+70 && mouseY > 230-7-15 && mouseY < 230-7+15) {
+        keybinds[3] = '-';
+        changeKeybind = 3;
+      } else if (mouseX > 2*width/3-50-70 && mouseX < 2*width/3-50+70 && mouseY > 270-7-15 && mouseY < 270-7+15) {
+        keybinds[0] = '-';
+        changeKeybind = 0;
+      } else if (mouseX > 2*width/3+100-70 && mouseX < 2*width/3+100+70 && mouseY > 270-7-15 && mouseY < 270-7+15) {
+        keybinds[1] = '-';
+        changeKeybind = 1;
+      } else if (mouseX > 2*width/3-50-70 && mouseX < 2*width/3-50+70 && mouseY > 310-7-15 && mouseY < 310-7+15) {
+        keybinds[8] = '-';
+        changeKeybind = 8;
+      } else if (mouseX > 2*width/3+100-70 && mouseX < 2*width/3+100+70 && mouseY > 310-7-15 && mouseY < 310-7+15) {
+        keybinds[9] = '-';
+        changeKeybind = 9;
+      } else if (mouseX > 2*width/3-50-70 && mouseX < 2*width/3-50+70 && mouseY > 350-7-15 && mouseY < 350-7+15) {
+        keybinds[10] = '-';
+        changeKeybind = 10;
+      } else if (mouseX > 2*width/3-50-70 && mouseX < 2*width/3-50+70 && mouseY > 390-7-15 && mouseY < 390-7+15) {
+        keybinds[11] = '-';
+        changeKeybind = 11;
+      } else if (mouseX > 2*width/3-50-70 && mouseX < 2*width/3-50+70 && mouseY > 430-7-15 && mouseY < 430-7+15) {
+        keybinds[12] = '-';
+        changeKeybind = 12;
+      } else {
+          if (red == 224 && green == 224 && blue == 224) {
+            restart();
+            openConfig = false;
+         }
+       }
+    }
+    else {
     if (red == 255 && green == 255 && blue == 153) {
       restart();
       started();
@@ -109,25 +161,40 @@
   }
   
   void keyPressed() {
+    
     if (key == CODED) if (keyCode == UP) key = '!';
     if (key == CODED) if (keyCode == LEFT) key = '@';
     if (key == CODED) if (keyCode == DOWN) key = '#';
     if (key == CODED) if (keyCode == RIGHT) key = '$';
+    //print(key+"!");
     
+    if (keySwap) {
+      sameKey = false;
+      for (int i=0; i < keybinds.length; i++) {
+        if (key == keybinds[i]) sameKey = true;
+      }
+      if (sameKey == false) {
+        keySwap = false;
+        keybinds[changeKeybind] = key;
+        changeKeybind = -1;
+      }
+    }
+    
+    else {
     if(alive){
-    if(key == keybinds[0] || key == keybinds[1]) {
+    if(key == keybinds[2] || key == keybinds[3]) {
       current.rotateRight(back);
       rotateSound();
     }
-    if(key == keybinds[2] || key == keybinds[3]) {
+    if(key == keybinds[0] || key == keybinds[1]) {
       current.rotateLeft(back);
       rotateSound();
     }
-    if(key == keybinds[4] || key == keybinds[5]) {
+    if(key == keybinds[6] || key == keybinds[7]) {
       current.moveRight(back);
       moveSound();
     }
-     if(key == keybinds[6] || key == keybinds[7]) {
+     if(key == keybinds[4] || key == keybinds[5]) {
       current.moveLeft(back);
       moveSound();
     }
@@ -160,6 +227,7 @@
         paused = true;
         pauseGame();
       }
+    }
     }
     }
   }
@@ -219,7 +287,7 @@
     
     score(rowsCleared);
     textSize(20);
-    text("P to pause", 700, 20);
+    text(keybinds[12] + " to pause", 700, 20);
     
     rowsCleared = 0;
     
