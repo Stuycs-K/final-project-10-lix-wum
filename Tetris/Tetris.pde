@@ -29,6 +29,15 @@
     backgroundSound = new SoundFile(this, "tetris.mp3", false);
   }
   
+  void draw() {
+   
+   if (gameStarted) gamePlay();
+   if (elementalGameStarted) elementalPlay();
+   if (openConfig) config();
+   else menu();
+  }
+  
+  
   void started() {
     textAlign(LEFT);
     fill(40, 40, 40);
@@ -58,14 +67,24 @@
   void mousePressed() {
     mouseColor = get(mouseX, mouseY); // get color
     float red = red(mouseColor); float green = green(mouseColor); float blue = blue(mouseColor);
-    print(red + " " + green + " " + blue);
+    //print(red + " " + green + " " + blue);
     if (red == 255 && green == 255 && blue == 153) {
+      restart();
       started();
       gameStarted = true;
-    } else if (red == 255 && green == 255 && blue == 153) {
-      started();
+    } else if (red == 204 && green == 255 && blue == 153) {
+      restart();
       elementalGameStarted = true;
+    } else if (red == 224 && green == 224 && blue == 224) {
+      restart();
+      openConfig = true;
     }
+  }
+  
+  void restart() {
+    gameStarted = false;
+    elementalGameStarted = false;
+    openConfig = false;
   }
   
   void keyPressed() {
@@ -117,14 +136,6 @@
       }
     }
     }
-  }
-  
-  void draw() {
-   
-   if (gameStarted) gamePlay();
-   if (elementalGameStarted) elementalPlay();
-   if (openKeybindMenu) keybindMenu();
-   else menu();
   }
   
   void gamePlay() {
@@ -215,6 +226,7 @@
    }
   
   void elementalPlay() {
+    print("played elemental game");
   }
   
   

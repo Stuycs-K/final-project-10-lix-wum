@@ -1,7 +1,7 @@
   public boolean alive = true;
   public boolean gameStarted = false;
   public boolean elementalGameStarted = false;
-  public boolean openKeybindMenu = false;
+  public boolean openConfig = false;
   public boolean lose = false;
   public boolean paused = false;
   
@@ -16,23 +16,26 @@
         textSize(25);
     
         // play game button
-        fill(255,255, 153);
+        fill(255,255,153);
         rect(width/2, 2*height/3, 800, 50);
         fill(0);
         text("PLAY STANDARD GAME", width/2, 2*height/3);
     
         // play elemental game button
-        fill(204,255, 153);
+        fill(204,255,153);
         rect(width/2, 2*height/3+75, 800, 50);
         fill(0);
         text("PLAY ELEMENTAL GAME", width/2, 2*height/3+75);
         
-        // open config
-        
+        // open config button
+        fill(224,224,224);
+        rect(width/2, 2*height/3+150, 800, 50);
+        fill(0);
+        text("GAME CONFIG", width/2, 2*height/3+150);
       }
   }
   
-  void keybindMenu(){
+  void config(){
     print("null");
   }
   
