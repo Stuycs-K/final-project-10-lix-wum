@@ -81,7 +81,8 @@
     
     //drop speed
     totalTime = (Math.pow((0.8-((level-1)*0.007)),(int)(level-1)))*1000;
-    
+    float sound = (float) volume/100; print(sound);
+    backgroundSound.amp(sound);
     backgroundSound.loop();
   }
   
@@ -132,6 +133,12 @@
       } else if (mouseX > 2*width/3-50-70 && mouseX < 2*width/3-50+70 && mouseY > 430-7-15 && mouseY < 430-7+15) {
         keybinds[12] = '-';
         changeKeybind = 12;
+       
+        // SOUND
+      } else if (mouseX > 2*width/3-50-70-15-5 && mouseX < 2*width/3-50-70-15+5 && mouseY > 500-7-5 && mouseY < 500-7+5) {
+        volume-=5;
+      } else if (mouseX > 2*width/3-50+70+15-5 && mouseX < 2*width/3-50+70+15+5 && mouseY > 500-7-5 && mouseY < 500-7+5) {
+        volume+=5;
       } else {
           if (red == 224 && green == 224 && blue == 224) {
             restart();
@@ -320,7 +327,7 @@
    }
   
   void elementalPlay() {
-    print("played elemental game");
+    //print("played elemental game");
   }
   
   

@@ -7,6 +7,7 @@
   public boolean keySwap = false;
   public char keySwitch;
   public boolean sameKey = false;
+  public int volume = 100;
   
     void menu() {
       if (gameStarted == false) {
@@ -72,6 +73,8 @@
     text("Hard Drop", width/3, 350);
     text("Hold Piece", width/3, 390);
     text("Pause Game", width/3, 430);
+    
+    text("Volume", width/3, 500);
 
     // Make array of temp Keybinds to be displayed
     for (int i = 0; i < tempKeybinds.length; i++) {
@@ -98,6 +101,19 @@
     rect(2*width/3-50, 390-7, 140, 30);
     rect(2*width/3-50, 430-7, 140, 30);
     
+    // Sound thing - fix later
+    rectMode(CORNER);
+    rect(2*width/3-50-70, 500-7-15, 140, 30);
+    fill(255);
+    rect(2*width/3-50-70, 500-7-15, 1.4*volume, 30);
+    image = loadImage("subtract.png");
+    image.resize(10, 10);
+    image(image, 2*width/3-50-70-15, 500-7);
+    image = loadImage("add.png");
+    image.resize(10, 10);
+    image(image, 2*width/3-50+70+15, 500-7);
+    
+    
     // display keybinds
     fill(255);
     text(tempKeybinds[4], 2*width/3-50, 150);
@@ -115,6 +131,7 @@
     text(tempKeybinds[12], 2*width/3-50, 430);
 
     fill(224,224,224);
+    rectMode(CENTER);
     rect(width/2, 2*height/3+150, 800, 50);
     fill(0);
     text("BACK TO MENU", width/2, 2*height/3+150);
