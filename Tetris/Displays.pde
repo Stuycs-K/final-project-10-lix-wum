@@ -67,6 +67,33 @@
     }
   }
   
+  public void displayBlockElemental (Block current, int x, int y) {
+    int size = back.size;
+    stroke(220,220,220);
+    strokeWeight(1);
+    rectMode(CORNER);
+    for(int a = 0; a < current.blocks[current.rotation].length; a++) {
+      int i = current.blocks[current.rotation][a][0];
+      int j = current.blocks[current.rotation][a][1];
+      if(current.type == 'B') {
+          fill(40);
+        } else if(current.element == 'F') {
+          fill(252, 73, 3);
+        } else if(current.element == 'W') {
+          fill(3, 103, 252);
+        } else if(current.element == 'A') {
+          fill(3, 252, 11);
+        } else if(current.element == 'L') {
+          fill(177, 3, 252);
+        } else if(current.element == 'E') {
+          fill(122, 73, 27);
+        } else {
+          fill(40);
+        }
+       rect(x + j*size, y + i*size, size, size);
+    }
+  }
+  
   public void displayBlockCosmetic (Block current, int x, int y) {
     if(current.type == 'O') {
       x += 10;

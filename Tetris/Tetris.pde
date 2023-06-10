@@ -101,6 +101,7 @@
       int y = 200+i*70;
       Block block1 = new Block(types[(int) (Math.random()*7)]);
       next.add(block1);
+      block1.setElement(block1.elements[(int) (Math.random()*5)]);
       displayBlock(block1, 625, y);
     }
     //timer start
@@ -400,7 +401,7 @@
     
     noFill();
     displayGrid(back);
-    displayBlock(current, (width/2 - 5*back.size), (height/2 - 10*back.size));
+    displayBlockElemental(current, (width/2 - 5*back.size), (height/2 - 10*back.size));
     
     //making the ghost piece
     ghost = current.ghost(back);

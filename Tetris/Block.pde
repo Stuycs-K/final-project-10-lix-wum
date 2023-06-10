@@ -10,6 +10,7 @@ public int bottom = 23;
 public int rotation;
 public char type;
 public char element;
+public char[] elements = {'F', 'W', 'A', 'L', 'E', '0'};
 //FIRE = F //WATER = W //WIND = A (like air) //LIGHTNING = L //EARTH = E //NONE = 0
 public int[][] test0R = {
   { 0, 0 },
