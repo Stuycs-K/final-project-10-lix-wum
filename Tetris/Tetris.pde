@@ -7,7 +7,6 @@
   // variables
   SoundFile backgroundSound;  
   Background back;
-  Background back2;
   color mouseColor;
   ArrayList<Block> next = new ArrayList<Block>();  
   ArrayList<Block> sevenBag = new ArrayList<Block>();
@@ -91,7 +90,7 @@
     textAlign(LEFT);
     fill(40, 40, 40);
     rect(width/2, height/2, 1000, 1000);
-    back2 = new Background(30, 25, 16); //grid has a border of 3 at the top and borders of 2 everywhere else
+    back = new Background(30, 25, 16); //grid has a border of 3 at the top and borders of 2 everywhere else
     //back.makeBackground();
    
     holdBox();
@@ -361,8 +360,8 @@
     textAlign(LEFT);
       if(alive) {
     //check if lost
-    for(int i = back2.left; i < back2.right; i++) {
-      if(back2.game[back.top][i] != 'B') {
+    for(int i = back.left; i < back.right; i++) {
+      if(back.game[back.top][i] != 'B') {
         alive = false;
       }
     }
@@ -384,7 +383,7 @@
     noStroke();
     fill(40);
     rectMode(CENTER);
-    rect(width/2, height/2 - 10*back2.size - 15, 302, 30); //clears the top of the grid in case pieces appear above
+    rect(width/2, height/2 - 10*back.size - 15, 302, 30); //clears the top of the grid in case pieces appear above
     
     if(!hasBlock) {
 
@@ -400,14 +399,14 @@
     }
     
     noFill();
-    displayGrid(back2);
-    displayBlock(current, (width/2 - 5*back2.size), (height/2 - 10*back2.size));
+    displayGrid(back);
+    displayBlock(current, (width/2 - 5*back.size), (height/2 - 10*back.size));
     
     //making the ghost piece
-    ghost = current.ghost(back2);
-    displayGhost(ghost, (width/2 - 5*back2.size), (height/2 - 10*back2.size));
+    ghost = current.ghost(back);
+    displayGhost(ghost, (width/2 - 5*back.size), (height/2 - 10*back.size));
     
-    int rowsCleared = back2.checkRows();
+    int rowsCleared = back.checkRows();
     
     score(rowsCleared);
     textSize(20);
@@ -420,7 +419,7 @@
     int passedTime = millis() - savedTime;
     //has 1 second passed
     if (passedTime > totalTime) {
-      current.moveDown(back2);
+      current.moveDown(back);
       savedTime = millis();
     }
    } else {
