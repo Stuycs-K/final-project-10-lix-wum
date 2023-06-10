@@ -9,6 +9,8 @@ public int top = 3;
 public int bottom = 23;
 public int rotation;
 public char type;
+public char element;
+//FIRE = F //WATER = W //WIND = A (like air) //LIGHTNING = L //EARTH = E //NONE = 0
 public int[][] test0R = {
   { 0, 0 },
   { 0, -1},
@@ -136,6 +138,7 @@ public Block() {
 
 //types: T, I, O, S, J, L, Z 
 public Block(char type) {
+  element = '0';
   this.type = type;
   rotation = 0;
   if(type == 'T') {
@@ -550,4 +553,9 @@ public Block ghost(Background back) {
   temp.moveUp();
   return temp;
 }
+
+public void setElement(char e) {
+  this.element = e;
+}
+
 }
