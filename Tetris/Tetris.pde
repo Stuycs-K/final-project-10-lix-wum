@@ -19,6 +19,7 @@
   Block current;
   public static boolean hasBlock = false;
   char[] types = { 'T', 'I', 'S', 'Z', 'J', 'L', 'O' };
+  char[] elements = {'F', 'W', 'A', 'L', 'E', '0'};
   int savedTime;
   double totalTime;
   PImage image;
@@ -92,6 +93,7 @@
     rect(width/2, height/2, 1000, 1000);
     back = new Background(30, 25, 16); //grid has a border of 3 at the top and borders of 2 everywhere else
     //back.makeBackground();
+    back.elemental = true;
    
     holdBox();
     nextBox();
@@ -388,7 +390,7 @@
     
     if(!hasBlock) {
 
-      updateNext();
+      updateNextElemental();
       heldAlready = false;
       if(current.type != 'O') {
         current.moveUp();
@@ -400,7 +402,7 @@
     }
     
     noFill();
-    displayGrid(back);
+    displayGridElemental(back);
     displayBlockElemental(current, (width/2 - 5*back.size), (height/2 - 10*back.size));
     
     //making the ghost piece

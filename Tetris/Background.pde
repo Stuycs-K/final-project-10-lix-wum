@@ -6,7 +6,7 @@ class Background {
    public int right = 13;
    public int top = 3;
    public int bottom = 23;
-   
+   public boolean elemental = false;
    Background (int blockSize, int x, int y) {
     rows = new ArrayDeque<Integer>();
     size = blockSize;
