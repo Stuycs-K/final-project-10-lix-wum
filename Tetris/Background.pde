@@ -125,7 +125,11 @@ class Background {
     imageTime = 2000.0;
     //delay(200);
     //displayReactionImage = "";
-    
+    for(int i = -1; i <= 1; i++) {
+      game[top + row+i][left + 5] = 'B';
+      game[top + row+i][left + 4] = 'B';
+      game[top + row+i][left + 6] = 'B';
+    }
   }
   
   void fireEarth(int row, int col) {
