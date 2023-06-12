@@ -105,6 +105,7 @@ class Background {
         if (game[j][i] != 'B') {
           if(j < bottom) {
             game[j][i] = 'B';
+            score += 200;
           }
           break;
         }
@@ -118,7 +119,7 @@ class Background {
   }
   
   void fireLightning(int row, int col) {
-    print("\nfireLightning");
+    //print("\nfireLightning");
     explosionSound();
     displayReactionImage = "fireLightning";
     savedImageTime = millis();
@@ -129,18 +130,20 @@ class Background {
       game[top + row+i][left + 5] = 'B';
       game[top + row+i][left + 4] = 'B';
       game[top + row+i][left + 6] = 'B';
+      score += 600;
     }
   }
   
   void fireEarth(int row, int col) {
-    print("\nfireEarth");
+    //print("\nfireEarth");
     for (int i = row; i < bottom; i++) {
       game[i][left + (int) (Math.random()*10)] = 'B';
+      score += 200;
     }
   }
   
   void waterWind(int row, int col) {
-    print("\nwaterWind");
+    //print("\nwaterWind");
     aquaSound();
     displayReactionImage = "waterWind";
     savedImageTime = millis();
@@ -157,12 +160,13 @@ class Background {
   }
   
   void waterLightning(int row, int col) {
-    print("\nwaterLightning");
+    //print("\nwaterLightning");
     for (int i = left; i < right; i++) {
       for (int j = top ; j < bottom; j++) {
         if (game[j][i] != 'B') {
           if((int)(Math.random()*2) == 1) {
             game[j][i] = 'B';
+            score += 200;
           }
           break;
         }
@@ -171,7 +175,7 @@ class Background {
   }
   
   void waterEarth(int row, int col) {
-    print("\nwaterEarth");
+    //print("\nwaterEarth");
     for (int i = left; i < right; i++) {
       for (int j = top ; j < bottom; j++) {
         if (game[j][i] != 'B') {
@@ -190,7 +194,7 @@ class Background {
   }
   
   void windEarth(int row, int col) {
-    print("\nwindEarth");
+    //print("\nwindEarth");
     for(int i = left; i < right; i++) {
       ArrayList<Character> ary = new ArrayList<Character>();
       for(int j = bottom-1; j >= top && game[j][i] != 'B'; j--) {
@@ -207,12 +211,13 @@ class Background {
   }
   
   void lightningEarth(int row, int col) {
-    print("\nlightningEarth");
+    //print("\nlightningEarth");
     for (int i = left; i < right; i++) {
       for (int j = top ; j < bottom; j++) {
         if (game[j][i] != 'B') {
           if(j < bottom) {
             game[j][i] = 'B';
+            score += 200;
           }
         }
       }
