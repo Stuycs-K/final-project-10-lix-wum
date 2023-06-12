@@ -24,6 +24,9 @@
   double totalTime;
   PImage image;
   
+  int loadingProgress = 0;
+  boolean loadingComplete = false;
+  
   // keybind variables
   public int changeKeybind = -1;
   public char [] keybinds = new char[] {'a', 'z', 'd', 'x', '@', 'j', '$', 'l', '#', 'k', ' ', 'c', 'p'};
@@ -45,18 +48,23 @@
     size(800, 800);
     background(40, 40, 40);
     backgroundSound = new SoundFile(this, "tetris.mp3", false);
+    
+    thread("loadGame");
   }
   
   void draw() {
-   
-   if (gameStarted) gamePlay();
-   else if (elementalGameStarted) elementalPlay();
-   else if (openConfig) {
-     config();
-     if (changeKeybind != -1) swapKeybind();
-     if (sameKey) printChooseNewKey();
-   }
-   else menu();
+    if (loadingComplete) {
+     if (gameStarted) gamePlay();
+     else if (elementalGameStarted) elementalPlay();
+     else if (openConfig) {
+       config();
+       if (changeKeybind != -1) swapKeybind();
+       if (sameKey) printChooseNewKey();
+     }  
+     else menu();
+    } else {
+      loadScreen();
+    }
   }
   
   
