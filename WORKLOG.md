@@ -32,7 +32,21 @@ Imported sound effect files, created sfx class to organize sound effect methods 
 
 ## 6/2/23
 
-Created a start screen by importing a tetris logo as well as creating a start button, also created a pause screen that uses a key command (instructions on the game screen - "P to pause"). Moved the creation of hold box and next box to separate methods away from draw in order to be used to redraw the boxes after unpausing. Moved background music to the main Tetris class in order to pause music when the game is paused and replay upon unpausing. Attempted 7bag next piece sorting algorithm but was unable to finish, will continue later. Also created demo branch to present in class.
+Created a start screen by importing a tetris logo as well as creating a start button, also created a pause screen that uses a key command (instructions on the game screen - "P to pause"). Moved the creation of hold box and next box to separate methods away from draw in order to be used to redraw the boxes after unpausing. Moved background music to the main Tetris class in order to pause music when the game is paused and replay upon unpausing. Attempted 7bag next piece sorting algorithm but was unable to finish, will continue later. Also created demo branch to present in class. **AFTER CLASS:** fixed 7bag algorithm.
+
+## 6/7/23
+
+Created a menu as well as buttons to play standard and elemental tetris, oragnized code into tabs to reduce clutter, added a settings menu with customizable keybinds (much more work than expected)
+
+## 6/8/23
+
+Added a volume "slider" to settings - volume bar controlled by buttons one each side.
+
+## 6/11/23
+
+Added a play again button, created a loading screen for the game using multithreading in order to display somethign on the screen while assets are being loaded in (you told me this wasn't worth the time Mr. K and it wasn't but I learned a lot :D)
+
+
 
 =======================================================================================================================================
 
