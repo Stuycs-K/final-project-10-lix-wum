@@ -396,5 +396,18 @@
         image = loadImage("aqua.png");
         tint(255, 128);
         image(image, width/2, height/2);
+      } else if (s.equals("fireWater")) {
+        print(s);
+        imageMode(CENTER);
+        image = loadImage("evaporation.jpg");
+        tint(255, 128);
+        image(image, width/2, height/2);
+      } else if (s.equals("fireWind")) {
+        print(s);
+        imageMode(CENTER);
+        image = loadImage("smokescreen.png");
+        tint(255, 128);
+        image.resize(800, 800);
+        image(image, width/2, height/2);
       }
     }

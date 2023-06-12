@@ -18,6 +18,7 @@
   int score= 0;
   Block current;
   public static boolean hasBlock = false;
+  public boolean blockReaction = true;
   char[] types = { 'T', 'I', 'S', 'Z', 'J', 'L', 'O' };
   char[] elements = {'F', 'W', 'A', 'L', 'E', '0'};
   int savedTime;
@@ -26,6 +27,7 @@
   int startTime = 0;
   double imageTime;
   int savedImageTime;
+  
   
   int loadingProgress = 0;
   boolean loadingComplete = false;

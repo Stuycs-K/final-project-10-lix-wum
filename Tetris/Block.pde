@@ -757,6 +757,13 @@ public void placeBlock(Background back) {
       back.game[top+blocks[rotation][i][0]][blocks[rotation][i][1]+left] = element;
     }
   }
+   boolean rowclear = false;
+   for(int i = top; i < bottom; i++) {
+      if(back.isRowFilled(i)) {
+        rowclear = true;
+      }
+   }
+   if(rowclear || blockReaction) {
   if(reaction.equals("fireWater")) {
     back.fireWater(centerX, centerY);
   }
@@ -787,6 +794,7 @@ public void placeBlock(Background back) {
   if(reaction.equals("lightningEarth")) {
     back.lightningEarth(centerX, centerY);
   }
+ }
 }
 
 public void move(int x, int y) {

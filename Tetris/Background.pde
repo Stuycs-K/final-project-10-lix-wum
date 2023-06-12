@@ -100,6 +100,10 @@ class Background {
 
   void fireWater(int row, int col) {
     print("\nfireWater");
+    //evaporation sound
+    displayReactionImage = "fireWater";
+    savedImageTime = millis();
+    imageTime = 2000.0;
     for (int i = left; i < right; i++) {
       for (int j = top ; j < bottom; j++) {
         if (game[j][i] != 'B') {
@@ -114,6 +118,9 @@ class Background {
   
   void fireWind(int row, int col) {
     print("\nfireWind");
+     displayReactionImage = "fireWind";
+    savedImageTime = millis();
+    imageTime = 300000.0;
     // placeholder for smokescreen imgs
   }
   
@@ -134,8 +141,9 @@ class Background {
   
   void fireEarth(int row, int col) {
     print("\nfireEarth");
+    int coll = (int) (Math.random()*10);
     for (int i = row; i < bottom; i++) {
-      game[i][left + (int) (Math.random()*10)] = 'B';
+      game[i][left + coll] = 'B';
     }
   }
   
@@ -202,8 +210,6 @@ class Background {
         game[bottom - j][i] = ary.remove((int) (Math.random()*ary.size()));
       }
     }
-    
-    // unfinished
   }
   
   void lightningEarth(int row, int col) {
