@@ -173,7 +173,7 @@
         fill(255, 204, 203);
         rect(width/2, 2*height/3+75-90, 800, 50);
         fill(0);
-        text("MAIN MENU", width/2, 2*height/3+85+7-90);
+        text("MAIN MENU", width/2, 2*height/3+77+7-90);
         
         fill(192);
         rect(width/2, 2*height/3-90, 800, 50);

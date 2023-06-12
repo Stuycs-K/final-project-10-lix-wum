@@ -409,7 +409,7 @@
      fill(224,224,224);
      rect(width/2, 2*height/3+150, 800, 50);
      fill(0);
-     text("MAIN MENU", width/2, 2*height/3+150);
+     text("MAIN MENU", width/2, 2*height/3+160);
      
      if (lose == false) { loseSound(); lose = true; }
    }
