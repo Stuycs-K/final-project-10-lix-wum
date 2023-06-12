@@ -191,7 +191,9 @@
       } else if (mouseX > 2*width/3-50-70 && mouseX < 2*width/3-50+70 && mouseY > 430-7-15 && mouseY < 430-7+15) {
         keybinds[12] = '-';
         changeKeybind = 12;
-       
+      } else if (mouseX > 2*width/3-50-70 && mouseX < 2*width/3-50+70 && mouseY > 600-7-15 && mouseY < 600-7+15) {
+        blockReaction = !blockReaction;
+    
         // SOUND
       } else if (mouseX > 2*width/3-50-70-15-5 && mouseX < 2*width/3-50-70-15+5 && mouseY > 500-7-5 && mouseY < 500-7+5) {
         volume-=10;

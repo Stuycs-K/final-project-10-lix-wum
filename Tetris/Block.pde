@@ -719,6 +719,7 @@ public void placeBlock(Background back) {
   String reaction = "";
   Tetris.hasBlock = false;
       //ALL REACTIONS OCCUR HERE
+   if(elementalGameStarted && !gameStarted){
       if(element == 'F' && touching(back) == 'W' || element == 'W' && touching(back) == 'F') {
         //water vapor
         reaction = "fireWater";
@@ -750,6 +751,7 @@ public void placeBlock(Background back) {
         //full clear
         reaction = "lightningEarth";
       }
+   }
     for(int i = 0; i < 4; i++) {
     //System.out.println(blocks[rotation][i][0] + " , " + blocks[rotation][i][1]);
     back.game[top+blocks[rotation][i][0]][blocks[rotation][i][1]+left] = type;

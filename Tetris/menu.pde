@@ -75,6 +75,8 @@
     text("Pause Game", width/3, 430);
     
     text("Volume", width/3, 500);
+    
+    text("Block Reactions", width/3, 600);
 
     // Make array of temp Keybinds to be displayed
     for (int i = 0; i < tempKeybinds.length; i++) {
@@ -100,6 +102,7 @@
     rect(2*width/3-50, 350-7, 140, 30);
     rect(2*width/3-50, 390-7, 140, 30);
     rect(2*width/3-50, 430-7, 140, 30);
+    rect(2*width/3-50, 600-7, 140, 30);
     
     // Sound thing - fix later
     rectMode(CORNER);
@@ -129,6 +132,7 @@
     text(tempKeybinds[10], 2*width/3-50, 350);
     text(tempKeybinds[11], 2*width/3-50, 390);
     text(tempKeybinds[12], 2*width/3-50, 430);
+    text(""+blockReaction, 2*width/3-50, 600);
 
     if (!gameStarted && !elementalGameStarted) {
       fill(224,224,224);
@@ -139,9 +143,9 @@
     } else {
       fill(192, 192, 192);
       rectMode(CENTER);
-      rect(width/2, 2*height/3+75, 800, 50);
+      rect(width/2, 2*height/3+150, 800, 50);
       fill(0);
-      text("BACK TO PAUSE", width/2, 2*height/3+75+7);
+      text("BACK TO PAUSE", width/2, 2*height/3+150+7);
     }
   }
   
@@ -169,7 +173,7 @@
         fill(255, 204, 203);
         rect(width/2, 2*height/3+75-90, 800, 50);
         fill(0);
-        text("MAIN MENU", width/2, 2*height/3+75+7-90);
+        text("MAIN MENU", width/2, 2*height/3+85+7-90);
         
         fill(192);
         rect(width/2, 2*height/3-90, 800, 50);
