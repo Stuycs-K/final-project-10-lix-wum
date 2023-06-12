@@ -93,7 +93,7 @@ class Background {
     
   }
   
-  void fireWater(int row, int col) {
+  void fireWater() {
     for (int i = left; i <= right; i++) {
       for (int j = bottom ; j >= top; j++) {
         if (game[i][j] == 'B') {
