@@ -761,7 +761,11 @@ public void placeBlock(Background back) {
     back.fireWater(centerX, centerY);
   }
   if(reaction.equals("fireWind")) {
+<<<<<<< HEAD
     back.fireWind(centerX, centerY);
+=======
+    
+>>>>>>> 49c79ed674509d88f121f87edda2e4c28667208d
   }
   if(reaction.equals("fireLightning")) {
     back.fireLightning(centerX, centerY);
