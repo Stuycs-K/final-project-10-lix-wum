@@ -497,7 +497,7 @@
      if (lose == false) { loseSound(); lose = true; }
    }
      }else {
-       // do nothing, paused game
+       pauseGame();
      }
   }
   
