@@ -716,6 +716,10 @@ public void placeBlock(Background back) {
     back.game[top+blocks[rotation][i][0]][blocks[rotation][i][1]+left] = type;
     if(back.elemental) {
       back.game[top+blocks[rotation][i][0]][blocks[rotation][i][1]+left] = element;
+      //ALL REACTIONS OCCUR HERE
+      if(element == 'F' && touching(back) == 'W') {
+        //water vapor
+      }
     }
   }
 }

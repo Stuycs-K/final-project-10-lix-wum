@@ -37,7 +37,7 @@
   }
   
   public void displayGridElemental(Background game) {
-    stroke(220,220,220);
+    stroke(220,220,220); 
     strokeWeight(1);
     rectMode(CORNER);
     int size = back.size;
