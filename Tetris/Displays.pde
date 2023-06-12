@@ -382,3 +382,13 @@
     textSize(20);
     text("NEXT", 600, 595);
     }
+    
+    void loadReactionImage(String s) {
+      if (s.equals("fireLightning")) {
+        print(s);
+        imageMode(CENTER);
+        image = loadImage("explosion.png");
+        tint(255, 128);
+        image(image, width/2, height/2);
+      }
+    }

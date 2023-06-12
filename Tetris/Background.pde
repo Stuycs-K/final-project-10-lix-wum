@@ -119,10 +119,17 @@ class Background {
   
   void fireLightning(int row, int col) {
     print("\nfireLightning");
+<<<<<<< HEAD
+    explosionSound();
+    displayReactionImage = "fireLightning";
+    delay(200);
+    displayReactionImage = "";
+=======
     imageMode(CENTER);
     image = loadImage("explosion.png");
     image(image, width/2, height/2);
     explosionSound();
+>>>>>>> 0a9d15a4ff8f4cd81ced4f18aed0ebb8634d430f
     for (int i = -1; i <= 1; i++) {
       for (int j = -1; j <= 1; j++) {
         if (row+i > top && row+i < bottom && col+j > left && col+j < right) game[row+i][col+j] = 'B';
