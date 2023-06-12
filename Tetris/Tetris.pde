@@ -56,6 +56,7 @@
     if (loadingComplete) {
      if (openConfig) {
        config();
+       volumeCheck();
        if (changeKeybind != -1) swapKeybind();
        if (sameKey) printChooseNewKey();
      }  
@@ -90,7 +91,7 @@
     
     //drop speed
     totalTime = (Math.pow((0.8-((level-1)*0.007)),(int)(level-1)))*1000;
-    float sound = (float) volume/100; 
+    float sound = (float) volume/200; 
     backgroundSound.amp(sound);
     backgroundSound.loop();
   }
@@ -119,7 +120,7 @@
     
     //drop speed
     totalTime = (Math.pow((0.8-((level-1)*0.007)),(int)(level-1)))*1000;
-    float sound = (float) volume/100; 
+    float sound = (float) volume/200; 
     backgroundSound.amp(sound);
     backgroundSound.loop();
   }
@@ -175,9 +176,11 @@
        
         // SOUND
       } else if (mouseX > 2*width/3-50-70-15-5 && mouseX < 2*width/3-50-70-15+5 && mouseY > 500-7-5 && mouseY < 500-7+5) {
-        volume-=5;
+        volume-=10;
+        volumeCheck();
       } else if (mouseX > 2*width/3-50+70+15-5 && mouseX < 2*width/3-50+70+15+5 && mouseY > 500-7-5 && mouseY < 500-7+5) {
-        volume+=5;
+        volume+=10;
+        volumeCheck();
       } else {
           if (red == 224 && green == 224 && blue == 224) {
             restart();
@@ -501,5 +504,17 @@
      }
   }
   
+  
+  void volumeCheck() {
+    fill(255); textSize(10);
+    if (volume > 200) {
+      text("(already at max volume)", width/3, 515);
+      volume = 201;
+    }
+    else if (volume < 0) {
+      text("(already at min volume)", width/3, 515);
+      volume = -1;
+    }
+  }
   
   

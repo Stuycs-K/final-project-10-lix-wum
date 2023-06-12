@@ -105,7 +105,7 @@
     rectMode(CORNER);
     rect(2*width/3-50-70, 500-7-15, 140, 30);
     fill(255);
-    rect(2*width/3-50-70, 500-7-15, 1.4*volume, 30);
+    rect(2*width/3-50-70, 500-7-15, 1.4*volume/2, 30);
     image = loadImage("subtract.png");
     image.resize(10, 10);
     image(image, 2*width/3-50-70-15, 500-7);
@@ -155,9 +155,9 @@
         textAlign(CENTER);
         textSize(50);
         fill(255);
-        text("PAUSED", width/2, height/2);
+        text("PAUSED", width/2, height/2-90);
         textSize(20);
-        text("Press " + Character.toUpperCase(keybinds[12]) + " to unpause", width/2, height/2 +30);
+        text("Press " + Character.toUpperCase(keybinds[12]) + " to unpause", width/2, height/2 +30-90);
         textAlign(LEFT);
         if (backgroundSound.isPlaying()) backgroundSound.pause();
         
@@ -167,14 +167,14 @@
         textSize(25);
         
         fill(255, 204, 203);
-        rect(width/2, 2*height/3+75, 800, 50);
+        rect(width/2, 2*height/3+75-90, 800, 50);
         fill(0);
-        text("MAIN MENU", width/2, 2*height/3+75+7);
+        text("MAIN MENU", width/2, 2*height/3+75+7-90);
         
         fill(192);
-        rect(width/2, 2*height/3, 800, 50);
+        rect(width/2, 2*height/3-90, 800, 50);
         fill(0);
-        text("OPEN CONFIG", width/2, 2*height/3+7);
+        text("OPEN CONFIG", width/2, 2*height/3+7-90);
         
       } else {
         //started();
