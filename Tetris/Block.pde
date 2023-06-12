@@ -2,6 +2,8 @@ import java.util.ArrayDeque;
 class Block {
   
 public static final int side = 30;
+public int centerX = 1;
+public int centerY = 1;
 private int[][][] blocks;
 public int left = 3;
 public int right = 13;
@@ -651,6 +653,7 @@ public void moveRight() {
         blocks[i][j][1]++;
       }
   }
+  centerY++;
 }
 
 public void moveLeft(Background back) {
@@ -666,6 +669,7 @@ public void moveLeft() {
         blocks[i][j][1]--;
       }
   }
+  centerY--;
 }
 
 public void moveDown(Background back) {
@@ -690,6 +694,7 @@ public void moveDown() {
         blocks[i][j][0]++;
       }
   }
+  centerX++;
 }
 
 public void moveUp() {
@@ -698,6 +703,7 @@ public void moveUp() {
         blocks[i][j][0]--;
       }
   }
+  centerX--;
 }
 
 public boolean hasCollision(Background back) {
@@ -756,6 +762,9 @@ public void placeBlock(Background back) {
   }
   if(reaction.equals("fireWind")) {
 
+  }
+  if(reaction.equals("fireLightning")) {
+    back.fireLightning(centerX, centerY);
   }
 }
 
