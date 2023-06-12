@@ -716,29 +716,39 @@ public boolean hasCollision(Background back) {
 }
 
 public void placeBlock(Background back) {
+  String reaction = "";
   Tetris.hasBlock = false;
   //ALL REACTIONS OCCUR HERE
-      if(element == 'F' && touching(back) == 'W') {
+      if(element == 'F' && touching(back) == 'W' || element == 'W' && touching(back) == 'F') {
         //water vapor
-        back.fireWater(centerX, centerY);
+        reaction = "fireWater";
       } else if(element == 'F' && touching(back) == 'A') {
         //smokescreen
+        reaction = "fireWind";
       } else if(element == 'F' && touching(back) == 'L') {
         //explosion
+        reaction = "fireLightning";
       } else if(element == 'F' && touching(back) == 'E') {
         //lava
+        reaction = "fireEarth";
       } else if(element == 'W' && touching(back) == 'A') {
         //tsunami
+        reaction = "waterWind";
       } else if(element == 'W' && touching(back) == 'L') {
         //electrocharged
+        reaction = "waterLightning";
       } else if(element == 'W' && touching(back) == 'E') {
         //ocean
+        reaction = "waterEarth";
       } else if(element == 'A' && touching(back) == 'L') {
         //thunderstorm
+        reaction = "windLightning";
       } else if(element == 'A' && touching(back) == 'E') {
         //hurricane
+        reaction = "windEarth";
       } else if(element == 'L' && touching(back) == 'E') {
         //full clear
+        reaction = "lightningEarth";
       }
   for(int i = 0; i < 4; i++) {
     //System.out.println(blocks[rotation][i][0] + " , " + blocks[rotation][i][1]);
@@ -746,6 +756,12 @@ public void placeBlock(Background back) {
     if(back.elemental) {
       back.game[top+blocks[rotation][i][0]][blocks[rotation][i][1]+left] = element;
     }
+  }
+  if(reaction.equals("fireWater")) {
+    back.fireWater(centerX, centerY);
+  }
+  if(reaction.equals("fireWind")) {
+  
   }
 }
 
@@ -790,18 +806,18 @@ public void setElement(char e) {
 }
 
 public char touching(Background back) {
-  for(int i = 0; i < 4; i++) {
-    if(back.game[top + blocks[rotation][i][0]-1][left + blocks[rotation][i][1]] != 'B') {
-      return back.game[top + blocks[rotation][i][0]-1][left + blocks[rotation][i][1]];
+  for(int i = 0; i < 3; i++) {
+    if(back.game[top + centerX + i][left + centerY] != 'B') {
+      return back.game[top + centerX + i][left + centerY];
     }
-    if(back.game[top + blocks[rotation][i][0]+1][left + blocks[rotation][i][1]] != 'B') {
-      return back.game[top + blocks[rotation][i][0]+1][left + blocks[rotation][i][1]];
+    if(back.game[top + centerX - i][left + centerY] != 'B') {
+      return back.game[top + centerX - i][left + centerY];
     }
-    if(back.game[top + blocks[rotation][i][0]][left + blocks[rotation][i][1]-1] != 'B') {
-      return back.game[top + blocks[rotation][i][0]][left + blocks[rotation][i][1]-1];
+    if(back.game[top + centerX][left + centerY + i] != 'B') {
+      return back.game[top + centerX][left + centerY + i];
     }
-    if(back.game[blocks[top + rotation][i][0]][left + blocks[rotation][i][1]+1] != 'B') {
-      return back.game[top + blocks[rotation][i][0]][left + blocks[rotation][i][1]+1];
+    if(back.game[top + centerX][left + centerY - i] != 'B') {
+      return back.game[top + centerX][left + centerY - i];
     }
   }
   return '-';

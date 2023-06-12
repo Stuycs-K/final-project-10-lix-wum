@@ -15,7 +15,7 @@ class Background {
       for(int j = 0; j < y; j++) {
         game[i][j] = 'B';
         if(i >= 23 || j < 3 || j > 12) {
-          game[i][j] = 'W';
+          game[i][j] = '#';
         }
       }
     }
@@ -95,10 +95,12 @@ class Background {
   
   void fireWater(int row, int col) {
     print("i lobe men");
-    for (int i = left; i <= right; i++) {
-      for (int j = top ; j >= bottom; j--) {
+    for (int i = left; i < right; i++) {
+      for (int j = top ; j < bottom; j++) {
         if (game[j][i] != 'B') {
-          game[j][i] = 'B';
+          if(j < bottom) {
+            game[j][i] = 'B';
+          }
           break;
         }
       }
