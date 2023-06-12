@@ -95,7 +95,7 @@ class Background {
   
 
   void fireWater(int row, int col) {
-    print("i lobe men");
+    print("\nfireWater");
     for (int i = left; i < right; i++) {
       for (int j = top ; j < bottom; j++) {
         if (game[j][i] != 'B') {
@@ -109,10 +109,12 @@ class Background {
   }
   
   void fireWind(int row, int col) {
+    print("\nfireWind");
     // placeholder for smokescreen imgs
   }
   
   void fireLightning(int row, int col) {
+    print("\nfireLightning");
     imageMode(CENTER);
     image = loadImage("explosion.png");
     image(image, width/2, height/2);
@@ -124,10 +126,12 @@ class Background {
   }
   
   void fireEarth(int row, int col) {
+    print("\nfireEarth");
     for (int i = row; i < bottom; i++) {
       game[i][col] = 'B';
     }
   }
+  
   
   
   

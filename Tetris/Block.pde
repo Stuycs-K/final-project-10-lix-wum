@@ -722,31 +722,31 @@ public void placeBlock(Background back) {
       if(element == 'F' && touching(back) == 'W' || element == 'W' && touching(back) == 'F') {
         //water vapor
         reaction = "fireWater";
-      } else if(element == 'F' && touching(back) == 'A') {
+      } else if(element == 'F' && touching(back) == 'A' || element == 'A' && touching(back) == 'F') {
         //smokescreen
         reaction = "fireWind";
-      } else if(element == 'F' && touching(back) == 'L') {
+      } else if(element == 'F' && touching(back) == 'L' || element == 'L' && touching(back) == 'F') {
         //explosion
         reaction = "fireLightning";
-      } else if(element == 'F' && touching(back) == 'E') {
+      } else if(element == 'F' && touching(back) == 'E' || element == 'E' && touching(back) == 'F') {
         //lava
         reaction = "fireEarth";
-      } else if(element == 'W' && touching(back) == 'A') {
+      } else if(element == 'W' && touching(back) == 'A' || element == 'A' && touching(back) == 'W') {
         //tsunami
         reaction = "waterWind";
-      } else if(element == 'W' && touching(back) == 'L') {
+      } else if(element == 'W' && touching(back) == 'L' || element == 'L' && touching(back) == 'W') {
         //electrocharged
         reaction = "waterLightning";
-      } else if(element == 'W' && touching(back) == 'E') {
+      } else if(element == 'W' && touching(back) == 'E' || element == 'E' && touching(back) == 'W') {
         //ocean
         reaction = "waterEarth";
-      } else if(element == 'A' && touching(back) == 'L') {
+      } else if(element == 'A' && touching(back) == 'L' || element == 'L' && touching(back) == 'A') {
         //thunderstorm
         reaction = "windLightning";
-      } else if(element == 'A' && touching(back) == 'E') {
+      } else if(element == 'A' && touching(back) == 'E' || element == 'E' && touching(back) == 'A') {
         //hurricane
         reaction = "windEarth";
-      } else if(element == 'L' && touching(back) == 'E') {
+      } else if(element == 'L' && touching(back) == 'E' || element == 'E' && touching(back) == 'L') {
         //full clear
         reaction = "lightningEarth";
       }
@@ -761,10 +761,13 @@ public void placeBlock(Background back) {
     back.fireWater(centerX, centerY);
   }
   if(reaction.equals("fireWind")) {
-
+    back.fireWind(centerX, centerY);
   }
   if(reaction.equals("fireLightning")) {
     back.fireLightning(centerX, centerY);
+  }
+  if(reaction.equals("fireEarth")) {
+    back.fireEarth(centerX, centerY);
   }
 }
 

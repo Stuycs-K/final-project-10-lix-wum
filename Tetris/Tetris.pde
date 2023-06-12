@@ -419,9 +419,9 @@
     nextBox();
     for (int i = 0; i < 5; i++) {
       int y = 200+i*70;        
-      displayBlockCosmetic(next.get(i), 625, y);
+      displayBlockCosmeticElemental(next.get(i), 625, y);
     }
-    if (holdSpace) displayBlockCosmetic(heldBlock, 80,220);
+    if (holdSpace) displayBlockCosmeticElemental(heldBlock, 80,220);
     if (!backgroundSound.isPlaying())backgroundSound.play();
     
     // timer

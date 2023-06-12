@@ -16,7 +16,7 @@
   void loadGame() {
     while(loadingProgress < 100) {
       loadingProgress+=Math.random()*3;
-      delay(50);
+      delay(70);
       updateLoad();
     }
     loadingComplete = true;
