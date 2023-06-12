@@ -99,9 +99,10 @@ class Background {
   
 
   void fireWater(int row, int col) {
-    print("\nfireWater");
+    text("Triggered Evaporation", width-50, height-50);
+    //print("\nfireWater");
     //evaporation sound
-    displayReactionImage = "fireWater";
+    displayReactionImage = "evaporation";
     savedImageTime = millis();
     imageTime = 2000.0;
     for (int i = left; i < right; i++) {
@@ -118,8 +119,8 @@ class Background {
   }
   
   void fireWind(int row, int col) {
-    print("\nfireWind");
-     displayReactionImage = "fireWind";
+    //print("\nfireWind");
+     displayReactionImage = "smokescreen";
     savedImageTime = millis();
     imageTime = 300000.0;
     // placeholder for smokescreen imgs
@@ -128,7 +129,7 @@ class Background {
   void fireLightning(int row, int col) {
     //print("\nfireLightning");
     explosionSound();
-    displayReactionImage = "fireLightning";
+    displayReactionImage = "explosion";
     savedImageTime = millis();
     imageTime = 2000.0;
     //delay(200);
@@ -142,7 +143,10 @@ class Background {
   }
   
   void fireEarth(int row, int col) {
-    print("\nfireEarth");
+    //print("\nfireEarth");
+        displayReactionImage = "lava";
+    savedImageTime = millis();
+    imageTime = 2000.0;
     int coll = (int) (Math.random()*10);
     for (int i = row; i < bottom; i++) {
       game[i][left + coll] = 'B';
@@ -152,7 +156,7 @@ class Background {
   void waterWind(int row, int col) {
     //print("\nwaterWind");
     aquaSound();
-    displayReactionImage = "waterWind";
+    displayReactionImage = "tsunami";
     savedImageTime = millis();
     imageTime = 6000.0;
     for (int i = left; i < right; i++) {
@@ -168,6 +172,9 @@ class Background {
   
   void waterLightning(int row, int col) {
     //print("\nwaterLightning");
+        displayReactionImage = "electrocharged";
+    savedImageTime = millis();
+    imageTime = 2000.0;
     for (int i = left; i < right; i++) {
       for (int j = top ; j < bottom; j++) {
         if (game[j][i] != 'B') {
@@ -183,6 +190,9 @@ class Background {
   
   void waterEarth(int row, int col) {
     //print("\nwaterEarth");
+        displayReactionImage = "ocean";
+    savedImageTime = millis();
+    imageTime = 2000.0;
     for (int i = left; i < right; i++) {
       for (int j = top ; j < bottom; j++) {
         if (game[j][i] != 'B') {
@@ -196,8 +206,10 @@ class Background {
   }
   
   void windLightning(int row, int col) {
-    print("\nwindLightning");
-    displayReactionImage = "windLightning";
+    //print("\nwindLightning");
+        displayReactionImage = "thunderstorm";
+    savedImageTime = millis();
+    imageTime = 2000.0;
     for (int i = left; i < right; i++) {
       for (int j = top ; j < bottom; j++) {
         if (game[j][i] != 'B') {
@@ -211,6 +223,9 @@ class Background {
   
   void windEarth(int row, int col) {
     //print("\nwindEarth");
+        displayReactionImage = "hurricane";
+    savedImageTime = millis();
+    imageTime = 2000.0;
     for(int i = left; i < right; i++) {
       ArrayList<Character> ary = new ArrayList<Character>();
       for(int j = bottom-1; j >= top && game[j][i] != 'B'; j--) {
@@ -226,6 +241,9 @@ class Background {
   
   void lightningEarth(int row, int col) {
     //print("\nlightningEarth");
+        displayReactionImage = "full clear";
+    savedImageTime = millis();
+    imageTime = 2000.0;
     for (int i = left; i < right; i++) {
       for (int j = top ; j < bottom; j++) {
         if (game[j][i] != 'B') {

@@ -384,30 +384,37 @@
     }
     
     void loadReactionImage(String s) {
-      if (s.equals("fireLightning")) {
-        print(s);
+      if (s.equals("explosion")) {
+        //print(s);
         imageMode(CENTER);
         image = loadImage("explosion.png");
         tint(255, 128);
         image(image, width/2, height/2);
-      } else if (s.equals("waterWind")) {
-        print(s);
+      } else if (s.equals("tsunami")) {
+        //print(s);
         imageMode(CENTER);
         image = loadImage("aqua.png");
         tint(255, 128);
         image(image, width/2, height/2);
-      } else if (s.equals("fireWater")) {
-        print(s);
+      } else if (s.equals("evaporation")) {
+        //print(s);
         imageMode(CENTER);
         image = loadImage("evaporation.jpg");
         tint(255, 128);
         image(image, width/2, height/2);
-      } else if (s.equals("fireWind")) {
-        print(s);
+      } else if (s.equals("smokescreen")) {
+        //print(s);
         imageMode(CENTER);
         image = loadImage("smokescreen.png");
-        tint(255, 128);
+        tint(255, 230);
         image.resize(800, 800);
         image(image, width/2, height/2);
-      }
+      } 
+      textSize(20);
+      fill(255);
+      text(s, width-150, height-20);
+    }
+    
+    void displayReaction() {
+      
     }
