@@ -229,11 +229,11 @@
       textSize(20);
       text("NEXT", 600, 595);
       
-      if(sevenBag.size() == 6) {
-        for (int i = 0; i < 6; i++ ) {
-          print(sevenBag.get(i).returnType());
-        }
-      }
+      //if(sevenBag.size() == 6) {
+      //  for (int i = 0; i < 6; i++ ) {
+      //    print(sevenBag.get(i).returnType());
+      //  }
+      //}
       // DISPLAY NEXT BLOCKS
       if(sevenBag.size() == 0) {
         
@@ -275,11 +275,11 @@
       textSize(20);
       text("NEXT", 600, 595);
       
-      if(sevenBag.size() == 6) {
-        for (int i = 0; i < 6; i++ ) {
-          print(sevenBag.get(i).returnType());
-        }
-      }
+      //if(sevenBag.size() == 6) {
+      //  for (int i = 0; i < 6; i++ ) {
+      //    print(sevenBag.get(i).returnType());
+      //  }
+      //}
       // DISPLAY NEXT BLOCKS
       if(sevenBag.size() == 0) {
         
