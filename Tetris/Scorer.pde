@@ -1,4 +1,4 @@
-  public void score (int counter) {
+  void score (int counter) {
     if (counter != 0) {
         // score and level calculator
     int scoreAdd = 0;

@@ -24,6 +24,9 @@
   double totalTime;
   PImage image;
   
+  int loadingProgress = 0;
+  boolean loadingComplete = false;
+  
   // keybind variables
   public int changeKeybind = -1;
   public char [] keybinds = new char[] {'a', 'z', 'd', 'x', '@', 'j', '$', 'l', '#', 'k', ' ', 'c', 'p'};
@@ -45,18 +48,23 @@
     size(800, 800);
     background(40, 40, 40);
     backgroundSound = new SoundFile(this, "tetris.mp3", false);
+    
+    thread("loadGame");
   }
   
   void draw() {
-   
-   if (gameStarted) gamePlay();
-   else if (elementalGameStarted) elementalPlay();
-   else if (openConfig) {
-     config();
-     if (changeKeybind != -1) swapKeybind();
-     if (sameKey) printChooseNewKey();
-   }
-   else menu();
+    if (loadingComplete) {
+     if (gameStarted) gamePlay();
+     else if (elementalGameStarted) elementalPlay();
+     else if (openConfig) {
+       config();
+       if (changeKeybind != -1) swapKeybind();
+       if (sameKey) printChooseNewKey();
+     }  
+     else menu();
+    } else {
+      loadScreen();
+    }
   }
   
   
@@ -185,9 +193,14 @@
       restart();
       startedElemental();
       elementalGameStarted = true;
-    } else if (red == 224 && green == 224 && blue == 224) {
+    } else if (red == 224 && green == 224 && blue == 224 && alive ) {
       restart();
       openConfig = true;
+    } else if (red == 224 && green == 224 && blue == 224 && !alive ) {
+      restart();
+      menu();
+      alive = true;
+      score = 0; level = 0;
     }
     }
   }
@@ -349,6 +362,12 @@
      textSize(32);
      text("Final Score: " + score, width/2, height/2 + 80);
      backgroundSound.stop();
+     
+     fill(224,224,224);
+     rect(width/2, 2*height/3+150, 800, 50);
+     fill(0);
+     text("MAIN MENU", width/2, 2*height/3+150);
+     
      if (lose == false) { loseSound(); lose = true; }
    }
      }else {
@@ -437,6 +456,11 @@
      textSize(32);
      text("Final Score: " + score, width/2, height/2 + 80);
      backgroundSound.stop();
+     
+     fill(224,224,224);
+     rect(width/2, 2*height/3+150, 800, 50);
+     fill(0);
+     text("PLAY AGAIN", width/2, 2*height/3+150);
      if (lose == false) { loseSound(); lose = true; }
    }
      }else {
