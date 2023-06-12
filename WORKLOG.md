@@ -10,41 +10,45 @@ Worked on Background grid visual, created Background class as well as the game b
 
 Added Background class methods, finished clear and isRowCleared methods, and started working on other Tetris class setup/draw methods.
 
-## 5/24/23
+### 5/24/23
 
 Finished Next method, created queue that displays upcoming blocks.
 
-## 5/25/23
+### 5/25/23
 
 Created score and level calculator and display depending on how many lines are cleared with each block. Also created a rounding method for calculating score (this took much longer than it should have). Also created boxes to contain the next and held pieces.
 
-## 5/26/23
+### 5/26/23
 
 Added timer to game as well as increasing gravity depending on the level, as well as finalizing score.
 
-## 5/30/23
+### 5/30/23
 
 Created sound class, spent most of class looking at sound documentation on processing.
 
-## 5/31/23
+### 5/31/23
 
 Imported sound effect files, created sfx class to organize sound effect methods for background sound, soft and hard drop, line clears, and rotates.
 
-## 6/2/23
+### 6/2/23
 
 Created a start screen by importing a tetris logo as well as creating a start button, also created a pause screen that uses a key command (instructions on the game screen - "P to pause"). Moved the creation of hold box and next box to separate methods away from draw in order to be used to redraw the boxes after unpausing. Moved background music to the main Tetris class in order to pause music when the game is paused and replay upon unpausing. Attempted 7bag next piece sorting algorithm but was unable to finish, will continue later. Also created demo branch to present in class. **AFTER CLASS:** fixed 7bag algorithm.
 
-## 6/7/23
+### 6/7/23
 
 Created a menu as well as buttons to play standard and elemental tetris, oragnized code into tabs to reduce clutter, added a settings menu with customizable keybinds (much more work than expected)
 
-## 6/8/23
+### 6/8/23
 
 Added a volume "slider" to settings - volume bar controlled by buttons one each side.
 
-## 6/11/23
+### 6/11/23
 
 Added a play again button, created a loading screen for the game using multithreading in order to display somethign on the screen while assets are being loaded in (you told me this wasn't worth the time Mr. K and it wasn't but I learned a lot :D)
+
+### 6/12/23
+
+Worked on elemental reactions, added sound, created elemental reaction methods and score calculators, optimized menu visuals, fixed menu and elemental reaction bugs. Also added a display for reactions when they react, allowing the player to identify the reaction they just created.
 
 
 
