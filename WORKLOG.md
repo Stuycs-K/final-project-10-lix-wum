@@ -101,3 +101,15 @@ Made it so that it is no longer possible to spam the hold button to infinitely s
 ### 6/5/23
 
 Edited code for dropping pieces based on a timer and changed the system to allow for the down key to be held down without the piece being placed instantly. This allows for more precise actions such as t-spins.
+
+### 6/10/23
+
+added elemental game and element type variable to blocks, as well as elemental piece generation and display, the elemental game type is now playable.
+
+### 6/11/23
+
+fixed elemental display for next pieces and hold, fixed bugs with invisible blocks, and added contact detection for blocks.
+
+### 6/12/23
+
+added elemental reactions for block class, further fixed the touching method and made a center variable to track where the center of each block is (to make reactions happen at specific locations). Fixed bugs with invisible blocks appearing after playing the normal game, and added functioning elemental reactions as well as images and sound to accompany reactions. Megumin for Fire + Lightning and Aqua for Water + Wind. Fixed some UI issues with centering, and added button to switch piece-by-piece elemental reactions on and off. Also added more elemental reactions such as lava and shuffle.
