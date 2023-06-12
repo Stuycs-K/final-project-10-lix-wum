@@ -758,4 +758,22 @@ public void setElement(char e) {
   this.element = e;
 }
 
+public char touching(Background back) {
+  for(int i = 0; i < 4; i++) {
+    if(back.game[blocks[rotation][i][0]-1][blocks[rotation][i][1]] != '0') {
+      return back.game[blocks[rotation][i][0]-1][blocks[rotation][i][1]];
+    }
+    if(back.game[blocks[rotation][i][0]+1][blocks[rotation][i][1]] != '0') {
+      return back.game[blocks[rotation][i][0]+1][blocks[rotation][i][1]];
+    }
+    if(back.game[blocks[rotation][i][0]][blocks[rotation][i][1]-1] != '0') {
+      return back.game[blocks[rotation][i][0]][blocks[rotation][i][1]-1];
+    }
+    if(back.game[blocks[rotation][i][0]][blocks[rotation][i][1]+1] != '0') {
+      return back.game[blocks[rotation][i][0]][blocks[rotation][i][1]+1];
+    }
+  }
+  return '-';
+}
+
 }

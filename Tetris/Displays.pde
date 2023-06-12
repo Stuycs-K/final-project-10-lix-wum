@@ -249,8 +249,12 @@
       }
       next.add(sevenBag.remove(0));
       for (int i = 0; i < 5; i++) {
-        int y = 200+i*70;        
-        displayBlockCosmetic(next.get(i), 625, y);
+        int y = 200+i*70;
+        if(elementalGameStarted) {
+          displayBlockCosmeticElemental(next.get(i), 625, y);
+        } else{
+          displayBlockCosmetic(next.get(i), 625, y);
+        }
       }
     }
     
@@ -301,7 +305,11 @@
     if (holdSpace) {
       next.add(0, new Block(heldBlock.type, heldBlock.element));
       heldBlock = new Block(current.type, current.element);
-      updateNext();
+      if(elementalGameStarted) {
+        updateNextElemental();
+      } else {
+        updateNext(); 
+      }
       // REDRAW HOLD BOX
       strokeWeight(2);
       stroke(255);
