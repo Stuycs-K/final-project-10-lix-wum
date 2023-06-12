@@ -200,6 +200,7 @@
       restart();
       menu();
       alive = true;
+      score = 0; level = 0;
     }
     }
   }
@@ -365,7 +366,7 @@
      fill(224,224,224);
      rect(width/2, 2*height/3+150, 800, 50);
      fill(0);
-     text("PLAY AGAIN", width/2, 2*height/3+150);
+     text("MAIN MENU", width/2, 2*height/3+150);
      
      if (lose == false) { loseSound(); lose = true; }
    }
