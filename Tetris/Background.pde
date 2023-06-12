@@ -94,10 +94,11 @@ class Background {
   }
   
   void fireWater(int row, int col) {
+    print("i lobe men");
     for (int i = left; i <= right; i++) {
-      for (int j = bottom ; j >= top; j++) {
-        if (game[i][j] == 'B') {
-          game[i][j-1] = 'B';
+      for (int j = top ; j >= bottom; j--) {
+        if (game[j][i] != 'B') {
+          game[j][i] = 'B';
           break;
         }
       }
