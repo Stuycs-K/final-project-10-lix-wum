@@ -808,16 +808,16 @@ public void setElement(char e) {
 
 public char touching(Background back) {
   for(int i = 0; i < 3; i++) {
-    if(back.game[top + centerX + i][left + centerY] != 'B') {
+    if(back.game[top + centerX + i][left + centerY] != 'B' && back.game[top + centerX + i][left + centerY] != '#') {
       return back.game[top + centerX + i][left + centerY];
     }
-    if(back.game[top + centerX - i][left + centerY] != 'B') {
+    if(back.game[top + centerX - i][left + centerY] != 'B' && back.game[top + centerX - i][left + centerY] != '#') {
       return back.game[top + centerX - i][left + centerY];
     }
-    if(back.game[top + centerX][left + centerY + i] != 'B') {
+    if(back.game[top + centerX][left + centerY + i] != 'B' && back.game[top + centerX][left + centerY + i] != '#') {
       return back.game[top + centerX][left + centerY + i];
     }
-    if(back.game[top + centerX][left + centerY - i] != 'B') {
+    if(back.game[top + centerX][left + centerY - i] != 'B' && back.game[top + centerX][left + centerY - i] != '#') {
       return back.game[top + centerX][left + centerY - i];
     }
   }
