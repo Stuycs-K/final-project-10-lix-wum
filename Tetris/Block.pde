@@ -719,6 +719,24 @@ public void placeBlock(Background back) {
       //ALL REACTIONS OCCUR HERE
       if(element == 'F' && touching(back) == 'W') {
         //water vapor
+      } else if(element == 'F' && touching(back) == 'A') {
+        //smokescreen
+      } else if(element == 'F' && touching(back) == 'L') {
+        //explosion
+      } else if(element == 'F' && touching(back) == 'E') {
+        //lava
+      } else if(element == 'W' && touching(back) == 'A') {
+        //tsunami
+      } else if(element == 'W' && touching(back) == 'L') {
+        //electrocharged
+      } else if(element == 'W' && touching(back) == 'E') {
+        //ocean
+      } else if(element == 'A' && touching(back) == 'L') {
+        //thunderstorm
+      } else if(element == 'A' && touching(back) == 'E') {
+        //hurricane
+      } else if(element == 'L' && touching(back) == 'E') {
+        //full clear
       }
     }
   }
