@@ -82,7 +82,7 @@
     // ADD BLOCKS TO NEXT BOX
     for (int i = 0; i < 5; i++) {
       int y = 200+i*70;
-      Block block1 = new Block(types[(int) (Math.random()*7)], current.elements[(int) (Math.random()*5)]);
+      Block block1 = new Block(types[(int) (Math.random()*7)], elements[(int) (Math.random()*5)]);
       next.add(block1);
       displayBlock(block1, 625, y);
     }
