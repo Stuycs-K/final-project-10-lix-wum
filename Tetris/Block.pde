@@ -769,6 +769,24 @@ public void placeBlock(Background back) {
   if(reaction.equals("fireEarth")) {
     back.fireEarth(centerX, centerY);
   }
+  if(reaction.equals("waterWind")) {
+    back.waterWind(centerX, centerY);
+  }
+  if(reaction.equals("waterLightning")) {
+    back.waterLightning(centerX, centerY);
+  }
+  if(reaction.equals("waterEarth")) {
+    back.waterEarth(centerX, centerY);
+  }
+  if(reaction.equals("windLightning")) {
+    back.windLightning(centerX, centerY);
+  }
+  if(reaction.equals("windEarth")) {
+    back.windEarth(centerX, centerY);
+  }
+  if(reaction.equals("lightningEarth")) {
+    back.lightningEarth(centerX, centerY);
+  }
 }
 
 public void move(int x, int y) {

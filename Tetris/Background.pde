@@ -1,3 +1,7 @@
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 class Background {
    public int size;
    public char[][]game;
@@ -132,6 +136,75 @@ class Background {
     }
   }
   
+  void waterWind(int row, int col) {
+    print("\nwaterWind");
+    for (int i = left; i < right; i++) {
+      for (int j = top ; j < bottom; j++) {
+        if (game[j][i] != 'B') {
+          if(j < bottom) {
+            game[j][i] = 'W';
+          }
+        }
+      }
+    }
+  }
+  
+  void waterLightning(int row, int col) {
+    print("\nwaterLightning");
+    for (int i = left; i < right; i++) {
+      for (int j = top ; j < bottom; j++) {
+        if (game[j][i] != 'B') {
+          if((int)(Math.random()*2) == 1) {
+            game[j][i] = 'B';
+          }
+          break;
+        }
+      }
+    }
+  }
+  
+  void waterEarth(int row, int col) {
+    print("\nwaterEarth");
+    for (int i = left; i < right; i++) {
+      for (int j = top ; j < bottom; j++) {
+        if (game[j][i] != 'B') {
+          if(j < bottom) {
+            game[j][i] = 'E';
+          }
+          break;
+        }
+      }
+    }
+  }
+  
+  void windLightning(int row, int col) {
+    print("\nwindLightning");
+    // thunderstorm
+  }
+  
+  void windEarth(int row, int col) {
+    print("\nwindEarth");
+    Integer[]ary = {3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+    // shuffle ary
+    List<Integer> aryList = Arrays.asList(ary);
+    Collections.shuffle(aryList);
+    aryList.toArray(ary);
+    
+    // unfinished
+  }
+  
+  void lightningEarth(int row, int col) {
+    print("\nlightningEarth");
+    for (int i = left; i < right; i++) {
+      for (int j = top ; j < bottom; j++) {
+        if (game[j][i] != 'B') {
+          if(j < bottom) {
+            game[j][i] = 'B';
+          }
+        }
+      }
+    }
+  }
   
   
   
