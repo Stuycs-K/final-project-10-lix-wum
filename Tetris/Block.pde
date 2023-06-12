@@ -832,14 +832,11 @@ public char touching(Background back) {
     if(back.game[top + centerX + i][left + centerY] != 'B' && back.game[top + centerX + i][left + centerY] != '#') {
       return back.game[top + centerX + i][left + centerY];
     }
-    if(back.game[top + centerX - i][left + centerY] != 'B' && back.game[top + centerX - i][left + centerY] != '#') {
-      return back.game[top + centerX - i][left + centerY];
+    if(back.game[top + centerX + i][left + centerY - 1] != 'B' && back.game[top + centerX + i][left + centerY - 1] != '#') {
+      return back.game[top + centerX + i][left + centerY - 1];
     }
-    if(back.game[top + centerX][left + centerY + i] != 'B' && back.game[top + centerX][left + centerY + i] != '#') {
-      return back.game[top + centerX][left + centerY + i];
-    }
-    if(back.game[top + centerX][left + centerY - i] != 'B' && back.game[top + centerX][left + centerY - i] != '#') {
-      return back.game[top + centerX][left + centerY - i];
+    if(back.game[top + centerX + i][left + centerY + 1] != 'B' && back.game[top + centerX + i][left + centerY + 1] != '#') {
+      return back.game[top + centerX + i][left + centerY + 1];
     }
   }
   return '-';
