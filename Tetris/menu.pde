@@ -130,11 +130,19 @@
     text(tempKeybinds[11], 2*width/3-50, 390);
     text(tempKeybinds[12], 2*width/3-50, 430);
 
-    fill(224,224,224);
-    rectMode(CENTER);
-    rect(width/2, 2*height/3+150, 800, 50);
-    fill(0);
-    text("BACK TO MENU", width/2, 2*height/3+150);
+    if (!gameStarted) {
+      fill(224,224,224);
+      rectMode(CENTER);
+      rect(width/2, 2*height/3+150, 800, 50);
+      fill(0);
+      text("BACK TO MENU", width/2, 2*height/3+150);
+    } else {
+      fill(192, 192, 192);
+      rectMode(CENTER);
+      rect(width/2, 2*height/3+75, 800, 50);
+      fill(0);
+      text("BACK TO PAUSE", width/2, 2*height/3+75);
+    }
   }
   
   void pauseGame() {
@@ -149,7 +157,17 @@
         fill(255);
         text("PAUSED", width/2, height/2);
         textAlign(LEFT);
-        backgroundSound.pause();
+        if (backgroundSound.isPlaying()) backgroundSound.pause();
+        
+        noStroke();
+        rectMode(CENTER);
+        textAlign(CENTER);
+        textSize(25);
+        fill(192);
+        rect(width/2, 2*height/3+75, 800, 50);
+        fill(0);
+        text("OPEN CONFIG", width/2, 2*height/3+75);
+        
       } else {
         //started();
         rectMode(CENTER);

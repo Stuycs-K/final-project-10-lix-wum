@@ -8,6 +8,7 @@
     text("Loading Assets...", width/2, height/2);
     rect(width/4, height/2+30, width/2, 20);
     
+    noStroke();
     fill(108, 160, 220);
     rect(width/4, height/2+30, loadingProgress*width/2/100, 20);
   }

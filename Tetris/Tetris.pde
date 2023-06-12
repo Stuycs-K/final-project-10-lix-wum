@@ -54,13 +54,13 @@
   
   void draw() {
     if (loadingComplete) {
-     if (gameStarted) gamePlay();
-     else if (elementalGameStarted) elementalPlay();
-     else if (openConfig) {
+     if (openConfig) {
        config();
        if (changeKeybind != -1) swapKeybind();
        if (sameKey) printChooseNewKey();
      }  
+     else if (gameStarted) gamePlay(); 
+     else if (elementalGameStarted) elementalPlay();
      else menu();
     } else {
       loadScreen();
@@ -90,7 +90,7 @@
     
     //drop speed
     totalTime = (Math.pow((0.8-((level-1)*0.007)),(int)(level-1)))*1000;
-    float sound = (float) volume/100; print(sound);
+    float sound = (float) volume/100; 
     backgroundSound.amp(sound);
     backgroundSound.loop();
   }
@@ -119,7 +119,7 @@
     
     //drop speed
     totalTime = (Math.pow((0.8-((level-1)*0.007)),(int)(level-1)))*1000;
-    float sound = (float) volume/100; print(sound);
+    float sound = (float) volume/100; 
     backgroundSound.amp(sound);
     backgroundSound.loop();
   }
@@ -130,11 +130,12 @@
     float red = red(mouseColor); float green = green(mouseColor); float blue = blue(mouseColor);
     //print(red + " " + green + " " + blue);
     
+    if (red == 192 && green == 192 && blue == 192) { openConfig = !openConfig;}
     if (openConfig && changeKeybind == -1) {
       if (mouseX > 2*width/3-50-70 && mouseX < 2*width/3-50+70 && mouseY > 150-7-15 && mouseY < 150-7+15) {
         keybinds[4] = '-';
         changeKeybind = 4;
-        print("change!");
+        //print("change!");
       } else if (mouseX > 2*width/3+100-70 && mouseX < 2*width/3+100+70 && mouseY > 150-7-15 && mouseY < 150-7+15) {
         keybinds[5] = '-';
         changeKeybind = 5;
@@ -206,6 +207,7 @@
       startTime = millis();
     }
     }
+
   }
   
   void restart() {
@@ -273,14 +275,8 @@
         heldAlready = true;
       }
     }
-    if(key == keybinds[12]) {
-      if(paused){
-        paused = false;
-        pauseGame();
-      } else {
-        paused = true;
-        pauseGame();
-      }
+    if(key == keybinds[12] && !openConfig) {
+      paused = !paused;
     }
     }
     }
@@ -297,7 +293,21 @@
       }
     }
     
-    // timer
+    textAlign(LEFT);
+    fill(40, 40, 40);
+    rect(width/2, height/2, 1000, 1000);
+   
+    holdBox();
+    nextBox();
+    for (int i = 0; i < 5; i++) {
+      int y = 200+i*70;        
+      displayBlockCosmetic(next.get(i), 625, y);
+    }
+    //print(heldAlready);
+    if (holdSpace) displayBlockCosmetic(heldBlock, 80,220);
+    if (!backgroundSound.isPlaying())backgroundSound.play();
+        
+    // timerz
     noStroke();
     fill(40, 40, 40);
     rectMode(CENTER);
@@ -374,7 +384,7 @@
      if (lose == false) { loseSound(); lose = true; }
    }
      }else {
-       // do nothing, paused game
+       pauseGame();
      }
 
    }
@@ -390,6 +400,19 @@
         alive = false;
       }
     }
+    
+    textAlign(LEFT);
+    fill(40, 40, 40);
+    rect(width/2, height/2, 1000, 1000);
+   
+    holdBox();
+    nextBox();
+    for (int i = 0; i < 5; i++) {
+      int y = 200+i*70;        
+      displayBlockCosmetic(next.get(i), 625, y);
+    }
+    if (holdSpace) displayBlockCosmetic(heldBlock, 80,220);
+    if (!backgroundSound.isPlaying())backgroundSound.play();
     
     // timer
     noStroke();
