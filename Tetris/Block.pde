@@ -2,8 +2,6 @@ import java.util.ArrayDeque;
 class Block {
   
 public static final int side = 30;
-public int centerX = 1;
-public int centerY = 1;
 private int[][][] blocks;
 public int left = 3;
 public int right = 13;
@@ -653,7 +651,6 @@ public void moveRight() {
         blocks[i][j][1]++;
       }
   }
-  centerY++;
 }
 
 public void moveLeft(Background back) {
@@ -669,7 +666,6 @@ public void moveLeft() {
         blocks[i][j][1]--;
       }
   }
-  centerY--;
 }
 
 public void moveDown(Background back) {
@@ -694,7 +690,6 @@ public void moveDown() {
         blocks[i][j][0]++;
       }
   }
-  centerX++;
 }
 
 public void moveUp() {
@@ -703,7 +698,6 @@ public void moveUp() {
         blocks[i][j][0]--;
       }
   }
-  centerX--;
 }
 
 public boolean hasCollision(Background back) {
@@ -717,10 +711,14 @@ public boolean hasCollision(Background back) {
 
 public void placeBlock(Background back) {
   Tetris.hasBlock = false;
-  //ALL REACTIONS OCCUR HERE
+  for(int i = 0; i < 4; i++) {
+    //System.out.println(blocks[rotation][i][0] + " , " + blocks[rotation][i][1]);
+    back.game[top+blocks[rotation][i][0]][blocks[rotation][i][1]+left] = type;
+    if(back.elemental) {
+      back.game[top+blocks[rotation][i][0]][blocks[rotation][i][1]+left] = element;
+      //ALL REACTIONS OCCUR HERE
       if(element == 'F' && touching(back) == 'W') {
         //water vapor
-        back.fireWater(centerX, centerY);
       } else if(element == 'F' && touching(back) == 'A') {
         //smokescreen
       } else if(element == 'F' && touching(back) == 'L') {
@@ -740,11 +738,6 @@ public void placeBlock(Background back) {
       } else if(element == 'L' && touching(back) == 'E') {
         //full clear
       }
-  for(int i = 0; i < 4; i++) {
-    //System.out.println(blocks[rotation][i][0] + " , " + blocks[rotation][i][1]);
-    back.game[top+blocks[rotation][i][0]][blocks[rotation][i][1]+left] = type;
-    if(back.elemental) {
-      back.game[top+blocks[rotation][i][0]][blocks[rotation][i][1]+left] = element;
     }
   }
 }
@@ -756,8 +749,6 @@ public void move(int x, int y) {
         blocks[i][j][1]+=y;
       }
   }
-  centerX += x;
-  centerY += y;
 }
 
 public void printType(Block x) {
@@ -791,17 +782,17 @@ public void setElement(char e) {
 
 public char touching(Background back) {
   for(int i = 0; i < 4; i++) {
-    if(back.game[top + blocks[rotation][i][0]-1][left + blocks[rotation][i][1]] != 'B') {
-      return back.game[top + blocks[rotation][i][0]-1][left + blocks[rotation][i][1]];
+    if(back.game[blocks[rotation][i][0]-1][blocks[rotation][i][1]] != '0') {
+      return back.game[blocks[rotation][i][0]-1][blocks[rotation][i][1]];
     }
-    if(back.game[top + blocks[rotation][i][0]+1][left + blocks[rotation][i][1]] != 'B') {
-      return back.game[top + blocks[rotation][i][0]+1][left + blocks[rotation][i][1]];
+    if(back.game[blocks[rotation][i][0]+1][blocks[rotation][i][1]] != '0') {
+      return back.game[blocks[rotation][i][0]+1][blocks[rotation][i][1]];
     }
-    if(back.game[top + blocks[rotation][i][0]][left + blocks[rotation][i][1]-1] != 'B') {
-      return back.game[top + blocks[rotation][i][0]][left + blocks[rotation][i][1]-1];
+    if(back.game[blocks[rotation][i][0]][blocks[rotation][i][1]-1] != '0') {
+      return back.game[blocks[rotation][i][0]][blocks[rotation][i][1]-1];
     }
-    if(back.game[blocks[top + rotation][i][0]][left + blocks[rotation][i][1]+1] != 'B') {
-      return back.game[top + blocks[rotation][i][0]][left + blocks[rotation][i][1]+1];
+    if(back.game[blocks[rotation][i][0]][blocks[rotation][i][1]+1] != '0') {
+      return back.game[blocks[rotation][i][0]][blocks[rotation][i][1]+1];
     }
   }
   return '-';
