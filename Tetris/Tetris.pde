@@ -28,6 +28,8 @@
   int loadingProgress = 0;
   boolean loadingComplete = false;
   
+  public String displayReactionImage = "";
+  
   // keybind variables
   public int changeKeybind = -1;
   public char [] keybinds = new char[] {'a', 'z', 'd', 'x', '@', 'j', '$', 'l', '#', 'k', ' ', 'c', 'p'};
@@ -61,7 +63,10 @@
        if (sameKey) printChooseNewKey();
      }  
      else if (gameStarted) gamePlay(); 
-     else if (elementalGameStarted) elementalPlay();
+     else if (elementalGameStarted) {
+       elementalPlay();
+       if (!displayReactionImage.equals("")) loadReactionImage(displayReactionImage);
+     }
      else menu();
     } else {
       loadScreen();

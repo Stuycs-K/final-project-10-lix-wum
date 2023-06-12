@@ -46,3 +46,7 @@ public void loseSound() {
 }
 
 // ELEMENTAL REACTIONS
+public void explosionSound() {
+  file = new SoundFile(this, "explosion.mp3", false); file.play(); 
+  file.removeFromCache();  
+}
