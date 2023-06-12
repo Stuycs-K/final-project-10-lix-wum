@@ -191,11 +191,17 @@ class Background {
   
   void windEarth(int row, int col) {
     print("\nwindEarth");
-    Integer[]ary = {3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
-    // shuffle ary
-    List<Integer> aryList = Arrays.asList(ary);
-    Collections.shuffle(aryList);
-    aryList.toArray(ary);
+    for(int i = left; i < right; i++) {
+      ArrayList<Character> ary = new ArrayList<Character>();
+      for(int j = bottom-1; j >= top && game[j][i] != 'B'; j--) {
+        ary.add(game[j][i]);
+      }
+      // shuffle ary
+      int len = ary.size();
+      for(int j = 0; j < len; j++) {
+        game[bottom - j][i] = ary.remove((int) (Math.random()*ary.size()));
+      }
+    }
     
     // unfinished
   }
