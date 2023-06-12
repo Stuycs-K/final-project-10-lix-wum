@@ -119,33 +119,28 @@ class Background {
   
   void fireLightning(int row, int col) {
     print("\nfireLightning");
-<<<<<<< HEAD
     explosionSound();
     displayReactionImage = "fireLightning";
-    delay(200);
-    displayReactionImage = "";
-=======
-    imageMode(CENTER);
-    image = loadImage("explosion.png");
-    image(image, width/2, height/2);
-    explosionSound();
->>>>>>> 0a9d15a4ff8f4cd81ced4f18aed0ebb8634d430f
-    for (int i = -1; i <= 1; i++) {
-      for (int j = -1; j <= 1; j++) {
-        if (row+i > top && row+i < bottom && col+j > left && col+j < right) game[row+i][col+j] = 'B';
-      }
-    }
+    savedImageTime = millis();
+    imageTime = 2000.0;
+    //delay(200);
+    //displayReactionImage = "";
+    
   }
   
   void fireEarth(int row, int col) {
     print("\nfireEarth");
     for (int i = row; i < bottom; i++) {
-      game[i][col] = 'B';
+      game[i][left + (int) (Math.random()*10)] = 'B';
     }
   }
   
   void waterWind(int row, int col) {
     print("\nwaterWind");
+    aquaSound();
+    displayReactionImage = "waterWind";
+    savedImageTime = millis();
+    imageTime = 6000.0;
     for (int i = left; i < right; i++) {
       for (int j = top ; j < bottom; j++) {
         if (game[j][i] != 'B') {

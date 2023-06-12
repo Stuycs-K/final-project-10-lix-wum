@@ -390,5 +390,11 @@
         image = loadImage("explosion.png");
         tint(255, 128);
         image(image, width/2, height/2);
+      } else if (s.equals("waterWind")) {
+        print(s);
+        imageMode(CENTER);
+        image = loadImage("aqua.png");
+        tint(255, 128);
+        image(image, width/2, height/2);
       }
     }

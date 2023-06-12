@@ -24,6 +24,8 @@
   double totalTime;
   PImage image;
   int startTime = 0;
+  double imageTime;
+  int savedImageTime;
   
   int loadingProgress = 0;
   boolean loadingComplete = false;
@@ -65,7 +67,16 @@
      else if (gameStarted) gamePlay(); 
      else if (elementalGameStarted) {
        elementalPlay();
-       if (!displayReactionImage.equals("")) loadReactionImage(displayReactionImage);
+       if (!displayReactionImage.equals("")) {
+         loadReactionImage(displayReactionImage);
+       }
+       if(imageTime > 0.0) {
+         int passedTime = millis() - savedImageTime;
+         if(passedTime > imageTime) {
+           displayReactionImage = "";
+           imageTime = 0;
+         }
+       }
      }
      else menu();
     } else {
@@ -409,6 +420,10 @@
     if (!paused) {
     textAlign(LEFT);
       if(alive) {
+        fill(40);
+        rectMode(CENTER);
+        rect(width/2, height/2, 800, 800);
+        
     //check if lost
     for(int i = back.left; i < back.right; i++) {
       if(back.game[back.top][i] != 'B') {
