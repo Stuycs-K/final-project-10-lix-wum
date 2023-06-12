@@ -23,6 +23,7 @@
   int savedTime;
   double totalTime;
   PImage image;
+  int startTime = 0;
   
   int loadingProgress = 0;
   boolean loadingComplete = false;
@@ -47,9 +48,8 @@
   void setup() {
     size(800, 800);
     background(40, 40, 40);
-    backgroundSound = new SoundFile(this, "tetris.mp3", false);
-    
-    thread("loadGame");
+    thread("loadGame"); 
+    thread("loadSound");
   }
   
   void draw() {
@@ -189,10 +189,12 @@
       restart();
       started();
       gameStarted = true;
+      startTime = millis();
     } else if (red == 204 && green == 255 && blue == 153) {
       restart();
       startedElemental();
       elementalGameStarted = true;
+      startTime = millis();
     } else if (red == 224 && green == 224 && blue == 224 && alive ) {
       restart();
       openConfig = true;
@@ -200,7 +202,8 @@
       restart();
       menu();
       alive = true;
-      score = 0; level = 0;
+      score = 0; level = 0; lose = false;
+      startTime = millis();
     }
     }
   }
@@ -302,7 +305,7 @@
     rect(8, 30, 300, 300);
     rect(387, 730, 70, 50); 
     fill(255);
-    int s = millis()/1000; 
+    int s = (millis()-startTime)/1000; 
     int m = s/60;
     s -= m*60;
     if (s < 10) text("" +m + ":0" + s , 387, 730);
@@ -460,7 +463,7 @@
      fill(224,224,224);
      rect(width/2, 2*height/3+150, 800, 50);
      fill(0);
-     text("PLAY AGAIN", width/2, 2*height/3+150);
+     text("MAIN MENU", width/2, 2*height/3+150);
      if (lose == false) { loseSound(); lose = true; }
    }
      }else {

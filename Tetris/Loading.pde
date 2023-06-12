@@ -21,6 +21,10 @@
     loadingComplete = true;
   }
   
+  void loadSound() {
+    backgroundSound = new SoundFile(this, "tetris.mp3", false);
+  }
+  
   void updateLoad() {
     synchronized(this) {
       loadingProgress = constrain(loadingProgress, 0, 100);
