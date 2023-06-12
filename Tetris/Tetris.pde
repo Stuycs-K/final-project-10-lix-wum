@@ -200,14 +200,21 @@
       restart();
       openConfig = true;
     } else if (red == 224 && green == 224 && blue == 224 && !alive ) {
-      restart();
-      menu();
-      alive = true;
-      score = 0; level = 0; lose = false;
-      startTime = millis();
-    }
+      newGame();
+    } else if (red == 255 && green == 204 && blue == 203 && alive ) {
+      newGame();
+    } 
     }
 
+  }
+  
+  void newGame() {
+    paused = false; restart();
+    restart();
+    menu();
+    alive = true;
+    score = 0; level = 0; lose = false;
+    startTime = millis();
   }
   
   void restart() {

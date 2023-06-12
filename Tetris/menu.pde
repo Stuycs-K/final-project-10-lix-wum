@@ -163,6 +163,12 @@
         rectMode(CENTER);
         textAlign(CENTER);
         textSize(25);
+        
+        fill(255, 204, 203);
+        rect(width/2, 2*height/3, 800, 50);
+        fill(0);
+        text("MAIN MENU", width/2, 2*height/3);
+        
         fill(192);
         rect(width/2, 2*height/3+75, 800, 50);
         fill(0);
