@@ -353,6 +353,7 @@
      textSize(32);
      text("Final Score: " + score, width/2, height/2 + 80);
      backgroundSound.stop();
+     
      fill(224,224,224);
      rect(width/2, 2*height/3+150, 800, 50);
      fill(0);
@@ -446,6 +447,11 @@
      textSize(32);
      text("Final Score: " + score, width/2, height/2 + 80);
      backgroundSound.stop();
+     
+     fill(224,224,224);
+     rect(width/2, 2*height/3+150, 800, 50);
+     fill(0);
+     text("PLAY AGAIN", width/2, 2*height/3+150);
      if (lose == false) { loseSound(); lose = true; }
    }
      }else {
