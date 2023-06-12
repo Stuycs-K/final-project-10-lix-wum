@@ -197,7 +197,16 @@ class Background {
   
   void windLightning(int row, int col) {
     print("\nwindLightning");
-    // thunderstorm
+    displayReactionImage = "windLightning";
+    for (int i = left; i < right; i++) {
+      for (int j = top ; j < bottom; j++) {
+        if (game[j][i] != 'B') {
+          if(j < bottom) {
+            game[j][i] = 'L';
+          }
+        }
+      }
+    }
   }
   
   void windEarth(int row, int col) {
