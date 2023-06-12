@@ -299,8 +299,8 @@
     public void hold(Block current) {
     //print("hold");
     if (holdSpace) {
-      next.add(0, new Block(heldBlock.type));
-      heldBlock = new Block(current.type);
+      next.add(0, new Block(heldBlock.type, heldBlock.element));
+      heldBlock = new Block(current.type, current.element);
       updateNext();
       // REDRAW HOLD BOX
       strokeWeight(2);
@@ -314,7 +314,12 @@
       textSize(20);
       text("HOLD", 150, 220);
       
-      displayBlockCosmetic(heldBlock, 80,220);
+      if(elementalGameStarted) {
+        displayBlockCosmeticElemental(heldBlock, 80,220);
+      } else {
+        displayBlockCosmetic(heldBlock, 80,220);
+      }
+
       //if(current.type != 'O') {
       //  current.moveUp();
       //}
@@ -325,9 +330,17 @@
     }
     else {
       holdSpace = true;
-      heldBlock = new Block(current.type);
-      displayBlockCosmetic(heldBlock, 80,220);
-      updateNext();
+      heldBlock = new Block(current.type, current.element);
+      if(elementalGameStarted) {
+         displayBlockCosmeticElemental(heldBlock, 80,220);
+      } else {
+        displayBlockCosmetic(heldBlock, 80,220);
+      } 
+      if(elementalGameStarted) {
+        updateNextElemental();
+      } else {
+        updateNext(); 
+      }
       
     }
     }
