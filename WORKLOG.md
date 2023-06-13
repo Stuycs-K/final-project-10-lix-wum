@@ -113,3 +113,27 @@ fixed elemental display for next pieces and hold, fixed bugs with invisible bloc
 ### 6/12/23
 
 added elemental reactions for block class, further fixed the touching method and made a center variable to track where the center of each block is (to make reactions happen at specific locations). Fixed bugs with invisible blocks appearing after playing the normal game, and added functioning elemental reactions as well as images and sound to accompany reactions. Megumin for Fire + Lightning and Aqua for Water + Wind. Fixed some UI issues with centering, and added button to switch piece-by-piece elemental reactions on and off. Also added more elemental reactions such as lava and shuffle.
+
+# Working Features
+
+- regular tetris, all functions
+- working piece rotation and wall kicks based on the super rotation system
+- piece randomization and generatiom based on 7bag
+- ghost block showing where a piece will land once dropped
+- hold function, allows pieces to be held for later use
+- clearing rows
+- updating score based on rows cleared
+- increasing difficulty of level based on score, affects piece falling speed
+- death screen and final score display
+- pause menu and buttons as well as config menu allowing for keybind changes
+- elemental tetris playable, although only some reactions have images and sound
+- all reactions work and piece generation/display based on elements
+
+# Bugs/incomplete features
+
+- when going into a new game after playing either normal tetris or elemental tetris and losing, the held piece will be kept and carry over into the new game
+- after a minute or two, the sound completely breaks and glitches out, removing them from cache and stopping all sounds are unable to prevent this bug
+- elemental reactions do not all have images and sounds, although the most important ones do
+- elemental reactions are not balanced, some are very overpowered while others are useless (like aqua)
+- no animations for reactions, this would take very long and we did not have the time
+
