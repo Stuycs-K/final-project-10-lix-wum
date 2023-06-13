@@ -50,8 +50,6 @@ Added a play again button, created a loading screen for the game using multithre
 
 Worked on elemental reactions, added sound, created elemental reaction methods and score calculators, optimized menu visuals, fixed menu and elemental reaction bugs. Also added a display for reactions when they react, allowing the player to identify the reaction they just created.
 
-
-
 =======================================================================================================================================
 
 ## Max Wu
@@ -116,24 +114,24 @@ added elemental reactions for block class, further fixed the touching method and
 
 # Working Features
 
-- regular tetris, all functions
-- working piece rotation and wall kicks based on the super rotation system
-- piece randomization and generatiom based on 7bag
-- ghost block showing where a piece will land once dropped
-- hold function, allows pieces to be held for later use
-- clearing rows
-- updating score based on rows cleared
-- increasing difficulty of level based on score, affects piece falling speed
-- death screen and final score display
-- pause menu and buttons as well as config menu allowing for keybind changes
-- elemental tetris playable, although only some reactions have images and sound
-- all reactions work and piece generation/display based on elements
+- Standard Tetris
+- Piece rotation, wall kicks based on the super rotation system
+- Piece randomization and generation (7bag algorithm)
+- Ghost block showing where a piece will land once dropped (quality of life optimization)
+- Piece hold function
+- Row clearing
+- Scoring system
+- Level system based on lines cleared, increasing gravity/difficulty
+- Death screen with final score
+- Pause menu that can access configurations and exit to main menu
+- Configurations menu allowing for keybind, volume, and reaction changes
+- Elemental Tetris
+- All elemental reactions are functional and with working piece generation/display based on elements
 
 # Bugs/incomplete features
 
-- when going into a new game after playing either normal tetris or elemental tetris and losing, the held piece will be kept and carry over into the new game
-- after a minute or two, the sound completely breaks and glitches out, removing them from cache and stopping all sounds are unable to prevent this bug
-- elemental reactions do not all have images and sounds, although the most important ones do
-- elemental reactions are not balanced, some are very overpowered while others are useless (like aqua)
-- no animations for reactions, this would take very long and we did not have the time
-
+- When going into a new game after playing either normal tetris or elemental tetris and losing, the held piece will be kept and carry over into the new game
+- After a minute or two, the sound completely breaks and glitches out, removing them from cache and stopping all sounds are unable to prevent this bug (likely a issue with program cpu/memory usage)
+- Elemental reactions do not all have images and sounds, although the most important ones do
+- Elemental reactions are not balanced, some are very overpowered while others are useless (like aqua)
+- No animations for reactions, this would take very long and we did not have the time
