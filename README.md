@@ -33,6 +33,8 @@ Lightning + Earth → full clear board (very overpowered)
 
 
 ## Instructions
+Remember to import the Sound processing library before running the game!
+
 Controls (these can be changed using the config settings):
 
 Arrow keys - move the tetromino left, right, and down
